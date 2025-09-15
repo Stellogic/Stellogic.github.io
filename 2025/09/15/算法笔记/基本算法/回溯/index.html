@@ -314,7 +314,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Mon Sep 15 2025 18:09:09 GMT+0800">2025-09-15 18:09:09</span>
+                    <span class="datetime" data-updated="Mon Sep 15 2025 18:10:09 GMT+0800">2025-09-15 18:10:09</span>
                 </span>
             
         
@@ -385,7 +385,7 @@
 <p>这里我们信仰之越的契约是：相信preOrder能处理更小规模的子树，遍历子树的root以及所有节点，并把路径添加到res，让后穷举完所有结果后回退，把path回退到之前</p>
 <h2 id="剪枝"><a href="#剪枝" class="headerlink" title="剪枝"></a>剪枝</h2><p>如果有约束条件可以尝试剪枝<br>例，<code>在二叉树中搜索所有值为7 的节点，请返回根节点到这些节点的路径，并要求路径中不包含值为3 的节点。</code><br>我们需要添加剪枝操作，遇到值为3的节点则提前返回不再继续找</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.swing.tree.TreeNode;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">preOrder</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">    <span class="comment">//剪枝</span></span><br><span class="line">    <span class="keyword">if</span> (root == <span class="literal">null</span> || root.val == <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//尝试</span></span><br><span class="line">    path.add(root);</span><br><span class="line">    <span class="keyword">if</span> (root.val == <span class="number">7</span>) &#123;</span><br><span class="line">        <span class="comment">//记录解</span></span><br><span class="line">        res.add(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(path));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//继续尝试左右边</span></span><br><span class="line">    preOrder(root.left);</span><br><span class="line">    preOrder(root.right);</span><br><span class="line">    <span class="comment">//回退</span></span><br><span class="line">    path.remove(path.size() - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/img_12.png" alt="/img/算法笔记/基本算法/img_12.png"></p>
+<p><img src="/img_12.png" alt="/img/算法笔记/基本算法//img/算法笔记/基本算法/%E5%9B%9E%E6%BA%AF/img_12.png"></p>
 <h2 id="框架代码"><a href="#框架代码" class="headerlink" title="框架代码"></a>框架代码</h2><p>尝试-&gt;回退-&gt;剪枝<br>state表示当前问题状态，choices表示当前状态下可做的选择</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.swing.plaf.nimbus.State;</span><br><span class="line"><span class="keyword">import</span> java.awt.*;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">backtrack</span><span class="params">(State state, List&lt;Choices&gt; choices, List&lt;State&gt; res)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (isSolution(state)) &#123;</span><br><span class="line">        recordSolution(state, res);</span><br><span class="line">        <span class="comment">//如果找到一个解就可以结束则返回</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//遍历所有选择</span></span><br><span class="line">    <span class="keyword">for</span> (Choice choice : choices)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//判断是否需要剪枝</span></span><br><span class="line">        <span class="keyword">if</span>(isValid(state,choice))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//尝试：做出选择，更新状态</span></span><br><span class="line">            makeChoice(state,choice);</span><br><span class="line">            <span class="comment">//继续深入尝试</span></span><br><span class="line">            backtrack(state,choices,res);</span><br><span class="line">            <span class="comment">//回退：撤销选择</span></span><br><span class="line">            undoChoice(state,choice);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>借助框架代码解决例题</p>
@@ -413,12 +413,12 @@
 <li><p>剪枝  </p>
 <ul>
 <li>重复选择剪枝：确保每个元素只被选择一次，引入selected，selected[i]表示choices[i]是否被选择</li>
-<li>相等元素剪枝：<img src="/img_13.png" alt="/img/算法笔记/基本算法/img_13.png"> 可以引入一个哈希集合duplicated，标记尝试过的元素</li>
+<li>相等元素剪枝：<img src="/img_13.png" alt="/img/算法笔记/基本算法//img/算法笔记/基本算法/%E5%9B%9E%E6%BA%AF/img_13.png"> 可以引入一个哈希集合duplicated，标记尝试过的元素</li>
 </ul>
 <br> 
 
 <hr>
-<p><img src="/img_14.png" alt="/img/算法笔记/基本算法/img_14.png"> 两种剪枝的不同</p>
+<p><img src="/img_14.png" alt="/img/算法笔记/基本算法//img/算法笔记/基本算法/%E5%9B%9E%E6%BA%AF/img_14.png"> 两种剪枝的不同</p>
 </li>
 </ul>
 </li>
@@ -441,7 +441,7 @@
 <ol>
 <li><p>可以直接参考全排列问题。但集合元素可以无限次选取，因此不必借助selected</p>
  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 回溯算法：子集和 I */</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">backtrack</span><span class="params">(List&lt;Integer&gt; state, <span class="type">int</span> target, <span class="type">int</span> total, <span class="type">int</span>[] choices, List&lt;List&lt;Integer&gt;&gt; res)</span> &#123;</span><br><span class="line">    <span class="comment">// 子集和等于 target 时，记录解</span></span><br><span class="line">    <span class="keyword">if</span> (total == target) &#123;</span><br><span class="line">        res.add(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(state));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 遍历所有选择</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; choices.length; i++) &#123;</span><br><span class="line">        <span class="comment">// 剪枝：若子集和超过 target ，则跳过该选择</span></span><br><span class="line">        <span class="keyword">if</span> (total + choices[i] &gt; target) &#123;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 尝试：做出选择，更新元素和 total</span></span><br><span class="line">        state.add(choices[i]);</span><br><span class="line">        <span class="comment">// 进行下一轮选择</span></span><br><span class="line">        backtrack(state, target, total + choices[i], choices, res);</span><br><span class="line">        <span class="comment">// 回退：撤销选择，恢复到之前的状态</span></span><br><span class="line">        state.remove(state.size() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 求解子集和 I（包含重复子集） */</span></span><br><span class="line">List&lt;List&lt;Integer&gt;&gt; <span class="title function_">subsetSumINaive</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">    List&lt;Integer&gt; state = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(); <span class="comment">// 状态（子集）</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">total</span> <span class="operator">=</span> <span class="number">0</span>; <span class="comment">// 子集和</span></span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(); <span class="comment">// 结果列表（子集列表）</span></span><br><span class="line">    backtrack(state, target, total, nums, res);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p> 但这样比如输入[3,4,5]和目标9，会输出[3,3,3] [4,5] [5,4],因为搜索过程的全排列是区分顺序的，但实际上的子集合是不区分顺序的，如图<img src="/img_15.png" alt="/img/算法笔记/基本算法/img_15.png"></p>
+<p> 但这样比如输入[3,4,5]和目标9，会输出[3,3,3] [4,5] [5,4],因为搜索过程的全排列是区分顺序的，但实际上的子集合是不区分顺序的，如图<img src="/img_15.png" alt="/img/算法笔记/基本算法//img/算法笔记/基本算法/%E5%9B%9E%E6%BA%AF/img_15.png"></p>
 </li>
 <li><p>于是考虑剪枝  </p>
 <ol>
@@ -615,14 +615,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2025/09/15/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/%E5%88%86%E6%B2%BB/"
-                                   title="分治"
+                                   href="/2025/09/15/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/"
+                                   title="排序"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">分治</span>
+                                        <span class="post-nav-title-item text-ellipsis">排序</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
@@ -632,11 +632,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2025/09/15/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/%E5%9B%9E%E6%BA%AF%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/"
-                                   title="回溯复杂度分析"
+                                   href="/2025/09/15/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2/"
+                                   title="搜索"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">回溯复杂度分析</span>
+                                        <span class="post-nav-title-item text-ellipsis">搜索</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
