@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="stellogic">
+    
+    <title>
+        
+            动态规划 |
+        
+        stellogic的个人空间
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"stellogic.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"stellogic的个人空间","author":"stellogic","avatar":"/images/avatar.jpg","logo":null,"favicon":null},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives || fa-solid fa-box-archive","categories":"/categories || fa-solid fa-layer-group","tags":"/tags || fa-solid fa-tags","links":"/links || fa-solid fa-link","about":"/about || fa-solid fa-user-graduate"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg2.svg","description":"欢迎来到我的个人空间 || 记录点滴，共同进步","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/stellogic","weixin":null,"qq":null,"weibo":null,"zhihu":"https://www.zhihu.com/people/stellogic","twitter":null,"x":null,"facebook":null,"email":"mack12399@outlook.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":false},"home":{"announcement":"📚We are together","category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":false,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":"留下你的想法吧~"},"gitalk":{"github_id":null,"github_admins":["你的 GitHub 用户名"],"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":true,"version":"3.3.2"},"giscus":{"repo":"stellogic/Stellogic.github.io","repo_id":"R_kgDOOkF4SA","category":"Announcements","category_id":"DIC_kwDOOkF4SM4Cp-Ln","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":true},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"jsdelivr"},"pjax":{"enable":false},"footer":{"since":2025,"word_count":true,"site_deploy":{"enable":true,"provider":"github","url":"https://stellogic.github.io/"},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Stellogic的博客" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+            <a class="site-name border-box" href="/">
+               stellogic的个人空间
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-link"></i>
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-link"></i>
+                                </span>
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                </span>
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        动态规划
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">stellogic</span>
+                                
+                                    <span class="author-badge">Three</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-09-15 09:19:35</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Mon Sep 15 2025 17:29:16 GMT+0800">2025-09-15 17:29:16</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/">基本算法</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/">基本算法</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>7.6k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>32 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="定义和概念"><a href="#定义和概念" class="headerlink" title="定义和概念"></a>定义和概念</h2><p>将问题分解为一系列更小的子问题，并且通过储存子问题的解来避免重复计算，从而提高时间效率  </p>
+<span id="more"></span>
+
+
+
+<p>与回溯、分治的区别：  </p>
+<ul>
+<li>分治递归的把原问题划分成多个<strong>独立</strong>的子问题直到最小问题，之后回溯中合并子问题的解得到原问题解</li>
+<li>动态规划也递归分解，但是动态规划的子问题是相互依赖的，会出现重叠子问题</li>
+<li>回溯算法在尝试和回退中穷举所有可能的解，并通过剪枝避免不必要的搜索分支。原问题的解由一系列决策步骤构成，我们可以将每个决策步骤之前的子序列看作一个子问题。</li>
+</ul>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ol>
+<li>最优子结构<br>原问题的最优解是从子问题的最优解构建得来的</li>
+<li>无后效性<br>给定一个确定的状态，它的未来发展只与当前状态有关，而与过去经历的所有状态无关<br>就是说只依赖前序状态当前的已有的信息，但和前序状态时如何实现的无关</li>
+</ol>
+<h2 id="问题判断"><a href="#问题判断" class="headerlink" title="问题判断"></a>问题判断</h2><p><strong>总的来说，如果一个问题包含重叠子问题、最优子结构，并满足无后效性，那么它通常适合用动态规划求解。</strong><br>但实际上，很难直接判断，因此</p>
+<ol>
+<li>先观察问题是否适合使用回溯（穷举）解决（通常满足决策树模型，其中每一个节点代表一个决策，每一条路径代表一个决策序列。）</li>
+<li>之后看加分项和减分项  <ul>
+<li>加分项：  <ul>
+<li>问题包含最大（小）或最多（少）等最优化描述。</li>
+<li>问题的状态能够使用一个列表、多维矩阵或树来表示，并且一个状态与其周围的状态存在递推关系。</li>
+</ul>
+</li>
+<li>减分项：<ul>
+<li>问题的目标是找出所有可能的解决方案，而不是找出最优解。</li>
+<li>问题描述中有明显的排列组合的特征，需要返回具体的多个方案。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="常规思路"><a href="#常规思路" class="headerlink" title="常规思路"></a>常规思路</h2><ol>
+<li>描述决策</li>
+<li>定义状态</li>
+<li>建立dp表</li>
+<li>推导状态转移方程</li>
+<li>确定边界条件</li>
+</ol>
+<p>状态：状态由所有决策变量构成。它应当包含描述解题进度的所有变量，其包含了足够的信息，能够用来推导出下一个状态。  </p>
+<p>dp表： 每个状态都对应一个子问题，我们会定义一个 dp表来存储所有子问题的解，状态的每个独立变量都是 dp表的一个维度。</p>
+<p>边界条件：边界条件在动态规划中用于初始化dp表，在搜索中用于剪枝。  </p>
+<p>状态转移方程： 递推公式  </p>
+<p>初始状态：（如1阶2阶）最小子问题的状态</p>
+<p>状态转移顺序的核心是要保证在计算当前问题的解时，所有它依赖的更小子问题的解都已经被正确地计算出来。</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
+<li>不考虑时间的前提下，所有动态规划问题都可以用回溯（暴力搜索）进行求解，但递归树中存在大量的重叠子问题，效率极低。通过引入记忆化列表，可以存储所有计算过的子问题的解，从而保证重叠子问题只被计算一次。</li>
+<li>由于当前状态仅依赖某些局部状态，因此我们可以消除dp表的一个维度，从而降低空间复杂度。</li>
+</ol>
+<h2 id="引入爬楼梯例题"><a href="#引入爬楼梯例题" class="headerlink" title="引入爬楼梯例题"></a>引入爬楼梯例题</h2><p>给定一个共有 n阶的楼梯，你每步可以上 1阶或者 2阶，请问有多少种方案可以爬到楼顶？</p>
+<ol>
+<li><p>回溯穷举暴力：每轮除法上1阶或2阶，到达楼顶就方案数量加一，越过楼梯顶就剪枝</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 回溯 */</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">backtrack</span><span class="params">(List&lt;Integer&gt; choices, <span class="type">int</span> state, <span class="type">int</span> n, List&lt;Integer&gt; res)</span> &#123;</span><br><span class="line">    <span class="comment">// 当爬到第 n 阶时，方案数量加 1</span></span><br><span class="line">    <span class="keyword">if</span> (state == n)</span><br><span class="line">        res.set(<span class="number">0</span>, res.get(<span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">    <span class="comment">// 遍历所有选择</span></span><br><span class="line">    <span class="keyword">for</span> (Integer choice : choices) &#123;</span><br><span class="line">        <span class="comment">// 剪枝：不允许越过第 n 阶</span></span><br><span class="line">        <span class="keyword">if</span> (state + choice &gt; n)</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        <span class="comment">// 尝试：做出选择，更新状态</span></span><br><span class="line">        backtrack(choices, state + choice, n, res);</span><br><span class="line">        <span class="comment">// 回退</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 爬楼梯：回溯 */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">climbingStairsBacktrack</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">    List&lt;Integer&gt; choices = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>); <span class="comment">// 可选择向上爬 1 阶或 2 阶</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">state</span> <span class="operator">=</span> <span class="number">0</span>; <span class="comment">// 从第 0 阶开始爬</span></span><br><span class="line">    List&lt;Integer&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    res.add(<span class="number">0</span>); <span class="comment">// 使用 res[0] 记录方案数量</span></span><br><span class="line">    backtrack(choices, state, n, res);</span><br><span class="line">    <span class="keyword">return</span> res.get(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>暴力搜索  </p>
+<p> 得到一个结论dp[i] &#x3D; dp[i-1] + dp[i-2]<br> 可以直接递归，和回溯都一样属于深度优先搜索  </p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 搜索 */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span> i)</span> &#123;</span><br><span class="line">    <span class="comment">// 已知 dp[1] 和 dp[2] ，返回之</span></span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">1</span> || i == <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    <span class="comment">// dp[i] = dp[i-1] + dp[i-2]</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> dfs(i - <span class="number">1</span>) + dfs(i - <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 爬楼梯：搜索 */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">climbingStairsDFS</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> dfs(n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <img  
+                       lazyload
+                       alt="image"
+                       data-src="/img_17.png"
+                        alt="img_17.png"
+                 ><br> 如图，递归树深度为n,时间复杂度为O(2^n)  </p>
+<p> 主要原因是有很多子问题重叠了，被重复计算了。  </p>
+</li>
+<li><p>记忆化搜索<br>我们期望所有重叠子问题只计算一次<br>声明一个mem来记录每个子问题的解，搜索时重复子问题剪枝直接返回</p>
+<ol>
+<li>当首次计算dp[i]时，我们将其记录至 mem[i] ，以便之后使用。</li>
+<li>再次计算dp[i] 时，直接从mem[i]获取结果 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 记忆化搜索 */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">dfs</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span>[] mem)</span> &#123;</span><br><span class="line">    <span class="comment">// 已知 dp[1] 和 dp[2] ，返回之</span></span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">1</span> || i == <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    <span class="comment">// 若存在记录 dp[i] ，则直接返回之</span></span><br><span class="line">    <span class="keyword">if</span> (mem[i] != -<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> mem[i];</span><br><span class="line">    <span class="comment">// dp[i] = dp[i-1] + dp[i-2]</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> dfs(i - <span class="number">1</span>, mem) + dfs(i - <span class="number">2</span>, mem);</span><br><span class="line">    <span class="comment">// 记录 dp[i]</span></span><br><span class="line">    mem[i] = count;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 爬楼梯：记忆化搜索 */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">climbingStairsDFSMem</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="comment">// mem[i] 记录爬到第 i 阶的方案总数，-1 代表无记录</span></span><br><span class="line">    <span class="type">int</span>[] mem = <span class="keyword">new</span> <span class="title class_">int</span>[n + <span class="number">1</span>];</span><br><span class="line">    Arrays.fill(mem, -<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> dfs(n, mem);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p> <img  
+                       lazyload
+                       alt="image"
+                       data-src="/img_18.png"
+                        alt="img_18.png"
+                 ><br>所有重叠子问题都只需计算一次，时间复杂度优化至 O(n)</p>
+</li>
+<li><p>动态规划<br> 记忆化搜索是从顶至底的方法<br> 动态规划是从低至顶：从最小子问题的解开始，迭代构建更大子问题的解，直到得到原问题  </p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 爬楼梯：动态规划 */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">climbingStairsDP</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span> || n == <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    <span class="comment">// 初始化 dp 表，用于存储子问题的解</span></span><br><span class="line">    <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[n + <span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 初始状态：预设最小子问题的解</span></span><br><span class="line">    dp[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    dp[<span class="number">2</span>] = <span class="number">2</span>;</span><br><span class="line">    <span class="comment">// 状态转移：从较小子问题逐步求解较大子问题</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        dp[i] = dp[i - <span class="number">1</span>] + dp[i - <span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 显然dp[i]只和dp[i-1]和dp[i-2]有关，因此不必使用dp储存所有子问题的解，利用两个变量滚动即可</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">climbingStairsDPComp</span><span class="params">(<span class="type">int</span> n)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span> || n == <span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">1</span>,b = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">3</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> b;</span><br><span class="line">        b = a + b;</span><br><span class="line">        a = temp;</span><br><span class="line">        <span class="comment">//每轮结束时，b就是第dp[i]</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 空间复杂度降到O(1).<br> <strong>动态规划当前状态往往仅与前面有限个状态有关，这时我们可以只保留必要的状态，通过“降维”来节省内存空间。这种空间优化技巧被称为<code>“滚动变量”</code>或<code>“滚动数组”</code>。</strong></p>
+</li>
+</ol>
+<h2 id="更改爬楼梯问题说明最优子结构"><a href="#更改爬楼梯问题说明最优子结构" class="headerlink" title="更改爬楼梯问题说明最优子结构"></a>更改爬楼梯问题说明最优子结构</h2><p>给定一个楼梯，你每步可以上 1阶或者 2阶，每一阶楼梯上都贴有一个非负整数，表示你在该台阶所需要付出的代价。给定一个非负整数数组 cost，其中 cost[i]表示在第 i个台阶需要付出的代价， cost[0]为地面（起始点）。请计算最少需要付出多少代价才能到达顶部？</p>
+<p>显然$dp[i] &#x3D; min(dp[i-1],dp[i-2]) + cost[i]$  </p>
+<p>也就是原问题的最优解是从子问题的最优解构建得来的。  </p>
+<p>实际上原来的爬楼梯问题如果换成问”最大方案数量”的等价问法，也相当于一种最优子结构  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 爬楼梯最小代价：动态规划 */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">minCostClimbingStairsDP</span><span class="params">(<span class="type">int</span>[] cost)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> cost.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span> || n == <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> cost[n];</span><br><span class="line">    <span class="comment">// 初始化 dp 表，用于存储子问题的解</span></span><br><span class="line">    <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[n + <span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 初始状态：预设最小子问题的解</span></span><br><span class="line">    dp[<span class="number">1</span>] = cost[<span class="number">1</span>];</span><br><span class="line">    dp[<span class="number">2</span>] = cost[<span class="number">2</span>];</span><br><span class="line">    <span class="comment">// 状态转移：从较小子问题逐步求解较大子问题</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        dp[i] = Math.min(dp[i - <span class="number">1</span>], dp[i - <span class="number">2</span>]) + cost[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个dp[i]只由dp[i-1]和dp[i-2]决定，因此也可以两个变量滚动空间优化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">minCostClimbingStairsDPComp</span><span class="params">(<span class="type">int</span>[] cost)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> cost.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>|| n==<span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> cost[n];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> cost[<span class="number">1</span>],b = cost[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">3</span>;i &lt;= n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> b;</span><br><span class="line">        b = Math.min(a,temp) + cost[i];</span><br><span class="line">        a = temp;</span><br><span class="line">        <span class="comment">//b在每轮循环结束就是dp[i]</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改爬楼梯问题说明无后效性"><a href="#修改爬楼梯问题说明无后效性" class="headerlink" title="修改爬楼梯问题说明无后效性"></a>修改爬楼梯问题说明无后效性</h2><p>无后效性就是说，给定一个确定的状态，问题未来的发展只与当前状态有关，而与过去经历的所有状态无关。<br>就是说只依赖前序状态当前的已有的信息，但和前序状态时如何实现的无关<br>上面的爬楼梯问题都是这样。<br>但如果加一个约束条件：<br><code>给定一个共有 n阶的楼梯，你每步可以上 1阶或者 2阶，但不能连续两轮跳 1阶，请问有多少种方案可以爬到楼顶？</code><br>如果上一轮是跳1阶，下一轮必须跳2阶，意味着下一步选择不能有当前状态决定，还和前一个状态有关。<br>但我们可以扩展状态的定义，状态[i,j]表示在第i阶，并且上一轮跳了j阶，j属于{1,2}。这样又满足了无后效性<br>则有<br>dp[i,j] &#x3D; dp[i,1] + dp[i,2] &#x3D; dp[i-1,2] + dp[i-2,1] + dp[i-2,2]</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">clim</span><span class="params">(<span class="type">int</span> n)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span> || n == <span class="number">2</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//初始化dp表</span></span><br><span class="line">    <span class="type">int</span>[][]dp = <span class="keyword">new</span> <span class="title class_">int</span>[n+<span class="number">1</span>][<span class="number">3</span>];</span><br><span class="line">    dp[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    dp[<span class="number">1</span>][<span class="number">2</span>] = <span class="number">0</span>;</span><br><span class="line">    dp[<span class="number">2</span>][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    dp[<span class="number">2</span>][<span class="number">2</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//状态转移</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">3</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        dp[i][<span class="number">1</span>] = dp[i - <span class="number">1</span>][<span class="number">2</span>];</span><br><span class="line">        dp[i][<span class="number">2</span>] = dp[i-<span class="number">2</span>][<span class="number">1</span>]+dp[i-<span class="number">2</span>][<span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n][<span class="number">1</span>]+dp[n][<span class="number">2</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的可以通过扩展状态定义满足无后效性<br>但是有时候会有无法做到<br><code>给定一个共有 n阶的楼梯，你每步可以上 1阶或者 2阶。规定当爬到第 i阶时，系统自动会在第 2i阶上放上障碍物，之后所有轮都不允许跳到第 2i阶上。例如，前两轮分别跳到了第 2、3 阶上，则之后就不能跳到第 4、6 阶上。请问有多少种方案可以爬到楼顶？</code><br>这个问题每次的跳跃都会影响未来的跳跃</p>
+<h2 id="表格问题"><a href="#表格问题" class="headerlink" title="表格问题"></a>表格问题</h2><p>先判断问题能否回溯，之后根据加分减分可以尝试是否使用动态规划</p>
+<p><code>给定一个n*m的二维网格 grid ，网格中的每个单元格包含一个非负整数，表示该单元格的代价。机器人以左上角单元格为起始点，每次只能向下或者向右移动一步，直至到达右下角单元格。请返回从左上角到右下角的最小路径和。</code></p>
+<p><strong>分析</strong></p>
+<ol>
+<li><p>思考每轮决策，定义状态得到dp表  </p>
+<p> 本题每轮决策是从当前格子向下或者向右。因此状态应该包括行列索引两个变量，[i,j]  </p>
+<p> 状态[i,j]对应的子问题就是：从起点[0,0]走到[i,j]的最小代价路径和，记为dp[i,j]</p>
+</li>
+</ol>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/img_19.png"
+                        alt="img_19.png"
+                 ></p>
+<ol start="2">
+<li><p>找出最优子结构进而推导状态转移方程 </p>
+<p> dp[i,j]&#x3D;min(dp[i-1,j],dp[i,j-1])+grid[i,j] (grid[i,j]是[i,j]处格点的代价)</p>
+</li>
+<li><p>确定边界条件和状态转移顺序 </p>
+<p> 首行的状态只能由左边的状态得到，首列的状态只能由上班的状态得到。因此i&#x3D;0,j&#x3D;0就是边界条件</p>
+<p> 如图 14-13 所示，由于每个格子是由其左方格子和上方格子转移而来，因此我们使用循环来遍历矩阵，外循环遍历各行，内循环遍历各列。<br> <img  
+                       lazyload
+                       alt="image"
+                       data-src="/img_20.png"
+                        alt="img_20.png"
+                 ><br> 这是为了保证计算当前解时，以来的更小子问题的解都被计算出来了</p>
+</li>
+</ol>
+<p><strong>实现</strong><br>因为子问题分解时从顶到底的思想，所以按照 暴力搜索、 记忆化搜索 、动态规划顺序展示</p>
+<ol>
+<li><p>暴力搜索</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 最小路径和：暴力搜索 */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">minPathSumDFS</span><span class="params">(<span class="type">int</span>[][] grid, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">    <span class="comment">// 若为左上角单元格，则终止搜索</span></span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">0</span> &amp;&amp; j == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> grid[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 若行列索引越界，则返回 +∞ 代价</span></span><br><span class="line">    <span class="keyword">if</span> (i &lt; <span class="number">0</span> || j &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 计算从左上角到 (i-1, j) 和 (i, j-1) 的最小路径代价</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">up</span> <span class="operator">=</span> minPathSumDFS(grid, i - <span class="number">1</span>, j);</span><br><span class="line">    <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> minPathSumDFS(grid, i, j - <span class="number">1</span>);</span><br><span class="line">    <span class="comment">// 返回从左上角到 (i, j) 的最小路径代价</span></span><br><span class="line">    <span class="keyword">return</span> Math.min(left, up) + grid[i][j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/img_21.png"
+                        alt="img_21.png"
+                 ><br>每个状态都能向下和向右，从左上角到右下角需要m+n-2步，所以复杂度O(2^(m+n))</p>
+</li>
+<li><p>记忆化搜索<br>引入mem记忆列表记录子问题的解并对重叠子问题剪枝</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 最小路径和：记忆化搜索 */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">minPathSumDFSMem</span><span class="params">(<span class="type">int</span>[][] grid, <span class="type">int</span>[][] mem, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">    <span class="comment">// 若为左上角单元格，则终止搜索</span></span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">0</span> &amp;&amp; j == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> grid[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 若行列索引越界，则返回 +∞ 代价</span></span><br><span class="line">    <span class="keyword">if</span> (i &lt; <span class="number">0</span> || j &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 若已有记录，则直接返回</span></span><br><span class="line">    <span class="keyword">if</span> (mem[i][j] != -<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> mem[i][j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 左边和上边单元格的最小路径代价</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">up</span> <span class="operator">=</span> minPathSumDFSMem(grid, mem, i - <span class="number">1</span>, j);</span><br><span class="line">    <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> minPathSumDFSMem(grid, mem, i, j - <span class="number">1</span>);</span><br><span class="line">    <span class="comment">// 记录并返回左上角到 (i, j) 的最小路径代价</span></span><br><span class="line">    mem[i][j] = Math.min(left, up) + grid[i][j];</span><br><span class="line">    <span class="keyword">return</span> mem[i][j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img  
+                       lazyload
+                       alt="image"
+                       data-src="/img_22.png"
+                        alt="img_22.png"
+                 ><br>引入记忆后所有子问题的解只算一次，时间复杂度O(mn)</p>
+</li>
+<li><p>动态规划</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">minPath</span><span class="params">(<span class="type">int</span>[][] grid)</span>&#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> grid.length,m = grid[<span class="number">0</span>].length;<span class="comment">//n是行数，m是列数</span></span><br><span class="line">    <span class="type">int</span>[][] dp = <span class="keyword">new</span> <span class="title class_">int</span>[n][m];</span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">0</span>] = grid[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    <span class="comment">//状态转移首行</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>;j &lt; m;j++)</span><br><span class="line">    &#123;</span><br><span class="line">        dp[<span class="number">0</span>][j] = dp[<span class="number">0</span>][j - <span class="number">1</span>] + grid[<span class="number">0</span>][j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//首列</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        dp[i][<span class="number">0</span>] = dp[i-<span class="number">1</span>][<span class="number">0</span>]+grid[i][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//其他行列</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>;j&lt;m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            dp[i][j] = Math.min(dp[i][j-<span class="number">1</span>],dp[i-<span class="number">1</span>][j]) + grid[i][j];</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n-<span class="number">1</span>][m-<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(mn),空间复杂度O(mn)(dp表)</p>
+</li>
+</ol>
+<p>也可以空间优化，因为每个格子之和左边和上边的格子有关，因此可以只用一个单行数组实现dp表   （无法进一步优化，虽然对于每个格点只需要左侧和上方，左侧可以只用一个量，但是上方的对于每一行不同列的格点都不同，至少需要保存上面一整行）<br>但，因为数组 dp 只能表示一行的状态，所以我们无法提前初始化首列状态，而是在遍历每行时更新它：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">minPath</span><span class="params">(<span class="type">int</span>[][] grid)</span>&#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> grid.length,m = grid[<span class="number">0</span>].length;</span><br><span class="line">    <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[m];</span><br><span class="line">    <span class="comment">//状态转移:首行</span></span><br><span class="line">    dp[<span class="number">0</span>] = grid[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>;j&lt;m;j++)</span><br><span class="line">    &#123;</span><br><span class="line">        dp[j] = dp[j - <span class="number">1</span>] + grid[<span class="number">0</span>][j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//状态转移其余行</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="comment">//状态转移首列</span></span><br><span class="line">        dp[<span class="number">0</span>] = dp[<span class="number">0</span>] + grid[i][<span class="number">0</span>];</span><br><span class="line">        <span class="comment">//状态转移其他列</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>;j&lt;m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            dp[j] = Math.min(dp[j-<span class="number">1</span>],dp[j]) + grid[i][j];<span class="comment">//dp[j-1]是已经被更新的左侧的，dp[j]被更新前是上面一行同列的元素</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[m-<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>可以把空间复杂度降到O（m)</p>
+<h2 id="0-1背包问题"><a href="#0-1背包问题" class="headerlink" title="0-1背包问题"></a>0-1背包问题</h2><p>给定 $n$ 个物品，第 $i$ 个物品的重量为 $wgt[i-1]$、价值为 $val[i-1]$ ，和一个容量为 $cap$ 的背包。每个物品只能选择一次，问在限定背包容量下能放入物品的最大价值。</p>
+<p>这里物品编号从1开始所以i对于的wgt[i-1]</p>
+<p>可以看成n轮决策组成的过程，每个物体都有不放入和放入两种决策，满足决策树模型</p>
+<p>同时求的是最大价值，因此很可能能用动态规划</p>
+<ol>
+<li><p>思考每轮决策定义状态得到dp表</p>
+<p> 每个物品不放入背包，背包容量不变；放入背包容量减小。</p>
+<p> 定义状态：当前物品编号i和背包容量c。</p>
+<p> [i,c]对应子问题：前i个物品在容量为c的背包中的最大价值，记为dp[i,c]</p>
+<p> 待求解的是dp[n,cap]，需要一个（n+1）*(cap+1)的表</p>
+</li>
+<li><p>找出最优子结构并推出状态转移方程</p>
+<p> 对i做决策时分为一下两种情况：</p>
+<ol>
+<li>不放入i,则dp[i,c] &#x3D; dp[i-1,c]</li>
+<li>放入i,则dp[i,c] &#x3D; dp[i-1,c-wgt[i-1]] + val[i-1]<br>因此最终状态转移方程：dp[i,c] &#x3D; max(dp[i-1,c] , dp[i-1,c-wgt[i-1]] + val[i-1])</li>
+</ol>
+</li>
+<li><p>确定边界条件和状态转移顺序</p>
+<ol>
+<li>边界：当物品或背包为0，最大价值为0.即为首行首列dp[i,0]和dp[0,c]为0</li>
+<li>每个其他dp都要由左上方的和正上方的两个状态确定，因此通过两层正循环遍历即可</li>
+</ol>
+</li>
+</ol>
+<p><strong>实现</strong></p>
+<ol>
+<li>暴力搜索<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 0-1 背包：暴力搜索 */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">knapsackDFS</span><span class="params">(<span class="type">int</span>[] wgt, <span class="type">int</span>[] val, <span class="type">int</span> i, <span class="type">int</span> c)</span> &#123;</span><br><span class="line">    <span class="comment">// 若已选完所有物品或背包无剩余容量，则返回价值 0</span></span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">0</span> || c == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 若超过背包容量，则只能选择不放入背包</span></span><br><span class="line">    <span class="keyword">if</span> (wgt[i - <span class="number">1</span>] &gt; c) &#123;</span><br><span class="line">        <span class="keyword">return</span> knapsackDFS(wgt, val, i - <span class="number">1</span>, c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 计算不放入和放入物品 i 的最大价值</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">no</span> <span class="operator">=</span> knapsackDFS(wgt, val, i - <span class="number">1</span>, c);</span><br><span class="line">    <span class="type">int</span> <span class="variable">yes</span> <span class="operator">=</span> knapsackDFS(wgt, val, i - <span class="number">1</span>, c - wgt[i - <span class="number">1</span>]) + val[i - <span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 返回两种方案中价值更大的那一个</span></span><br><span class="line">    <span class="keyword">return</span> Math.max(no, yes);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/img_23.png"
+                        alt="img_23.png"
+                 ><br>有很多重复</li>
+<li>记忆化搜索:借助记忆列表 mem 来记录子问题的解<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 0-1 背包：记忆化搜索 */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">knapsackDFSMem</span><span class="params">(<span class="type">int</span>[] wgt, <span class="type">int</span>[] val, <span class="type">int</span>[][] mem, <span class="type">int</span> i, <span class="type">int</span> c)</span> &#123;</span><br><span class="line">    <span class="comment">// 若已选完所有物品或背包无剩余容量，则返回价值 0</span></span><br><span class="line">    <span class="keyword">if</span> (i == <span class="number">0</span> || c == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 若已有记录，则直接返回</span></span><br><span class="line">    <span class="keyword">if</span> (mem[i][c] != -<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> mem[i][c];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 若超过背包容量，则只能选择不放入背包</span></span><br><span class="line">    <span class="keyword">if</span> (wgt[i - <span class="number">1</span>] &gt; c) &#123;</span><br><span class="line">        <span class="keyword">return</span> knapsackDFSMem(wgt, val, mem, i - <span class="number">1</span>, c);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 计算不放入和放入物品 i 的最大价值</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">no</span> <span class="operator">=</span> knapsackDFSMem(wgt, val, mem, i - <span class="number">1</span>, c);</span><br><span class="line">    <span class="type">int</span> <span class="variable">yes</span> <span class="operator">=</span> knapsackDFSMem(wgt, val, mem, i - <span class="number">1</span>, c - wgt[i - <span class="number">1</span>]) + val[i - <span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 记录并返回两种方案中价值更大的那一个</span></span><br><span class="line">    mem[i][c] = Math.max(no, yes);</span><br><span class="line">    <span class="keyword">return</span> mem[i][c];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+时间负载的取决于子问题的数量，也就是dp表的数量，降到了O(n*cap)</li>
+<li>动态规划<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">knapsackDP</span><span class="params">(<span class="type">int</span>[] wgt,<span class="type">int</span>[] val,<span class="type">int</span> cap)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> wgt.length;</span><br><span class="line">    <span class="comment">//初始化dp表</span></span><br><span class="line">    <span class="type">int</span>[][] dp = <span class="keyword">new</span> <span class="title class_">int</span>[n+<span class="number">1</span>][cap+<span class="number">1</span>];</span><br><span class="line">    <span class="comment">//状态转移</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;i &lt;= n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">1</span>;c &lt;= cap;c++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(wgt[i - <span class="number">1</span>] &gt; c)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//如果超过背包容量，一定不选i</span></span><br><span class="line">                dp[i][c] = dp[i-<span class="number">1</span>][c];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                dp[i][c] = Math.max(dp[i-<span class="number">1</span>][c],dp[i-<span class="number">1</span>][c - wgt[i-<span class="number">1</span>]]+val[i-<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n][cap];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+上面没有显示初始化首行首列，因为Java定义时直接所有元素为0</li>
+</ol>
+<p>时间复杂度空间复杂度都是O(n*cap)<br>4. 空间优化<br>每个状态只和上一行的状态(正上方左上方）有关，因此可以两个数组滚动前进。复杂度降低到O(n)<br>还能继续降低，使用一个数组。但行序需要倒叙遍历<br>因为，假设只有一个数组，开始遍历第i行时，该数组储存的还是i-1行的状态<br>    1. 如果正序，遍历到dp[i,j]时，左上方的值已经被覆盖了<br>    2. 如果倒叙，不存在覆盖问题（同一行代表同一元素，对应的背包容量缩减量相同）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">knapsackDPComp</span><span class="params">(<span class="type">int</span>[] wgt ,<span class="type">int</span>[] val,<span class="type">int</span> cap)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> wgt.length;</span><br><span class="line">    <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[cap + <span class="number">1</span>];</span><br><span class="line">    <span class="comment">//状态转移</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> i;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//倒叙遍历</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span>cap;c &gt;= <span class="number">1</span>;c--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(wgt[i-<span class="number">1</span>] &lt;= c)</span><br><span class="line">            &#123;</span><br><span class="line">                dp[c] = Math.max(dp[c],dp[c - wgt[i - <span class="number">1</span>] ]+ val[i-<span class="number">1</span>]);</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[cap];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="完全背包问题"><a href="#完全背包问题" class="headerlink" title="完全背包问题"></a>完全背包问题</h2><p>给定 $n$ 个物品，第 $i$ 个物品的重量为 $wgt[i-1]$、价值为 $val[i-1]$ ，和一个容量为 $cap$ 的背包。<strong>每个物品可以重复选取</strong>，问在限定背包容量下能放入物品的最大价值。</p>
+<ol>
+<li>思路：核心就是可以重复选取了<br>状态[i,c]分为两种情况：<ol>
+<li>不放入i：转移至[i-1,c]</li>
+<li>放入i：转移至[i,c-wgt[i-1]]<br>状态方程  $dp[i, c] &#x3D; \max(dp[i-1, c], dp[i, c - wgt[i-1]] + val[i-1])$</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 完全背包：动态规划 */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">unboundedKnapsackDP</span><span class="params">(<span class="type">int</span>[] wgt, <span class="type">int</span>[] val, <span class="type">int</span> cap)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> wgt.length;</span><br><span class="line">    <span class="comment">// 初始化 dp 表</span></span><br><span class="line">    <span class="type">int</span>[][] dp = <span class="keyword">new</span> <span class="title class_">int</span>[n + <span class="number">1</span>][cap + <span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 状态转移</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">1</span>; c &lt;= cap; c++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (wgt[i - <span class="number">1</span>] &gt; c) &#123;</span><br><span class="line">                <span class="comment">// 若超过背包容量，则不选物品 i</span></span><br><span class="line">                dp[i][c] = dp[i - <span class="number">1</span>][c];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 不选和选物品 i 这两种方案的较大值</span></span><br><span class="line">                dp[i][c] = Math.max(dp[i - <span class="number">1</span>][c], dp[i][c - wgt[i - <span class="number">1</span>]] + val[i - <span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n][cap];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>几乎一样，只是一处i-1变为i<br>3. 空间优化<br>   由于当前状态是从左边和上边的状态转移而来的，因此空间优化后应该对dp表中的每一行进行正序遍历。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 完全背包：空间优化后的动态规划 */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">unboundedKnapsackDPComp</span><span class="params">(<span class="type">int</span>[] wgt, <span class="type">int</span>[] val, <span class="type">int</span> cap)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> wgt.length;</span><br><span class="line">    <span class="comment">// 初始化 dp 表</span></span><br><span class="line">    <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[cap + <span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 状态转移</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">c</span> <span class="operator">=</span> <span class="number">1</span>; c &lt;= cap; c++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (wgt[i - <span class="number">1</span>] &gt; c) &#123;</span><br><span class="line">                <span class="comment">// 若超过背包容量，则不选物品 i</span></span><br><span class="line">                dp[c] = dp[c];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 不选和选物品 i 这两种方案的较大值</span></span><br><span class="line">                dp[c] = Math.max(dp[c], dp[c - wgt[i - <span class="number">1</span>]] + val[i - <span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[cap];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="零钱兑换问题"><a href="#零钱兑换问题" class="headerlink" title="零钱兑换问题"></a>零钱兑换问题</h3><h4 id="一"><a href="#一" class="headerlink" title="一"></a>一</h4><p>给定 $n$ 种硬币，第 $i$ 种硬币的面值为 $coins[i - 1]$ ，目标金额为 $amt$ ，<strong>每种硬币可以重复选取</strong>，问能够凑出目标金额的最少硬币数量，硬币面值至少为1。如果无法凑出目标金额，则返回 $-1$ </p>
+<ol>
+<li>可以看作完全背包的特殊情况<ol>
+<li>物品对应硬币，重量对应面值，背包容量对应目标金额</li>
+<li>相反，这个要最小化硬币数量</li>
+<li>完全背包要求是不超过背包容量，零钱兑换要求是恰好</li>
+</ol>
+</li>
+<li>思考每轮决策，定义状态得到dp表<br> [i,a]对应的子问题：前i种硬币能凑出金额a的最少硬币数量，记为dp[i,a]<br> dp表(n+1)*(amt+1)</li>
+<li>找最优子结构状态转移方程<br>dp[i,a] &#x3D; min(dp[i-1,a],dp[i,a-coins[i-1]] + 1)</li>
+<li>确定边界条件和转移顺序<br> 目标金额为0，数量为0，即首列都为0<br> 五硬币时，无法凑出，可以记为无限大，即首行都是无限大</li>
+<li>实现<br>大多数语言没提供无限大，因此只能用整型int的最大值替代，但是这样+1操作可能溢出，因此采用amt+1表示无限，因为凑出amt的硬币最多就是amt（面值至少为1），返回前需要判断dp[n,amt]是否等于amt+1<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">coinChangeDP</span><span class="params">(<span class="type">int</span>[] coins,<span class="type">int</span> amt)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> coins.length;</span><br><span class="line">    <span class="type">int</span> <span class="variable">MAX</span> <span class="operator">=</span> amt + <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//初始化dp表</span></span><br><span class="line">    <span class="type">int</span>[][] dp = <span class="keyword">new</span> <span class="title class_">int</span>[n+<span class="number">1</span>][amt+<span class="number">1</span>];</span><br><span class="line">    <span class="comment">//状态转移:首列行</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">1</span>;a&lt;=amt;a++)</span><br><span class="line">    &#123;</span><br><span class="line">        dp[<span class="number">0</span>][a] = MAX;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//状态转移：其余列行</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;i &lt;= n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;i &lt;= n;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(coins[i - <span class="number">1</span>] &gt; a)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//超过目标金额，不选i</span></span><br><span class="line">                dp[i][a] = dp[i-<span class="number">1</span>][a];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                dp[i][a] = Math.min(dp[i - <span class="number">1</span>][a],dp[i][a - coins[i - <span class="number">1</span>]] + <span class="number">1</span>);</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n][amt] != MAX ? dp[n][amt] : -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+空间优化</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">coinChangeDPComp</span><span class="params">(<span class="type">int</span>[] coins, <span class="type">int</span> amt)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> coins.length;</span><br><span class="line">    <span class="type">int</span> <span class="variable">MAX</span> <span class="operator">=</span> amt + <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[amt + <span class="number">1</span>];</span><br><span class="line">    Arrays.fill(dp,MAX);</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;i &lt;= n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">1</span>;a &lt;= amt;a++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(coins[i - <span class="number">1</span>] &gt; a)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//如果超过目标金额，不选硬币</span></span><br><span class="line">                dp[a] = dp[a];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                dp[a] = Math.min(dp[a],dp[a - coins[i - <span class="number">1</span>] + <span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[amt] != MAX ? dp[amt] : -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二"><a href="#二" class="headerlink" title="二"></a>二</h2><p>给定 $n$ 种硬币，第 $i$ 种硬币的面值为 $coins[i - 1]$ ，目标金额为 $amt$ ，每种硬币可以重复选取，<strong>问凑出目标金额的硬币组合数量</strong>。</p>
+<ol>
+<li><p>思路<br>本题时求组合数量，因此子问题变为前i种硬币凑出金额a的组合数量，dp表尺寸依然是(n+1)*(amt+1)</p>
+<p>显然状态转移方程：dp[i, a] &#x3D; dp[i-1, a] + dp[i, a - coins[i-1]]</p>
+<p> 目标金额为0时，无需选择，因此dp[i,0]为1;没有硬币时组合数是0，即dp[0,a]为0</p>
+</li>
+<li><p>实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 零钱兑换 II：动态规划 */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">coinChangeIIDP</span><span class="params">(<span class="type">int</span>[] coins, <span class="type">int</span> amt)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> coins.length;</span><br><span class="line">    <span class="comment">// 初始化 dp 表</span></span><br><span class="line">    <span class="type">int</span>[][] dp = <span class="keyword">new</span> <span class="title class_">int</span>[n + <span class="number">1</span>][amt + <span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 初始化首列</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        dp[i][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 状态转移</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">1</span>; a &lt;= amt; a++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (coins[i - <span class="number">1</span>] &gt; a) &#123;</span><br><span class="line">                <span class="comment">// 若超过目标金额，则不选硬币 i</span></span><br><span class="line">                dp[i][a] = dp[i - <span class="number">1</span>][a];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 不选和选硬币 i 这两种方案之和</span></span><br><span class="line">                dp[i][a] = dp[i - <span class="number">1</span>][a] + dp[i][a - coins[i - <span class="number">1</span>]];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n][amt];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>优化空间</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 零钱兑换 II：空间优化后的动态规划 */</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">coinChangeIIDPComp</span><span class="params">(<span class="type">int</span>[] coins, <span class="type">int</span> amt)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> coins.length;</span><br><span class="line">    <span class="comment">// 初始化 dp 表</span></span><br><span class="line">    <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[amt + <span class="number">1</span>];</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 状态转移</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">1</span>; a &lt;= amt; a++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (coins[i - <span class="number">1</span>] &gt; a) &#123;</span><br><span class="line">                <span class="comment">// 若超过目标金额，则不选硬币 i</span></span><br><span class="line">                dp[a] = dp[a];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// 不选和选硬币 i 这两种方案之和</span></span><br><span class="line">                dp[a] = dp[a] + dp[a - coins[i - <span class="number">1</span>]];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[amt];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="编辑距离问题（Levenshtein-距离）"><a href="#编辑距离问题（Levenshtein-距离）" class="headerlink" title="编辑距离问题（Levenshtein 距离）"></a>编辑距离问题（Levenshtein 距离）</h2><p>输入两个字符串 $s$ 和 $t$ ，返回将 $s$ 转换为 $t$ 所需的最少编辑步数。</p>
+<p>你可以在一个字符串中进行三种编辑操作：插入一个字符、删除一个字符、将字符替换为任意一个字符。</p>
+<ol>
+<li>思路分析<br>可以看错决策树模型，字符串对应树节点，一轮决策（编辑操作）对应一条边。<br> <img  
+                       lazyload
+                       alt="image"
+                       data-src="/img_24.png"
+                        alt="img_24.png"
+                 ><br> 如图，把hello转化成algo，从决策树的角度看，本题的目标是求解节点 hello 和节点 algo 之间的最短路径。<ol>
+<li><p>思考每轮决策，定义状态得到dp表<br> 每轮决策是对s进行一次编辑操作，希望编辑过程问题规模越来越小，这样方便构建子问题<br> 设s，t长度分别n，m，先考虑尾部字符。  </p>
+<ul>
+<li>若s[n-1]和t[m-1]相同，可以跳过，考虑s[n-2]t[n-2]</li>
+<li>如果不同，对s进行一次操作（插入替换删除），使尾部字符相同，从而可以考虑更小规模的问题<br> 也就是对s每次操作都会改变待匹配的字符。<br> 定义状态[i,j]代表s，t当前考虑i，j字符<br>对应子问题：将s的前i个字符更改为t的前j个字符所需的最小编辑步数，得到(i+1)*(j+1)的dp表</li>
+</ul>
+</li>
+<li><p>最优子结构，状态转移方程<br>问题dp[i,j]分为三种情况：</p>
+<ol>
+<li>s[i-1]后添加t[i-1]，则剩余子问题dp[i,j-1]</li>
+<li>删除s[i-1]，则剩余子问题dp[i-1,j]</li>
+<li>替换s[i-1]为t[i-1],剩余dp[i-1,j-1]</li>
+<li>特殊情况当s[i-1]和t[i-1]相同时，就是dp[i-1,j-1]</li>
+</ol>
+<p> 状态转移方程：dp[i,j] &#x3D; min(dp[i,j-1],dp[i-1,j],dp[i-1,j-1])+1<br> 特殊情况：dp[i,j] &#x3D; dp[i-1,j-1]</p>
+</li>
+<li><p>边界条件和状态转移顺序<br> 两字符串都为空时，步数为0，即dp[0,0] &#x3D; 0<br> 任意一个为空时，dp[0,j]和dp[i,0]分别为j，i<br> dp[i,j]依赖左方，左上方，上方的解，因此正序循环即可</p>
+</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">editDistanceDP</span><span class="params">(String s,String t)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> s.length(),m = t.length();</span><br><span class="line">    <span class="type">int</span>[][] dp = <span class="keyword">new</span> <span class="title class_">int</span>[n+<span class="number">1</span>][m+<span class="number">1</span>];</span><br><span class="line">    <span class="comment">//状态转移:首列首行</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;i &lt;= n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        dp[i][<span class="number">0</span>] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>;j &lt;= m;j++)</span><br><span class="line">    &#123;</span><br><span class="line">        dp[<span class="number">0</span>][j] = j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//状态转移：其他行列</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;i &lt;= n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>;j&lt;=m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(s.charAt(i - <span class="number">1</span>) == t.charAt(j - <span class="number">1</span>))&#123;</span><br><span class="line">                dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                dp[i][j] = Math.min(dp[i][j-<span class="number">1</span>],dp[i-<span class="number">1</span>][j],dp[i-<span class="number">1</span>][j-<span class="number">1</span>]) + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n][m];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>空间优化：<br>dp[i,j]由上方，左方，左上方转移而来，正序遍历会丢失左上方，倒序遍历dp[i,j-1]无法构建，都不行<br>但可以使用leftup暂存dp[i-1,j-1],从而可以正序遍历。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">editDistanceDPComp</span><span class="params">(String s ,String t)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> s.length(),m = t.length();</span><br><span class="line">    <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[m + <span class="number">1</span>];</span><br><span class="line">    <span class="comment">//状态转移：首行</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>;j &lt;= m;j++)</span><br><span class="line">    &#123;</span><br><span class="line">        dp[j] = j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;i &lt;= n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">leftup</span> <span class="operator">=</span> dp[<span class="number">0</span>];<span class="comment">//暂存dp[i-1,j-1]</span></span><br><span class="line">        dp[<span class="number">0</span>] = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>;j &lt;= m;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> dp[j];</span><br><span class="line">            <span class="keyword">if</span>(s.charAt(i-<span class="number">1</span>) == t.charAt(j - <span class="number">1</span>))&#123;</span><br><span class="line">                dp[i] = leftup;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                dp[j] = Math.min(dp[j - <span class="number">1</span>],dp[j],leftup) + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            leftup = temp;<span class="comment">//dp[i-1][j-1] (左上方): 这是最棘手的部分。当我们准备计算 dp[j] 时，我们需要的 dp[i-1][j-1] 在哪里？它就是上一轮循环中 dp[j-1] 的旧值。但是，dp[j-1] 已经被更新为 dp[i][j-1] 了，它的旧值丢失了！在旧值被覆盖之前，把它保存下来</span></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[m];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                动态规划
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2025/09/15/算法笔记/基本算法/动态规划/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">stellogic</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2025-09-15 09:19</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/">基本算法</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/09/15/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/%E5%85%A8%E6%8E%92%E5%88%97%E9%97%AE%E9%A2%98%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/"
+                                   title="全排列问题复杂度分析"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">全排列问题复杂度分析</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/09/15/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/%E5%9B%9E%E6%BA%AF/"
+                                   title="回溯"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">回溯</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script 
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          if (!window.KeepCommentPlugin?.getGiscusTheme) {
+            window.KeepCommentPlugin.getGiscusTheme = () => {
+              return document.documentElement.classList.contains('dark-mode') ? 'dark_dimmed' : 'light_tritanopia'
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.changeGiscusTheme) {
+            window.KeepCommentPlugin.changeGiscusTheme = () => {
+              const iframe = document.querySelector('iframe.giscus-frame')
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: window.KeepCommentPlugin.getGiscusTheme()
+                  }
+                }
+              }, 'https://giscus.app')
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.initGiscus) {
+            window.KeepCommentPlugin.initGiscus = () => {
+              const script = document.createElement('script')
+              script.async = true
+              script.src = 'https://giscus.app/client.js'
+              script.setAttribute('data-repo', 'stellogic/Stellogic.github.io')
+              script.setAttribute('data-repo-id', 'R_kgDOOkF4SA')
+              script.setAttribute('data-category', 'Announcements')
+              script.setAttribute('data-category-id', 'DIC_kwDOOkF4SM4Cp-Ln')
+              script.setAttribute('data-reactions-enabled', '1')
+              script.setAttribute('data-lang', 'zh-CN')
+              script.setAttribute('data-mapping', 'pathname')
+              script.setAttribute('data-strict', '0')
+              script.setAttribute('data-emit-metadata', '0')
+              script.setAttribute('data-input-position', 'top')
+              script.setAttribute('crossorigin', 'anonymous')
+              script.setAttribute('loading', 'lazy')
+              script.setAttribute('data-theme', window.KeepCommentPlugin.getGiscusTheme())
+              document.querySelector('.giscus-comments-container').appendChild(script)
+              script.onerror = () => {
+                window.KeepCommentPlugin.loadFailHandle()
+              }
+              script.onload = () => {
+                window.KeepCommentPlugin.hideLoading()
+              }
+              const toggleThemeBtn = document.querySelector('.tool-toggle-theme-mode')
+              toggleThemeBtn && toggleThemeBtn.addEventListener('click', () => {
+                window.KeepCommentPlugin.changeGiscusTheme()
+              })
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGiscus()
+            }, 1000)
+          } else {
+            window.addEventListener("DOMContentLoaded", window.KeepCommentPlugin.initGiscus)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">1.</span> <span class="nav-text">动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%92%8C%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.</span> <span class="nav-text">定义和概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E6%80%A7"><span class="nav-number">1.2.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%88%A4%E6%96%AD"><span class="nav-number">1.3.</span> <span class="nav-text">问题判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%84%E6%80%9D%E8%B7%AF"><span class="nav-number">1.4.</span> <span class="nav-text">常规思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">1.5.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E7%88%AC%E6%A5%BC%E6%A2%AF%E4%BE%8B%E9%A2%98"><span class="nav-number">1.6.</span> <span class="nav-text">引入爬楼梯例题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E7%88%AC%E6%A5%BC%E6%A2%AF%E9%97%AE%E9%A2%98%E8%AF%B4%E6%98%8E%E6%9C%80%E4%BC%98%E5%AD%90%E7%BB%93%E6%9E%84"><span class="nav-number">1.7.</span> <span class="nav-text">更改爬楼梯问题说明最优子结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%88%AC%E6%A5%BC%E6%A2%AF%E9%97%AE%E9%A2%98%E8%AF%B4%E6%98%8E%E6%97%A0%E5%90%8E%E6%95%88%E6%80%A7"><span class="nav-number">1.8.</span> <span class="nav-text">修改爬楼梯问题说明无后效性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC%E9%97%AE%E9%A2%98"><span class="nav-number">1.9.</span> <span class="nav-text">表格问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.10.</span> <span class="nav-text">0-1背包问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.11.</span> <span class="nav-text">完全背包问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A2%E9%97%AE%E9%A2%98"><span class="nav-number">1.11.1.</span> <span class="nav-text">零钱兑换问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80"><span class="nav-number">1.11.1.1.</span> <span class="nav-text">一</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C"><span class="nav-number">1.12.</span> <span class="nav-text">二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB%E9%97%AE%E9%A2%98%EF%BC%88Levenshtein-%E8%B7%9D%E7%A6%BB%EF%BC%89"><span class="nav-number">1.13.</span> <span class="nav-text">编辑距离问题（Levenshtein 距离）</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">stellogic</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+        
+        <div class="deploy-info info-item">
+            
+                <a target="_blank" rel="nofollow" href="https://stellogic.github.io/">
+            
+            本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+            
+                </a>
+            
+        </div>
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">45.7k</span>
+                </span>
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">1.</span> <span class="nav-text">动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%92%8C%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.</span> <span class="nav-text">定义和概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E6%80%A7"><span class="nav-number">1.2.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%88%A4%E6%96%AD"><span class="nav-number">1.3.</span> <span class="nav-text">问题判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%84%E6%80%9D%E8%B7%AF"><span class="nav-number">1.4.</span> <span class="nav-text">常规思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">1.5.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E5%85%A5%E7%88%AC%E6%A5%BC%E6%A2%AF%E4%BE%8B%E9%A2%98"><span class="nav-number">1.6.</span> <span class="nav-text">引入爬楼梯例题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E7%88%AC%E6%A5%BC%E6%A2%AF%E9%97%AE%E9%A2%98%E8%AF%B4%E6%98%8E%E6%9C%80%E4%BC%98%E5%AD%90%E7%BB%93%E6%9E%84"><span class="nav-number">1.7.</span> <span class="nav-text">更改爬楼梯问题说明最优子结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%88%AC%E6%A5%BC%E6%A2%AF%E9%97%AE%E9%A2%98%E8%AF%B4%E6%98%8E%E6%97%A0%E5%90%8E%E6%95%88%E6%80%A7"><span class="nav-number">1.8.</span> <span class="nav-text">修改爬楼梯问题说明无后效性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC%E9%97%AE%E9%A2%98"><span class="nav-number">1.9.</span> <span class="nav-text">表格问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0-1%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.10.</span> <span class="nav-text">0-1背包问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.11.</span> <span class="nav-text">完全背包问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A2%E9%97%AE%E9%A2%98"><span class="nav-number">1.11.1.</span> <span class="nav-text">零钱兑换问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80"><span class="nav-number">1.11.1.1.</span> <span class="nav-text">一</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C"><span class="nav-number">1.12.</span> <span class="nav-text">二</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB%E9%97%AE%E9%A2%98%EF%BC%88Levenshtein-%E8%B7%9D%E7%A6%BB%EF%BC%89"><span class="nav-number">1.13.</span> <span class="nav-text">编辑距离问题（Levenshtein 距离）</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/toggle-theme.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/code-block.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/local-search.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/lazyload.js"></script>
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/post-helper.js"></script>
+
+        <!-- toc -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/toc.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/copyright-info.js"></script>
+        
+
+        <!-- share -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/share.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+    
+<script src="//cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js"></script>
+
+
+
+
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

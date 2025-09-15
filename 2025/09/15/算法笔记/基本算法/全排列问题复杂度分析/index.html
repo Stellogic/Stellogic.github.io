@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="stellogic">
+    
+    <title>
+        
+            全排列问题复杂度分析 |
+        
+        stellogic的个人空间
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"stellogic.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"stellogic的个人空间","author":"stellogic","avatar":"/images/avatar.jpg","logo":null,"favicon":null},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives || fa-solid fa-box-archive","categories":"/categories || fa-solid fa-layer-group","tags":"/tags || fa-solid fa-tags","links":"/links || fa-solid fa-link","about":"/about || fa-solid fa-user-graduate"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg2.svg","description":"欢迎来到我的个人空间 || 记录点滴，共同进步","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/stellogic","weixin":null,"qq":null,"weibo":null,"zhihu":"https://www.zhihu.com/people/stellogic","twitter":null,"x":null,"facebook":null,"email":"mack12399@outlook.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":false},"home":{"announcement":"📚We are together","category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":false,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":"留下你的想法吧~"},"gitalk":{"github_id":null,"github_admins":["你的 GitHub 用户名"],"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":true,"version":"3.3.2"},"giscus":{"repo":"stellogic/Stellogic.github.io","repo_id":"R_kgDOOkF4SA","category":"Announcements","category_id":"DIC_kwDOOkF4SM4Cp-Ln","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":true},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"jsdelivr"},"pjax":{"enable":false},"footer":{"since":2025,"word_count":true,"site_deploy":{"enable":true,"provider":"github","url":"https://stellogic.github.io/"},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Stellogic的博客" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+            <a class="site-name border-box" href="/">
+               stellogic的个人空间
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-link"></i>
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-link"></i>
+                                </span>
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                </span>
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        全排列问题复杂度分析
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">stellogic</span>
+                                
+                                    <span class="author-badge">Three</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-09-15 09:19:35</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Mon Sep 15 2025 17:29:16 GMT+0800">2025-09-15 17:29:16</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/">基本算法</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/">基本算法</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>1.4k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>5 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="关于全排列问题的复杂度分析"><a href="#关于全排列问题的复杂度分析" class="headerlink" title="关于全排列问题的复杂度分析"></a>关于全排列问题的复杂度分析</h1><h3 id="关键代码回顾"><a href="#关键代码回顾" class="headerlink" title="关键代码回顾"></a>关键代码回顾</h3><p>为了方便对照，我们再看一下核心的剪枝逻辑：</p>
+<span id="more"></span>
+
+
+<ol>
+<li><code>!selected[i]</code>: 确保同一个<strong>位置</strong>的元素不会被重复使用（这是所有排列问题共有的）。</li>
+<li><code>!duplicated.contains(choice)</code>: <strong>剪枝核心</strong>。确保在当前递归层级，对于<strong>数值相同</strong>的元素，只选择第一个未经访问的进行递归。</li>
+</ol>
+<hr>
+<h3 id="nums-1-1-2-的递归树"><a href="#nums-1-1-2-的递归树" class="headerlink" title="nums = [1, 1, 2] 的递归树"></a><code>nums = [1, 1, 2]</code> 的递归树</h3><p>下面是 <code>backtrack</code> 函数为 <code>[1, 1, 2]</code> 生成全排列的递归树。树的每一层代表排列中的一个位置。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">                                      backtrack(state=[], choices=[1,1,2]，selected=[F,F,F])</span><br><span class="line">                                                    |</span><br><span class="line">                                                    | for i = 0..2</span><br><span class="line">                        +---------------------------+---------------------------+</span><br><span class="line">                        | i=0, choice=1             | i=1, choice=1             | i=2, choice=2</span><br><span class="line">                        | duplicated.add(1)         | duplicated.contains(1)?   | duplicated.add(2)</span><br><span class="line">                        |                           | --&gt; YES. PRUNED! (剪枝!)  |</span><br><span class="line">                        |                           | (在这一层，1已经用过了)     |</span><br><span class="line">                        V                           X                           V</span><br><span class="line">       backtrack(state=[1], choices=[1,1,2], selected=[T,F,F])      backtrack(state=[2], choices=[1,1,2], selected=[F,F,T])</span><br><span class="line">                        |                                                           |</span><br><span class="line">                        | for i = 0..2                                              | for i = 0..2</span><br><span class="line">    +-------------------+-------------------+                         +-------------+-------------+</span><br><span class="line">    | i=0, selected[0]? | i=1, choice=1     | i=2, choice=2           | i=0, choice=1 | i=1, choice=1 | i=2, selected[2]?</span><br><span class="line">    | --&gt; YES. Skip.    | duplicated.add(1) | duplicated.add(2)       | dup.add(1)    | dup.contains(1)?| --&gt; YES. Skip.</span><br><span class="line">    |                   |                   |                         |             | --&gt; YES. PRUNED!|</span><br><span class="line">    V                   V                   V                         V             X             V</span><br><span class="line">backtrack(state=[1,1],...)| backtrack(state=[1,2],...)|           backtrack(state=[2,1],...)</span><br><span class="line">    selected=[T,T,F]    |     selected=[T,F,T]    |               selected=[T,F,T]</span><br><span class="line">                        |                         |                               |</span><br><span class="line">                        | for i = 0..2            | for i = 0..2                  | for i = 0..2</span><br><span class="line">    +-------------------+     +-------------------+               +-------------------+</span><br><span class="line">    | i=0, selected? YES|     | i=0, selected? YES|               | i=0, selected? YES|</span><br><span class="line">    | i=1, selected? YES|     | i=1, choice=1     |               | i=1, choice=1     |</span><br><span class="line">    | i=2, choice=2     |     | i=2, selected? YES|               | i=2, selected? YES|</span><br><span class="line">    | state.size()==3   |     | state.size()==3   |               | state.size()==3   |</span><br><span class="line">    V                   V     V                   V               V                   V</span><br><span class="line">  res.add([1,1,2])    (backtrack) res.add([1,2,1]) (backtrack)   res.add([2,1,1])    (backtrack) </span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>树的解读：</strong></p>
+<ol>
+<li><p><strong>根节点 (第0层):</strong> <code>state</code> 为空。</p>
+<ul>
+<li><code>for</code> 循环开始，<code>i=0</code>，选择 <code>nums[0]</code> (值为1)。进入下一层递归。</li>
+<li><code>i=1</code>，选择 <code>nums[1]</code> (值也为1)。但此时 <code>duplicated</code> 集合中已经包含了1，所以这个分支被<strong>剪掉</strong>了！这是避免重复排列的关键。</li>
+<li><code>i=2</code>，选择 <code>nums[2]</code> (值为2)。进入下一层递归。</li>
+</ul>
+</li>
+<li><p><strong>第1层:</strong></p>
+<ul>
+<li><strong>左侧分支 (state&#x3D;):</strong><ul>
+<li><code>for</code> 循环遍历 <code>[1,1,2]</code>。<code>nums[0]</code> 已被选择 (<code>selected[0]</code>为true)，跳过。</li>
+<li><code>i=1</code>，选择 <code>nums[1]</code> (值为1)。进入下一层。</li>
+<li><code>i=2</code>，选择 <code>nums[2]</code> (值为2)。进入下一层。</li>
+</ul>
+</li>
+<li><strong>右侧分支 (state&#x3D;):</strong><ul>
+<li><code>for</code> 循环遍历 <code>[1,1,2]</code>。</li>
+<li><code>i=0</code>，选择 <code>nums[0]</code> (值为1)。进入下一层。</li>
+<li><code>i=1</code>，选择 <code>nums[1]</code> (值也为1)。但本层的 <code>duplicated</code> 集合已经有1了，<strong>剪枝</strong>！</li>
+<li><code>i=2</code> 已被选择，跳过。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>叶子节点 (第3层):</strong></p>
+<ul>
+<li>当 <code>state</code> 的长度达到3时，就找到了一个完整的排列。</li>
+<li>例如，从左侧分支一路下来，得到 <code>[1, 1, 2]</code>。这个排列被复制并添加到最终结果 <code>res</code> 中。</li>
+<li>然后函数返回（回溯），尝试其他可能性。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="从递归树分析复杂度"><a href="#从递归树分析复杂度" class="headerlink" title="从递归树分析复杂度"></a>从递归树分析复杂度</h3><h4 id="1-时间复杂度-O-n-×-n"><a href="#1-时间复杂度-O-n-×-n" class="headerlink" title="1. 时间复杂度: O(n × n!)"></a>1. 时间复杂度: O(n × n!)</h4><ul>
+<li><p><strong>树的节点总数 (决定了 <code>backtrack</code> 函数被调用的次数):</strong></p>
+<ul>
+<li>如果没有重复元素（例如 <code>[1, 2, 3]</code>），第0层有 <code>n</code> 个选择，第1层有 <code>n-1</code> 个选择，…，最后一层有1个选择。</li>
+<li>整棵树的节点总数大约是 <code>n + n(n-1) + ... + n! ≈ O(n!)</code>。</li>
+<li>虽然我们的剪枝策略砍掉了很多分支，但在进行复杂度分析时，我们通常考虑最坏情况，即所有元素都不同。因此，递归调用的总次数（即树的节点总数）是 O(n!) 级别的。</li>
+</ul>
+</li>
+<li><p><strong>每个节点内部的操作耗时:</strong></p>
+<ul>
+<li>在树的<strong>非叶子节点</strong>，主要操作是 <code>for</code> 循环，它会执行 <code>n</code> 次。循环内部的操作（如 <code>contains</code>, <code>add</code>）是 O(1) 的。所以每个非叶子节点的时间开销是 O(n)。</li>
+<li>在树的<strong>叶子节点</strong>，当 <code>state.size() == choices.length</code> 时，会执行 <code>res.add(new ArrayList&lt;Integer&gt;(state))</code>。这个操作需要创建一个新列表并把 <code>state</code> 中的 <code>n</code> 个元素复制过去，时间开销是 **O(n)**。</li>
+</ul>
+</li>
+<li><p><strong>综合计算:</strong></p>
+<ul>
+<li>算法的总时间主要由两部分构成：构建树的开销和在叶子节点复制结果的开销。</li>
+<li>叶子节点的数量就是最终不重复排列的数量，这个数量级是 O(n!)。</li>
+<li>仅仅是把所有叶子节点的结果复制到 <code>res</code> 列表中的总时间就是：**(叶子节点数量) × (每次复制的时间) ≈ O(n!) × O(n) &#x3D; O(n × n!)**。</li>
+<li>这个开销是算法时间复杂度的主要部分，因此总时间复杂度为 **O(n × n!)**。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-空间复杂度-O-n-2"><a href="#2-空间复杂度-O-n-2" class="headerlink" title="2. 空间复杂度: O($n^2$)"></a>2. 空间复杂度: O($n^2$)</h4><p>空间复杂度我们看的是算法在任意时刻需要占用的最大辅助空间。</p>
+<ul>
+<li><p><strong>递归调用栈的深度:</strong></p>
+<ul>
+<li>从树的结构可以清晰地看到，从根节点到最深的叶子节点，路径的长度是 <code>n</code>。这意味着 <code>backtrack</code> 函数最多会嵌套调用 <code>n</code> 次。</li>
+<li>因此，递归调用栈所占用的空间是 **O(n)**。</li>
+</ul>
+</li>
+<li><p><strong>辅助数据结构:</strong></p>
+<ul>
+<li><code>state</code> 列表：在递归过程中，它存储了当前的路径，其最大长度为 <code>n</code>。占用 O(n) 空间。</li>
+<li><code>selected</code> 数组：长度始终为 <code>n</code>。占用 O(n) 空间。</li>
+<li><code>duplicated</code> 集合：这个集合是在<strong>每个</strong>函数调用栈帧内创建的局部变量。因此，到最深时是1+2+3+……+n,是O(n^2)</li>
+</ul>
+</li>
+<li><p><strong>综合计算:</strong></p>
+<ul>
+<li>因此，总的辅助空间复杂度是 O(n) + O(n) + O(n^2) &#x3D; **O(n^2)**。</li>
+<li>（注意：这不包括存储最终结果的 <code>res</code> 列表。如果算上它，空间复杂度将是 O(n × n!)）。</li>
+</ul>
+</li>
+</ul>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                全排列问题复杂度分析
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2025/09/15/算法笔记/基本算法/全排列问题复杂度分析/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">stellogic</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2025-09-15 09:19</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/">基本算法</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/09/15/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/%E5%88%86%E6%B2%BB/"
+                                   title="分治"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">分治</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/09/15/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"
+                                   title="动态规划"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">动态规划</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script 
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          if (!window.KeepCommentPlugin?.getGiscusTheme) {
+            window.KeepCommentPlugin.getGiscusTheme = () => {
+              return document.documentElement.classList.contains('dark-mode') ? 'dark_dimmed' : 'light_tritanopia'
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.changeGiscusTheme) {
+            window.KeepCommentPlugin.changeGiscusTheme = () => {
+              const iframe = document.querySelector('iframe.giscus-frame')
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: window.KeepCommentPlugin.getGiscusTheme()
+                  }
+                }
+              }, 'https://giscus.app')
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.initGiscus) {
+            window.KeepCommentPlugin.initGiscus = () => {
+              const script = document.createElement('script')
+              script.async = true
+              script.src = 'https://giscus.app/client.js'
+              script.setAttribute('data-repo', 'stellogic/Stellogic.github.io')
+              script.setAttribute('data-repo-id', 'R_kgDOOkF4SA')
+              script.setAttribute('data-category', 'Announcements')
+              script.setAttribute('data-category-id', 'DIC_kwDOOkF4SM4Cp-Ln')
+              script.setAttribute('data-reactions-enabled', '1')
+              script.setAttribute('data-lang', 'zh-CN')
+              script.setAttribute('data-mapping', 'pathname')
+              script.setAttribute('data-strict', '0')
+              script.setAttribute('data-emit-metadata', '0')
+              script.setAttribute('data-input-position', 'top')
+              script.setAttribute('crossorigin', 'anonymous')
+              script.setAttribute('loading', 'lazy')
+              script.setAttribute('data-theme', window.KeepCommentPlugin.getGiscusTheme())
+              document.querySelector('.giscus-comments-container').appendChild(script)
+              script.onerror = () => {
+                window.KeepCommentPlugin.loadFailHandle()
+              }
+              script.onload = () => {
+                window.KeepCommentPlugin.hideLoading()
+              }
+              const toggleThemeBtn = document.querySelector('.tool-toggle-theme-mode')
+              toggleThemeBtn && toggleThemeBtn.addEventListener('click', () => {
+                window.KeepCommentPlugin.changeGiscusTheme()
+              })
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGiscus()
+            }, 1000)
+          } else {
+            window.addEventListener("DOMContentLoaded", window.KeepCommentPlugin.initGiscus)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%85%A8%E6%8E%92%E5%88%97%E9%97%AE%E9%A2%98%E7%9A%84%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">关于全排列问题的复杂度分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E4%BB%A3%E7%A0%81%E5%9B%9E%E9%A1%BE"><span class="nav-number">1.0.1.</span> <span class="nav-text">关键代码回顾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nums-1-1-2-%E7%9A%84%E9%80%92%E5%BD%92%E6%A0%91"><span class="nav-number">1.0.2.</span> <span class="nav-text">nums &#x3D; [1, 1, 2] 的递归树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E9%80%92%E5%BD%92%E6%A0%91%E5%88%86%E6%9E%90%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.0.3.</span> <span class="nav-text">从递归树分析复杂度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6-O-n-%C3%97-n"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">1. 时间复杂度: O(n × n!)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6-O-n-2"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">2. 空间复杂度: O($n^2$)</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">stellogic</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+        
+        <div class="deploy-info info-item">
+            
+                <a target="_blank" rel="nofollow" href="https://stellogic.github.io/">
+            
+            本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+            
+                </a>
+            
+        </div>
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">45.7k</span>
+                </span>
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%85%A8%E6%8E%92%E5%88%97%E9%97%AE%E9%A2%98%E7%9A%84%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">1.</span> <span class="nav-text">关于全排列问题的复杂度分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E4%BB%A3%E7%A0%81%E5%9B%9E%E9%A1%BE"><span class="nav-number">1.0.1.</span> <span class="nav-text">关键代码回顾</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nums-1-1-2-%E7%9A%84%E9%80%92%E5%BD%92%E6%A0%91"><span class="nav-number">1.0.2.</span> <span class="nav-text">nums &#x3D; [1, 1, 2] 的递归树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E9%80%92%E5%BD%92%E6%A0%91%E5%88%86%E6%9E%90%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.0.3.</span> <span class="nav-text">从递归树分析复杂度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6-O-n-%C3%97-n"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">1. 时间复杂度: O(n × n!)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6-O-n-2"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">2. 空间复杂度: O($n^2$)</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/toggle-theme.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/code-block.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/local-search.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/lazyload.js"></script>
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/post-helper.js"></script>
+
+        <!-- toc -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/toc.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/copyright-info.js"></script>
+        
+
+        <!-- share -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/share.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+    
+<script src="//cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js"></script>
+
+
+
+
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

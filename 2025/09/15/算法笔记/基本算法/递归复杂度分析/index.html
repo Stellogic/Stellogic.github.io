@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="stellogic">
+    
+    <title>
+        
+            递归复杂度分析 |
+        
+        stellogic的个人空间
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"stellogic.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"stellogic的个人空间","author":"stellogic","avatar":"/images/avatar.jpg","logo":null,"favicon":null},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives || fa-solid fa-box-archive","categories":"/categories || fa-solid fa-layer-group","tags":"/tags || fa-solid fa-tags","links":"/links || fa-solid fa-link","about":"/about || fa-solid fa-user-graduate"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg2.svg","description":"欢迎来到我的个人空间 || 记录点滴，共同进步","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/stellogic","weixin":null,"qq":null,"weibo":null,"zhihu":"https://www.zhihu.com/people/stellogic","twitter":null,"x":null,"facebook":null,"email":"mack12399@outlook.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":false},"home":{"announcement":"📚We are together","category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":false,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":"留下你的想法吧~"},"gitalk":{"github_id":null,"github_admins":["你的 GitHub 用户名"],"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":true,"version":"3.3.2"},"giscus":{"repo":"stellogic/Stellogic.github.io","repo_id":"R_kgDOOkF4SA","category":"Announcements","category_id":"DIC_kwDOOkF4SM4Cp-Ln","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":true},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"jsdelivr"},"pjax":{"enable":false},"footer":{"since":2025,"word_count":true,"site_deploy":{"enable":true,"provider":"github","url":"https://stellogic.github.io/"},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Stellogic的博客" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+            <a class="site-name border-box" href="/">
+               stellogic的个人空间
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-link"></i>
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-link"></i>
+                                </span>
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                </span>
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        递归复杂度分析
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">stellogic</span>
+                                
+                                    <span class="author-badge">Three</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-09-15 09:19:35</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Mon Sep 15 2025 17:29:16 GMT+0800">2025-09-15 17:29:16</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/">基本算法</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/">基本算法</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>4.9k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>18 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h2 id="如何系统性分析递归算法的复杂度（最终优化版）"><a href="#如何系统性分析递归算法的复杂度（最终优化版）" class="headerlink" title="如何系统性分析递归算法的复杂度（最终优化版）"></a><strong>如何系统性分析递归算法的复杂度（最终优化版）</strong></h2><p>分析递归算法的复杂度，核心在于将算法的递推逻辑转化为清晰的数学模型，并选择最恰当的工具进行求解。本指南将为您呈现一个从时间到空间、从建模到求解的完整分析框架。</p>
+<span id="more"></span>
+
+
+<h3 id="开篇：分析决策流程图"><a href="#开篇：分析决策流程图" class="headerlink" title="开篇：分析决策流程图"></a><strong>开篇：分析决策流程图</strong></h3><p>在开始之前，可以根据以下流程图来选择最适合您的分析路径：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">                  拿到一个递归算法</span><br><span class="line">                        ↓</span><br><span class="line">        1. 写出时间/空间递推关系式</span><br><span class="line">                        ↓</span><br><span class="line">[时间复杂度分析] ├──────────────────| [空间复杂度分析]</span><br><span class="line">      ↓                                    ↓</span><br><span class="line">2. 观察递推式形式                      分析最大递归深度 × 单次调用空间</span><br><span class="line">      ↓</span><br><span class="line">┌──────────────────────────────────────────────┐</span><br><span class="line">│ T(n)=aT(n/b)+f(n)？                          │</span><br><span class="line">│      ├─ 是 ─&gt; ✅ 优先：主方法                 │</span><br><span class="line">│      │         (若不适用，则转为递归树法)        │</span><br><span class="line">│      ↓ 否                                      │</span><br><span class="line">│                                              │</span><br><span class="line">│ T(n)=T(n-c)+f(n) 或 T(n)=aT(n-c)+f(n)？       │</span><br><span class="line">│      ├─ 是 ─&gt; ✅ **展开求和 (或递归树法)**      │</span><br><span class="line">│      │         (例如: T(n)=T(n-1)+n)           │</span><br><span class="line">│      ↓ 否                                      │</span><br><span class="line">│                                              │</span><br><span class="line">│ 其他复杂形式？ (如 T(n)=T(n/a)+T(n/b)+f(n))   │</span><br><span class="line">│      └─&gt; ✅ **通用后备：递归树法**             │</span><br><span class="line">│            (用于猜测，再用替换法证明)          │</span><br><span class="line">└──────────────────────────────────────────────┘</span><br><span class="line">      ↓</span><br><span class="line">3. 特殊视角：是否满足“单次处理成本O(1)”？</span><br><span class="line">      └─ 是 ─&gt; ✅ **聚合分析法**</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="第一部分：时间复杂度分析"><a href="#第一部分：时间复杂度分析" class="headerlink" title="第一部分：时间复杂度分析"></a><strong>第一部分：时间复杂度分析</strong></h3><p>时间复杂度的分析重点在于量化递归过程中的总计算量。</p>
+<h4 id="第一步：建立递推关系式（分析的基石）"><a href="#第一步：建立递推关系式（分析的基石）" class="headerlink" title="第一步：建立递推关系式（分析的基石）"></a><strong>第一步：建立递推关系式（分析的基石）</strong></h4><p>这是所有分析的起点。您需要将代码逻辑翻译成一个数学表达式 <code>T(n)</code>，它描述了处理规模为 <code>n</code> 的问题所需的总时间。</p>
+<p>一个标准的递推关系式包含两部分：</p>
+<ul>
+<li><strong>递归成本</strong>：为解决原问题，递归调用了多少次函数 (<code>a</code>)？每次调用的子问题规模是多大 (<code>n/b</code>)？</li>
+<li>**本地成本 <code>f(n)</code>**：在单次函数调用中，除了递归调用外，执行了多少“本地”计算（如循环、判断、合并结果等）？</li>
+</ul>
+<p><strong>标准形式</strong>：<code>T(n) = a * T(n/b) + f(n)</code></p>
+<p><strong>示例：归并排序 (Merge Sort)</strong></p>
+<ul>
+<li><strong>递推关系式</strong>：<code>T(n) = 2T(n/2) + O(n)</code><ul>
+<li><code>2T(n/2)</code>：两次递归调用，每次处理一半数据。</li>
+<li><code>O(n)</code>：合并两个有序数组的 <code>merge</code> 操作成本。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>重要前提：明确分析场景</strong><br>在开始分析前，务必明确您分析的是<strong>最坏情况 (Worst Case)</strong> 还是 **平均情况 (Average Case)**。对于某些算法，这两种情况的递推式截然不同。</p>
+<ul>
+<li><strong>快速排序 (Quicksort) 示例</strong>：<ul>
+<li><strong>最坏情况</strong> (主元划分极不均衡): <code>T(n) = T(n-1) + O(n)</code> → 解得 <code>O(n²)</code>。</li>
+<li><strong>平均&#x2F;最好情况</strong> (主元划分较均匀): <code>T(n) = 2T(n/2) + O(n)</code> → 解得 <code>O(n log n)</code>。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h4 id="第二步：选择求解方法（决策流程）"><a href="#第二步：选择求解方法（决策流程）" class="headerlink" title="第二步：选择求解方法（决策流程）"></a><strong>第二步：选择求解方法（决策流程）</strong></h4><p>得到递推关系式后，下一步就是求解它。您可以根据关系式的特点，选择最高效的分析“武器”。</p>
+<hr>
+<h4 id="分析武器详解"><a href="#分析武器详解" class="headerlink" title="分析武器详解"></a><strong>分析武器详解</strong></h4><p><strong>武器一：主方法 (Master Theorem) — 公式捷径</strong></p>
+<p>这是求解 <code>T(n) = a * T(n/b) + f(n)</code> (a&gt;&#x3D;1,b&gt;1)形式的“利器”。核心是比较 <strong><code>f(n)</code></strong> 与 <strong><code>n^(log_b a)</code></strong> 的增长速度：</p>
+<ol>
+<li><p>**情况一 (子问题主导)**：若 <code>f(n) = O(n^(log_b a - ε))</code> 对于某个常数 <code>ε &gt; 0</code>，则 <code>T(n) = Θ(n^(log_b a))</code>。</p>
+<ul>
+<li>通俗讲：<code>f(n)</code> 的增长速度<strong>显著慢于</strong> <code>n^(log_b a)</code>。</li>
+</ul>
+</li>
+<li><p>**情况二 (成本均衡)**：若 <code>f(n) = Θ(n^(log_b a))</code>，则 <code>T(n) = Θ(n^(log_b a) * log n)</code>。</p>
+<ul>
+<li>通俗讲：<code>f(n)</code> 的增长速度<strong>等于</strong> <code>n^(log_b a)</code>。</li>
+</ul>
+</li>
+<li><p>**情况三 (本地成本主导)**：若 <code>f(n) = Ω(n^(log_b a + ε))</code> 对于某个常数 <code>ε &gt; 0</code>，且满足正则条件 <code>a * f(n/b) ≤ c * f(n)</code> (对于某个常数 <code>c &lt; 1</code> 和所有足够大的 <code>n</code>)，则 <code>T(n) = Θ(f(n))</code>。</p>
+<ul>
+<li>通俗讲：<code>f(n)</code> 的增长速度<strong>显著快于</strong> <code>n^(log_b a)</code>。</li>
+</ul>
+</li>
+</ol>
+<p><strong>实际上，可以认为 f(n) 代表本地操作数增长，g(n) &#x3D; n^(log_b a) 代表基础子问题操作数增长（递归树叶节点操作数），谁趋势<code>显著大</code>就保留谁，一样的话就再乘上一个logn</strong><br><strong>显著大：h(n) &#x3D; f(n) &#x2F; g(n)，如果h(n)至少是一个多项式(n^k,k大于0)，意味着f(n)显著大于g(n)</strong></p>
+<p>关于g(n),g(n)实际上是a^(树高次方)进行数学恒等变换得到的，代表递归树的总叶结点数量，每个节点数量，每个节点的操作树一般都是f(1)是个常数，因此这个式子可以代表子问题总操作数</p>
+<blockquote>
+<p><strong>正则条件 <code>a * f(n/b) ≤ c * f(n)</code> 的通俗理解</strong>：<br>这个条件确保 <code>f(n)</code> 的增长是“稳健的”，不会在递归深入时出现剧烈波动。它本质上是要求：**子问题 <code>a * f(n/b)</code> 的总本地成本，必须小于或等于根节点本地成本 <code>f(n)</code> 的一个常数比例 <code>c</code>**（其中 <code>c&lt;1</code>）。这保证了总成本主要由根节点的 <code>f(n)</code> 决定，而不会被子问题的成本“反超”。绝大多数常见的多项式、对数函数都满足此条件。</p>
+</blockquote>
+<blockquote>
+<p><strong>局限性与扩展</strong>：主方法并非万能，其三个情况之间存在“间隙”(gap)，无法覆盖所有函数。</p>
+<ul>
+<li><strong>一个常见的“间隙”情况（主方法扩展）</strong>：当 <code>f(n) = Θ(n^(log_b a) * log^k n)</code> 且 <code>k ≥ 0</code> 时，标准主方法不直接适用。此时，解为 **<code>T(n) = Θ(n^(log_b a) * log^(k+1) n)</code>**。</li>
+</ul>
+<p>  例如，对于递推式 <code>T(n) = 2T(n/2) + O(n log n)</code>，这里 <code>a=2, b=2</code>, <code>log_b a = 1</code>。<code>f(n) = n log n</code>，属于 <code>k=1</code> 的情况。其解为 <code>T(n) = Θ(n * log² n)</code>。</p>
+</blockquote>
+<p><strong>武器二：递归树法 (Recursion Tree Method) — 直观通用</strong></p>
+<p>当主方法不适用或想更深入理解时，递归树是最好的工具。</p>
+<p><strong>分析步骤</strong>：</p>
+<ol>
+<li><strong>画树</strong>：将递推式展开成一棵树，每个节点代表一次函数调用的本地成本。</li>
+<li><strong>算每层成本</strong>：计算树的每一层所有节点的成本之和。</li>
+<li><strong>算树高</strong>：确定从根节点到叶子节点的最长路径长度。</li>
+<li><strong>累加求和</strong>：将所有层的成本累加起来，得到总复杂度。</li>
+</ol>
+<p><strong>示例1 (均匀分割)：归并排序 <code>T(n) = 2T(n/2) + cn</code></strong></p>
+<ul>
+<li><strong>每层成本</strong>：无论在哪一层，该层所有节点的成本之和总是 <code>cn</code>。</li>
+<li><strong>树高</strong>：<code>log₂n</code>。</li>
+<li><strong>总成本</strong>：每层成本 × 树高 &#x3D; <code>cn * log₂n</code> → <code>O(n log n)</code>。</li>
+</ul>
+<p><strong>示例2 (非均匀分割)：<code>T(n) = T(n/3) + T(2n/3) + n</code></strong></p>
+<ul>
+<li><strong>画树</strong>：这是一棵非完全二叉树，每一层的节点大小不同。</li>
+<li><strong>每层成本</strong>：根节点成本是 <code>n</code>。下一层是 <code>n/3</code> 和 <code>2n/3</code>，成本和仍为 <code>n</code>。可以发现，每一层的成本之和都是 <code>n</code>。</li>
+<li><strong>树高</strong>：树的高度由最长的路径决定，即 <code>n -&gt; (2/3)n -&gt; (2/3)²n -&gt; ... -&gt; 1</code>。高度 <code>h</code> 满足 <code>(2/3)^h * n = 1</code>，解得 <code>h = log_(3/2) n</code>。</li>
+<li><strong>总成本</strong>：<code>n * log_(3/2) n</code> → <code>O(n log n)</code>。这个例子展示了递归树处理复杂分割的强大能力。</li>
+</ul>
+<blockquote>
+<p><strong>⚠️ 递归树法的常见陷阱：误判叶子节点数量</strong><br>对于 <code>T(n) = aT(n/b) + f(n)</code> 形式的递归，叶子节点的总数是 <code>a^h</code>，其中 <code>h</code> 是树高。这个总数等于 **<code>n^(log_b a)</code>**。在计算与叶子节点相关的成本时（通常是递归的终止条件 <code>T(1)</code>），必须使用这个正确的数量级，而不是简单地认为是 <code>n</code>。</p>
+</blockquote>
+<p><strong>武器三：替换法 (Substitution Method) — 严谨证明</strong></p>
+<p>此方法本质是数学归纳法，通常配合递归树使用：先用递归树猜测一个复杂度上界，再用替换法来严格证明这个猜测是成立的。</p>
+<p><strong>武器四：聚合分析法  — 总量视角</strong><br>注：此处的聚合分析指直接累加算法各部分的总工作量  </p>
+<p>此方法跳出求解单次递归的递推关系，通过直接计算整个算法生命周期内的工作总量来确定复杂度。</p>
+<p><strong>✅ 适用信号</strong>：</p>
+<ul>
+<li><strong>有限处理次数</strong>：通过“单向移动指针”或“<code>visited</code>状态标记”等机制，保证每个核心元素在其生命周期内只被处理有限次（通常是1次）。</li>
+<li><strong>恒定单次成本</strong>：处理单个工作单元的本地操作成本为 **<code>O(1)</code>**，通常借助哈希表等高效数据结构实现。实际上是每个单元的操作树不随子问题规模而变化</li>
+</ul>
+<p><strong>分析步骤</strong>：<br><code>总复杂度 = (一次性初始化成本) + (工作单元总数) × (每个单元的处理次数) × (单次处理成本)</code></p>
+<p><strong>示例：根据前序和中序遍历重建二叉树 (使用哈希表)</strong></p>
+<ol>
+<li><strong>适用性判断</strong>：<ul>
+<li>前序遍历的索引 <code>preIndex</code> 只增不减，保证每个节点只被创建一次。（满足特征1）</li>
+<li>通过哈希表 <code>inorderMap</code> 查找根节点索引，成本为 <code>O(1)</code>。（满足特征2）</li>
+</ul>
+</li>
+<li><strong>分析</strong>：<ul>
+<li>一次性成本：构建 <code>inorderMap</code> &#x3D; <code>O(N)</code>。</li>
+<li>核心工作量：<code>N</code>个节点 × <code>1</code>次处理 × <code>O(1)</code>单次成本 &#x3D; <code>O(N)</code>。</li>
+<li><strong>总复杂度</strong> &#x3D; <code>O(N) + O(N) = O(N)</code>。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="第二部分：空间复杂度分析"><a href="#第二部分：空间复杂度分析" class="headerlink" title="第二部分：空间复杂度分析"></a><strong>第二部分：空间复杂度分析</strong></h3><p>递归算法的空间复杂度主要由<strong>递归调用栈 (Call Stack)</strong> 的深度决定。它衡量的是算法在执行期间内存占用的<strong>峰值</strong>。</p>
+<h4 id="核心公式"><a href="#核心公式" class="headerlink" title="核心公式"></a><strong>核心公式</strong></h4><p><strong>调用栈空间复杂度 &#x3D; 最大递归深度 × 每次递归调用所需的空间</strong></p>
+<blockquote>
+<h4 id="一个更完整的视角：调用栈空间-vs-辅助空间"><a href="#一个更完整的视角：调用栈空间-vs-辅助空间" class="headerlink" title="一个更完整的视角：调用栈空间 vs. 辅助空间"></a><strong>一个更完整的视角：调用栈空间 vs. 辅助空间</strong></h4><p>一个算法的<strong>总空间复杂度</strong>是<strong>调用栈空间</strong>与算法明确创建的<strong>辅助空间</strong>（如数组、哈希表等）中的<strong>最大值</strong>。</p>
+<p><strong>总空间复杂度 &#x3D; Max(调用栈空间, 辅助空间)</strong></p>
+<p><strong>关于返回值的说明</strong>：通常，空间复杂度分析关注的是算法运行过程中的<strong>临时内存占用</strong>，不包括最终输出结果本身所需的空间。</p>
+<p><strong>示例</strong>：一个递归函数，对一棵有 <code>N</code> 个节点的平衡二叉树进行遍历，并将所有节点值存入一个结果列表中。</p>
+<ul>
+<li><strong>调用栈空间</strong>：树的高度为 <code>O(log N)</code>。</li>
+<li><strong>辅助空间</strong>：结果列表需要存储 <code>N</code> 个节点值，空间为 <code>O(N)</code>。</li>
+<li><strong>最终空间复杂度</strong>：<code>Max(O(log N), O(N)) = O(N)</code>。</li>
+</ul>
+</blockquote>
+<h4 id="系统分析步骤"><a href="#系统分析步骤" class="headerlink" title="系统分析步骤"></a><strong>系统分析步骤</strong></h4><p><strong>第一步：确定最大递归深度</strong><br>这是决定调用栈空间复杂度的<strong>最关键因素</strong>。</p>
+<ul>
+<li>**线性递归 (如：阶乘)**：最大深度为 <code>O(n)</code>。</li>
+<li>**树形递归 (如：斐波那契数列)**：虽然总调用次数是指数级的，但执行是深度优先的。最长的调用链是从 <code>n</code> 到 <code>1</code>，因此最大深度仍为 <code>O(n)</code>。</li>
+<li><strong>二叉树深度遍历</strong>：递归深度取决于树的高度 <code>h</code>。对于平衡二叉树，深度为 <code>O(log n)</code>；对于链状的极端情况，深度为 <code>O(n)</code>。</li>
+</ul>
+<p><strong>第二步：分析单次调用的空间消耗</strong><br>在绝大多数情况下，如果不创建与输入规模 <code>n</code> 相关的动态数据结构，单次调用的空间消耗是常数级别的，即 <code>O(1)</code>。</p>
+<blockquote>
+<p><strong>⚠️ 注意隐式空间开销</strong><br>在分析单次调用的空间时，要警惕那些看起来像是 <code>O(1)</code> 但实际上会创建新对象的语言特性。</p>
+<ul>
+<li><strong>示例 (Python)<strong>：在递归函数中如果使用了字符串或列表的</strong>切片 (slicing)</strong> 作为参数传递，例如 <code>recursive_call(arr[1:])</code>，这通常会创建一个<strong>新的、长度为 n-1 的副本</strong>，导致单次调用的空间消耗为 <code>O(n)</code>，从而极大地增加了总空间复杂度。</li>
+<li><strong>正确做法</strong>：应通过传递<strong>索引或指针</strong>（如 <code>recursive_call(arr, start_index + 1)</code>)来避免这种不必要的空间开销，维持单次调用的空间为 <code>O(1)</code>。</li>
+</ul>
+</blockquote>
+<p><strong>第三步：综合计算总的空间复杂度</strong><br>结合前两步的结果，并考虑算法使用的辅助空间，得出最终结论。</p>
+<h4 id="优化考量：尾递归-Tail-Recursion"><a href="#优化考量：尾递归-Tail-Recursion" class="headerlink" title="优化考量：尾递归 (Tail Recursion)"></a><strong>优化考量：尾递归 (Tail Recursion)</strong></h4><p>如果一个递归函数的最后一步操作是调用自身（尾调用），支持该优化的编译器可以复用当前栈帧，将<strong>调用栈空间</strong>复杂度从 <code>O(n)</code> 降低到 <code>O(1)</code>。</p>
+<blockquote>
+<p><strong>注意</strong>：许多主流编程语言（如 <strong>Python、Java</strong>）的解释器&#x2F;编译器<strong>默认不支持</strong>尾递归优化。因此，在这些环境中不能想当然地认为空间复杂度会被优化。</p>
+</blockquote>
+<hr>
+<h3 id="第三部分：总结与常见陷阱"><a href="#第三部分：总结与常见陷阱" class="headerlink" title="第三部分：总结与常见陷阱"></a><strong>第三部分：总结与常见陷阱</strong></h3><h4 id="核心分析方法对比表"><a href="#核心分析方法对比表" class="headerlink" title="核心分析方法对比表"></a><strong>核心分析方法对比表</strong></h4><table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">适用场景</th>
+<th align="left">优点</th>
+<th align="left">缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>主方法</strong></td>
+<td align="left"><code>T(n)=aT(n/b)+f(n)</code> 形式的递推式</td>
+<td align="left">快速、公式化、结论直接</td>
+<td align="left">有“间隙”，不通用，无法处理非标准形式</td>
+</tr>
+<tr>
+<td align="left"><strong>递归树法</strong></td>
+<td align="left">几乎所有递推式，尤其主方法失效时</td>
+<td align="left">直观、通用、能处理复杂分割</td>
+<td align="left">过程相对繁琐，涉及级数求和</td>
+</tr>
+<tr>
+<td align="left"><strong>替换法</strong></td>
+<td align="left">需要严格数学证明的场合</td>
+<td align="left">最严谨，是复杂度的最终证明</td>
+<td align="left">需要先“猜测”一个解，过程复杂</td>
+</tr>
+<tr>
+<td align="left"><strong>聚合</strong></td>
+<td align="left">每个工作单元处理次数有限且单次成本O(1)</td>
+<td align="left">思路巧妙，跳出递推式，计算简单</td>
+<td align="left">适用场景非常有限，条件苛刻</td>
+</tr>
+</tbody></table>
+<h4 id="常见分析陷阱"><a href="#常见分析陷阱" class="headerlink" title="常见分析陷阱"></a><strong>常见分析陷阱</strong></h4><ol>
+<li><p><strong>陷阱一：混淆“调用总次数”与“最大递归深度”</strong></p>
+<ul>
+<li><strong>辨析</strong>：时间复杂度关心<strong>总工作量</strong>（调用总次数），而空间复杂度关心内存占用的<strong>峰值</strong>（最大递归深度）。</li>
+<li><strong>反例速查</strong>：朴素的斐波那契数列 <code>fib(n)</code>，时间复杂度为 <code>O(2^n)</code>（指数级的调用次数），但空间复杂度仅为 <code>O(n)</code>（线性的递归深度）。</li>
+</ul>
+</li>
+<li><p><strong>陷阱二：公式不是万能的，别乱套！</strong></p>
+<ul>
+<li><strong>辨析</strong>：每种方法都有其严格的适用范围。当不确定时，回归最通用的<strong>递归树法</strong>。</li>
+<li><strong>反例速查</strong>：递推式 <code>T(n) = T(n-1) + n</code> 不符合主方法的结构，强行套用会出错。使用递归树法则能清晰地看到其成本累加为 <code>n + (n-1) + ... + 1</code>，结果为 <code>O(n²)</code>。</li>
+</ul>
+</li>
+<li><p><strong>陷阱三：<code>f(n)</code> 是魔鬼，细节决定成败！</strong></p>
+<ul>
+<li><strong>辨析</strong>：在建立递推关系式 <code>T(n) = aT(n/b) + f(n)</code> 时，必须精确分析除递归调用外的所有“本地成本”<code>f(n)</code>。</li>
+<li><strong>反例速查</strong>：归并排序中，合并操作的成本是 <code>f(n)=O(n)</code>，这是决定其 <code>O(n log n)</code> 复杂度的关键。如果误认为 <code>f(n)=O(1)</code>，会得出完全错误的结论。</li>
+</ul>
+</li>
+<li><p><strong>陷阱四：忽略 <code>f(n)</code> 中的“隐形成本”</strong></p>
+<ul>
+<li><strong>辨析</strong>：<code>f(n)</code> 的计算必须细致入微。一个看似简单的循环或函数调用，其成本可能并非 <code>O(1)</code>。</li>
+<li><strong>反例速查</strong>：考虑一个在 <code>n</code> 个元素上进行递归的函数，每次递归中，它都循环遍历一个大小为 <code>k</code> 的辅助数组。此时 <code>f(n)</code> 应该是 <code>O(k)</code> 而非 <code>O(1)</code>。另一个例子是在 <code>f(n)</code> 中执行了字符串拼接操作，在某些语言中，<code>n</code> 次拼接 <code>n</code> 个字符的成本可能是 <code>O(n²)</code>，而不是 <code>O(n)</code>。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p><strong>一个构建递归树的例子</strong>  </p>
+<h3 id="第一步：写出递推关系式"><a href="#第一步：写出递推关系式" class="headerlink" title="第一步：写出递推关系式"></a>第一步：写出递推关系式</h3><p>根据上面的算法思想，我们可以得出归并排序的时间复杂度递推关系式：</p>
+<ul>
+<li><strong>分解</strong>：找到中间点，只需要 <code>O(1)</code> 的时间。</li>
+<li><strong>解决</strong>：递归调用两次，每次处理一半的数据。所以这部分的代价是 <code>2 * T(n/2)</code>。</li>
+<li><strong>合并</strong>：<code>merge</code> 操作需要遍历两个子数组，将它们合并成一个新的数组，这个过程的时间复杂度是 <code>O(n)</code>。</li>
+</ul>
+<p>因此，总的时间复杂度递推式为：<br><strong>T(n) &#x3D; 2T(n&#x2F;2) + cn</strong><br>(为了方便计算，我们用 <code>cn</code> 来表示 <code>O(n)</code> 这一项，其中 <code>c</code> 是一个常数)</p>
+<h3 id="第二步：构建并分析递归树"><a href="#第二步：构建并分析递归树" class="headerlink" title="第二步：构建并分析递归树"></a>第二步：构建并分析递归树</h3><p>现在，我们开始画出这个递推关系式对应的递归树。</p>
+<h4 id="1-树的结构"><a href="#1-树的结构" class="headerlink" title="1. 树的结构"></a>1. 树的结构</h4><ul>
+<li><strong>根节点</strong>：代表原始问题 <code>T(n)</code>。它有两个子节点，代表两个规模为 <code>n/2</code> 的子问题。根节点自身的工作量（合并代价）是 <code>cn</code>。</li>
+<li><strong>第二层</strong>：有两个节点，每个节点代表一个 <code>T(n/2)</code> 的问题。对于每个节点，它自身的工作量是 <code>c(n/2)</code>，并且它又会产生两个规模为 <code>n/4</code> 的子问题。</li>
+<li><strong>第三层</strong>：有四个节点，每个节点代表一个 <code>T(n/4)</code> 的问题，每个节点的工作量是 <code>c(n/4)</code>。</li>
+<li><strong>……</strong></li>
+<li><strong>叶子节点</strong>：当问题规模缩小到 1 时，递归到达终点。这代表 <code>T(1)</code>，其时间复杂度为 <code>O(1)</code>，我们记为常数 <code>c</code>。</li>
+</ul>
+<h4 id="2-可视化递归树"><a href="#2-可视化递归树" class="headerlink" title="2. 可视化递归树"></a>2. 可视化递归树</h4><p>下面是这个过程的可视化图：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">              cn (代价)                     -----&gt;  第 0 层: 总代价 = cn</span><br><span class="line">             /  \</span><br><span class="line">            /    \</span><br><span class="line">           /      \</span><br><span class="line">     T(n/2)        T(n/2)</span><br><span class="line">       |             |</span><br><span class="line">    c(n/2)          c(n/2)                  -----&gt;  第 1 层: 总代价 = 2 * c(n/2) = cn</span><br><span class="line">     / \           / \</span><br><span class="line">    /   \         /   \</span><br><span class="line">T(n/4) T(n/4)   T(n/4) T(n/4)</span><br><span class="line">  |      |       |      |</span><br><span class="line">c(n/4) c(n/4)   c(n/4) c(n/4)             -----&gt;  第 2 层: 总代价 = 4 * c(n/4) = cn</span><br><span class="line"> ...    ...     ...    ...</span><br><span class="line"></span><br><span class="line">  |      |       |      |</span><br><span class="line"> T(1)   T(1)     ...    T(1)                   -----&gt;  第 k 层 (叶子层)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-分析树的属性"><a href="#3-分析树的属性" class="headerlink" title="3. 分析树的属性"></a>3. 分析树的属性</h4><p><strong>a) 计算每一层的代价：</strong></p>
+<ul>
+<li>第 0 层 (根节点)：代价是 <code>cn</code>。</li>
+<li>第 1 层：有两个节点，每个节点的代价是 <code>c(n/2)</code>，所以总代价是 <code>2 * c(n/2) = cn</code>。</li>
+<li>第 2 层：有 <code>2^2 = 4</code> 个节点，每个节点的代价是 <code>c(n/4)</code>，所以总代价是 <code>4 * c(n/4) = cn</code>。</li>
+<li>…</li>
+<li>第 <code>i</code> 层：有 <code>2^i</code> 个节点，每个节点的代价是 <code>c(n / 2^i)</code>，所以总代价是 <code>2^i * c(n / 2^i) = cn</code>。</li>
+</ul>
+<p><strong>观察发现：</strong> 在这棵树中，每一层的总代价都是 <code>cn</code>。</p>
+<p><strong>b) 计算树的深度（高度）：</strong></p>
+<p>递归树的深度取决于问题规模从 <code>n</code> 缩小到 1 需要多少步。<br>假设树的深度为 <code>k</code>（从第 0 层开始）。在第 <code>k</code> 层，子问题的规模是 <code>n / 2^k</code>。<br>当递归到达叶子节点时，问题规模为 1。<br>所以，我们令 <code>n / 2^k = 1</code>，解得 <code>2^k = n</code>，即 <code>k = log₂n</code>。</p>
+<p>因此，这棵树的高度大约为 <code>log₂n</code>。层数是从 0 到 <code>log₂n</code>，总共有 <code>log₂n + 1</code> 层。</p>
+<h3 id="第三步：累加所有层的代价"><a href="#第三步：累加所有层的代价" class="headerlink" title="第三步：累加所有层的代价"></a>第三步：累加所有层的代价</h3><p>现在我们把所有层的代价加起来，得到算法的总运行时间。</p>
+<p>总代价 &#x3D; (每一层的代价) × (树的层数)<br><code>T(n) = cn + cn + cn + ... + cn</code> (共 <code>log₂n</code> 层)</p>
+<p><strong>注意</strong>：这里还需要加上最后一层叶子节点的代价。<br>最后一层（第 <code>log₂n</code> 层）有 <code>n</code> 个叶子节点 (<code>2^(log₂n) = n</code>)，每个节点的代价是 <code>T(1) = c</code>。所以最后一层的总代价是 <code>n * c = cn</code>。</p>
+<p>精确的计算是：<br><code>T(n) = Σ (从 i=0 到 log₂n - 1) [cn] + c * n</code> (最后一层叶子节点的代价)<br><code>T(n) = cn * log₂n + cn</code></p>
+<h3 id="第四步：得出最终复杂度"><a href="#第四步：得出最终复杂度" class="headerlink" title="第四步：得出最终复杂度"></a>第四步：得出最终复杂度</h3><p>根据上面的求和结果 <code>cn * log₂n + cn</code>，我们使用大O表示法来评估其渐进复杂度。忽略低阶项 <code>cn</code> 和常数系数 <code>c</code>，我们得到：</p>
+<p><strong>T(n) &#x3D; O(n log n)</strong></p>
+<h3 id="总结：递归树法分析步骤回顾"><a href="#总结：递归树法分析步骤回顾" class="headerlink" title="总结：递归树法分析步骤回顾"></a>总结：递归树法分析步骤回顾</h3><ol>
+<li><strong>写出递推式</strong>：<code>T(n) = 2T(n/2) + cn</code>。</li>
+<li><strong>画出递归树</strong>：清晰地展示出每一层的节点数和每个节点的代价。</li>
+<li><strong>计算每层总代价</strong>：发现每一层的代价都是 <code>cn</code>。</li>
+<li><strong>计算树的高度</strong>：高度为 <code>log₂n</code>。</li>
+<li><strong>累加总代价</strong>：将每一层的代价乘以树的高度，即 <code>cn * log₂n</code>。</li>
+<li><strong>得出结论</strong>：最终时间复杂度为 <code>O(n log n)</code>。</li>
+</ol>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                递归复杂度分析
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2025/09/15/算法笔记/基本算法/递归复杂度分析/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">stellogic</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2025-09-15 09:19</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/">基本算法</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/09/15/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/"
+                                   title="排序"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">排序</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/09/15/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/HashMap/"
+                                   title="HashMap"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">HashMap</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script 
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          if (!window.KeepCommentPlugin?.getGiscusTheme) {
+            window.KeepCommentPlugin.getGiscusTheme = () => {
+              return document.documentElement.classList.contains('dark-mode') ? 'dark_dimmed' : 'light_tritanopia'
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.changeGiscusTheme) {
+            window.KeepCommentPlugin.changeGiscusTheme = () => {
+              const iframe = document.querySelector('iframe.giscus-frame')
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: window.KeepCommentPlugin.getGiscusTheme()
+                  }
+                }
+              }, 'https://giscus.app')
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.initGiscus) {
+            window.KeepCommentPlugin.initGiscus = () => {
+              const script = document.createElement('script')
+              script.async = true
+              script.src = 'https://giscus.app/client.js'
+              script.setAttribute('data-repo', 'stellogic/Stellogic.github.io')
+              script.setAttribute('data-repo-id', 'R_kgDOOkF4SA')
+              script.setAttribute('data-category', 'Announcements')
+              script.setAttribute('data-category-id', 'DIC_kwDOOkF4SM4Cp-Ln')
+              script.setAttribute('data-reactions-enabled', '1')
+              script.setAttribute('data-lang', 'zh-CN')
+              script.setAttribute('data-mapping', 'pathname')
+              script.setAttribute('data-strict', '0')
+              script.setAttribute('data-emit-metadata', '0')
+              script.setAttribute('data-input-position', 'top')
+              script.setAttribute('crossorigin', 'anonymous')
+              script.setAttribute('loading', 'lazy')
+              script.setAttribute('data-theme', window.KeepCommentPlugin.getGiscusTheme())
+              document.querySelector('.giscus-comments-container').appendChild(script)
+              script.onerror = () => {
+                window.KeepCommentPlugin.loadFailHandle()
+              }
+              script.onload = () => {
+                window.KeepCommentPlugin.hideLoading()
+              }
+              const toggleThemeBtn = document.querySelector('.tool-toggle-theme-mode')
+              toggleThemeBtn && toggleThemeBtn.addEventListener('click', () => {
+                window.KeepCommentPlugin.changeGiscusTheme()
+              })
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGiscus()
+            }, 1000)
+          } else {
+            window.addEventListener("DOMContentLoaded", window.KeepCommentPlugin.initGiscus)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E7%B3%BB%E7%BB%9F%E6%80%A7%E5%88%86%E6%9E%90%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%9A%84%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%88%E6%9C%80%E7%BB%88%E4%BC%98%E5%8C%96%E7%89%88%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">如何系统性分析递归算法的复杂度（最终优化版）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E7%AF%87%EF%BC%9A%E5%88%86%E6%9E%90%E5%86%B3%E7%AD%96%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">1.1.</span> <span class="nav-text">开篇：分析决策流程图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">第一部分：时间复杂度分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%BB%BA%E7%AB%8B%E9%80%92%E6%8E%A8%E5%85%B3%E7%B3%BB%E5%BC%8F%EF%BC%88%E5%88%86%E6%9E%90%E7%9A%84%E5%9F%BA%E7%9F%B3%EF%BC%89"><span class="nav-number">1.2.1.</span> <span class="nav-text">第一步：建立递推关系式（分析的基石）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E9%80%89%E6%8B%A9%E6%B1%82%E8%A7%A3%E6%96%B9%E6%B3%95%EF%BC%88%E5%86%B3%E7%AD%96%E6%B5%81%E7%A8%8B%EF%BC%89"><span class="nav-number">1.2.2.</span> <span class="nav-text">第二步：选择求解方法（决策流程）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E6%AD%A6%E5%99%A8%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.2.3.</span> <span class="nav-text">分析武器详解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">1.3.</span> <span class="nav-text">第二部分：空间复杂度分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%85%AC%E5%BC%8F"><span class="nav-number">1.3.1.</span> <span class="nav-text">核心公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%AE%8C%E6%95%B4%E7%9A%84%E8%A7%86%E8%A7%92%EF%BC%9A%E8%B0%83%E7%94%A8%E6%A0%88%E7%A9%BA%E9%97%B4-vs-%E8%BE%85%E5%8A%A9%E7%A9%BA%E9%97%B4"><span class="nav-number">1.3.2.</span> <span class="nav-text">一个更完整的视角：调用栈空间 vs. 辅助空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.3.3.</span> <span class="nav-text">系统分析步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E8%80%83%E9%87%8F%EF%BC%9A%E5%B0%BE%E9%80%92%E5%BD%92-Tail-Recursion"><span class="nav-number">1.3.4.</span> <span class="nav-text">优化考量：尾递归 (Tail Recursion)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%EF%BC%9A%E6%80%BB%E7%BB%93%E4%B8%8E%E5%B8%B8%E8%A7%81%E9%99%B7%E9%98%B1"><span class="nav-number">1.4.</span> <span class="nav-text">第三部分：总结与常见陷阱</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%AF%B9%E6%AF%94%E8%A1%A8"><span class="nav-number">1.4.1.</span> <span class="nav-text">核心分析方法对比表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%88%86%E6%9E%90%E9%99%B7%E9%98%B1"><span class="nav-number">1.4.2.</span> <span class="nav-text">常见分析陷阱</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%86%99%E5%87%BA%E9%80%92%E6%8E%A8%E5%85%B3%E7%B3%BB%E5%BC%8F"><span class="nav-number">1.5.</span> <span class="nav-text">第一步：写出递推关系式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E6%9E%84%E5%BB%BA%E5%B9%B6%E5%88%86%E6%9E%90%E9%80%92%E5%BD%92%E6%A0%91"><span class="nav-number">1.6.</span> <span class="nav-text">第二步：构建并分析递归树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%A0%91%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-number">1.6.1.</span> <span class="nav-text">1. 树的结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%8F%AF%E8%A7%86%E5%8C%96%E9%80%92%E5%BD%92%E6%A0%91"><span class="nav-number">1.6.2.</span> <span class="nav-text">2. 可视化递归树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%88%86%E6%9E%90%E6%A0%91%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="nav-number">1.6.3.</span> <span class="nav-text">3. 分析树的属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E7%B4%AF%E5%8A%A0%E6%89%80%E6%9C%89%E5%B1%82%E7%9A%84%E4%BB%A3%E4%BB%B7"><span class="nav-number">1.7.</span> <span class="nav-text">第三步：累加所有层的代价</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E5%BE%97%E5%87%BA%E6%9C%80%E7%BB%88%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.8.</span> <span class="nav-text">第四步：得出最终复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A%E9%80%92%E5%BD%92%E6%A0%91%E6%B3%95%E5%88%86%E6%9E%90%E6%AD%A5%E9%AA%A4%E5%9B%9E%E9%A1%BE"><span class="nav-number">1.9.</span> <span class="nav-text">总结：递归树法分析步骤回顾</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">stellogic</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+        
+        <div class="deploy-info info-item">
+            
+                <a target="_blank" rel="nofollow" href="https://stellogic.github.io/">
+            
+            本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+            
+                </a>
+            
+        </div>
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">45.7k</span>
+                </span>
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E7%B3%BB%E7%BB%9F%E6%80%A7%E5%88%86%E6%9E%90%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95%E7%9A%84%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%88%E6%9C%80%E7%BB%88%E4%BC%98%E5%8C%96%E7%89%88%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">如何系统性分析递归算法的复杂度（最终优化版）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E7%AF%87%EF%BC%9A%E5%88%86%E6%9E%90%E5%86%B3%E7%AD%96%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">1.1.</span> <span class="nav-text">开篇：分析决策流程图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">第一部分：时间复杂度分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%BB%BA%E7%AB%8B%E9%80%92%E6%8E%A8%E5%85%B3%E7%B3%BB%E5%BC%8F%EF%BC%88%E5%88%86%E6%9E%90%E7%9A%84%E5%9F%BA%E7%9F%B3%EF%BC%89"><span class="nav-number">1.2.1.</span> <span class="nav-text">第一步：建立递推关系式（分析的基石）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E9%80%89%E6%8B%A9%E6%B1%82%E8%A7%A3%E6%96%B9%E6%B3%95%EF%BC%88%E5%86%B3%E7%AD%96%E6%B5%81%E7%A8%8B%EF%BC%89"><span class="nav-number">1.2.2.</span> <span class="nav-text">第二步：选择求解方法（决策流程）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%9E%90%E6%AD%A6%E5%99%A8%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.2.3.</span> <span class="nav-text">分析武器详解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">1.3.</span> <span class="nav-text">第二部分：空间复杂度分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%85%AC%E5%BC%8F"><span class="nav-number">1.3.1.</span> <span class="nav-text">核心公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E6%9B%B4%E5%AE%8C%E6%95%B4%E7%9A%84%E8%A7%86%E8%A7%92%EF%BC%9A%E8%B0%83%E7%94%A8%E6%A0%88%E7%A9%BA%E9%97%B4-vs-%E8%BE%85%E5%8A%A9%E7%A9%BA%E9%97%B4"><span class="nav-number">1.3.2.</span> <span class="nav-text">一个更完整的视角：调用栈空间 vs. 辅助空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.3.3.</span> <span class="nav-text">系统分析步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E5%8C%96%E8%80%83%E9%87%8F%EF%BC%9A%E5%B0%BE%E9%80%92%E5%BD%92-Tail-Recursion"><span class="nav-number">1.3.4.</span> <span class="nav-text">优化考量：尾递归 (Tail Recursion)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%EF%BC%9A%E6%80%BB%E7%BB%93%E4%B8%8E%E5%B8%B8%E8%A7%81%E9%99%B7%E9%98%B1"><span class="nav-number">1.4.</span> <span class="nav-text">第三部分：总结与常见陷阱</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%AF%B9%E6%AF%94%E8%A1%A8"><span class="nav-number">1.4.1.</span> <span class="nav-text">核心分析方法对比表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%88%86%E6%9E%90%E9%99%B7%E9%98%B1"><span class="nav-number">1.4.2.</span> <span class="nav-text">常见分析陷阱</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%86%99%E5%87%BA%E9%80%92%E6%8E%A8%E5%85%B3%E7%B3%BB%E5%BC%8F"><span class="nav-number">1.5.</span> <span class="nav-text">第一步：写出递推关系式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E6%9E%84%E5%BB%BA%E5%B9%B6%E5%88%86%E6%9E%90%E9%80%92%E5%BD%92%E6%A0%91"><span class="nav-number">1.6.</span> <span class="nav-text">第二步：构建并分析递归树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%A0%91%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-number">1.6.1.</span> <span class="nav-text">1. 树的结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%8F%AF%E8%A7%86%E5%8C%96%E9%80%92%E5%BD%92%E6%A0%91"><span class="nav-number">1.6.2.</span> <span class="nav-text">2. 可视化递归树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%88%86%E6%9E%90%E6%A0%91%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="nav-number">1.6.3.</span> <span class="nav-text">3. 分析树的属性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E7%B4%AF%E5%8A%A0%E6%89%80%E6%9C%89%E5%B1%82%E7%9A%84%E4%BB%A3%E4%BB%B7"><span class="nav-number">1.7.</span> <span class="nav-text">第三步：累加所有层的代价</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E5%BE%97%E5%87%BA%E6%9C%80%E7%BB%88%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-number">1.8.</span> <span class="nav-text">第四步：得出最终复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A%E9%80%92%E5%BD%92%E6%A0%91%E6%B3%95%E5%88%86%E6%9E%90%E6%AD%A5%E9%AA%A4%E5%9B%9E%E9%A1%BE"><span class="nav-number">1.9.</span> <span class="nav-text">总结：递归树法分析步骤回顾</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/toggle-theme.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/code-block.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/local-search.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/lazyload.js"></script>
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/post-helper.js"></script>
+
+        <!-- toc -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/toc.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/copyright-info.js"></script>
+        
+
+        <!-- share -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/share.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+    
+<script src="//cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js"></script>
+
+
+
+
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

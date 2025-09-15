@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="stellogic">
+    
+    <title>
+        
+            HashMap |
+        
+        stellogic的个人空间
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"stellogic.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"stellogic的个人空间","author":"stellogic","avatar":"/images/avatar.jpg","logo":null,"favicon":null},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives || fa-solid fa-box-archive","categories":"/categories || fa-solid fa-layer-group","tags":"/tags || fa-solid fa-tags","links":"/links || fa-solid fa-link","about":"/about || fa-solid fa-user-graduate"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg2.svg","description":"欢迎来到我的个人空间 || 记录点滴，共同进步","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/stellogic","weixin":null,"qq":null,"weibo":null,"zhihu":"https://www.zhihu.com/people/stellogic","twitter":null,"x":null,"facebook":null,"email":"mack12399@outlook.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":false},"home":{"announcement":"📚We are together","category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":false,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":"留下你的想法吧~"},"gitalk":{"github_id":null,"github_admins":["你的 GitHub 用户名"],"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":true,"version":"3.3.2"},"giscus":{"repo":"stellogic/Stellogic.github.io","repo_id":"R_kgDOOkF4SA","category":"Announcements","category_id":"DIC_kwDOOkF4SM4Cp-Ln","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":true},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"jsdelivr"},"pjax":{"enable":false},"footer":{"since":2025,"word_count":true,"site_deploy":{"enable":true,"provider":"github","url":"https://stellogic.github.io/"},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="Stellogic的博客" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+            <a class="site-name border-box" href="/">
+               stellogic的个人空间
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-link"></i>
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-link"></i>
+                                </span>
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                </span>
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        HashMap
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">stellogic</span>
+                                
+                                    <span class="author-badge">Three</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-09-15 09:19:35</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Mon Sep 15 2025 17:29:16 GMT+0800">2025-09-15 17:29:16</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li>
+                        
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.5k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>10 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="哈希表核心知识点与-Java-实现"><a href="#哈希表核心知识点与-Java-实现" class="headerlink" title="哈希表核心知识点与 Java 实现"></a>哈希表核心知识点与 Java 实现</h1><h2 id="1-定义与核心原理"><a href="#1-定义与核心原理" class="headerlink" title="1. 定义与核心原理"></a>1. 定义与核心原理</h2><p><strong>哈希表 (Hash Table)<strong>，又称散列表，是一种通过</strong>哈希函数 (Hash Function)</strong> 将键 (Key) 映射到数组索引，从而实现高效键值 (Key-Value) 存储与访问的数据结构。</p>
+<span id="more"></span>
+
+
+<ul>
+<li><strong>核心目标</strong>: 实现平均时间复杂度为 <strong>O(1)</strong> 的插入、删除、查找操作。</li>
+<li><strong>基本组件</strong>:<ol>
+<li><strong>键值对 (Pair)</strong>: 数据存储的基本单元。</li>
+<li><strong>桶数组 (Bucket Array)</strong>: 哈希表底层的数组，用于存放数据。</li>
+<li><strong>哈希函数 (Hash Function)</strong>: 负责将 Key 转换为桶数组的索引。</li>
+</ol>
+</li>
+</ul>
+<h2 id="2-关键组件一：哈希函数"><a href="#2-关键组件一：哈希函数" class="headerlink" title="2. 关键组件一：哈希函数"></a>2. 关键组件一：哈希函数</h2><p>哈希函数是哈希表的基石，其质量直接影响哈希表的性能。</p>
+<h3 id="2-1-必备特性"><a href="#2-1-必备特性" class="headerlink" title="2.1. 必备特性"></a>2.1. 必备特性</h3><ul>
+<li><strong>确定性</strong>: 相同的 Key 输入必须产生相同的索引输出。</li>
+<li><strong>高效性</strong>: 函数计算速度必须快。</li>
+<li><strong>均匀性</strong>: 必须能将不同的 Key 尽可能均匀地分布到桶数组的各个位置，以最小化<strong>哈希冲突</strong>。</li>
+</ul>
+<h3 id="2-2-Java-中的-hashCode-与-equals"><a href="#2-2-Java-中的-hashCode-与-equals" class="headerlink" title="2.2. Java 中的 hashCode() 与 equals()"></a>2.2. Java 中的 <code>hashCode()</code> 与 <code>equals()</code></h3><p>在 Java 中，<code>HashMap</code> 等数据结构依赖对象的 <code>hashCode()</code> 方法来计算哈希值。为保证正确性，必须遵守以下契约：</p>
+<ul>
+<li><strong><code>equals()</code> 相等的两个对象，其 <code>hashCode()</code> 必须相等。</strong></li>
+<li><code>hashCode()</code> 相等的两个对象，其 <code>equals()</code> 不一定相等（这正是哈希冲突）。</li>
+<li>如果重写了 <code>equals()</code> 方法，就必须重写 <code>hashCode()</code> 方法以维护此契约。</li>
+</ul>
+<h2 id="3-关键组件二：哈希冲突解决方案"><a href="#3-关键组件二：哈希冲突解决方案" class="headerlink" title="3. 关键组件二：哈希冲突解决方案"></a>3. 关键组件二：哈希冲突解决方案</h2><p><strong>哈希冲突</strong>: 两个不同的 Key 经过哈希函数计算后得到了相同的数组索引。冲突是必然的，解决冲突的策略是哈希表设计的核心。</p>
+<h3 id="3-1-方案-A-链式地址法-Separate-Chaining"><a href="#3-1-方案-A-链式地址法-Separate-Chaining" class="headerlink" title="3.1. 方案 A: 链式地址法 (Separate Chaining)"></a>3.1. 方案 A: 链式地址法 (Separate Chaining)</h3><ul>
+<li><p><strong>机制</strong>: 桶数组的每个位置不直接存储元素，而是存储一个数据集合（如链表、动态数组）的引用。所有哈希到同一索引的键值对，都被添加到该位置的集合中。</p>
+</li>
+<li><p><strong>操作流程</strong>:</p>
+<ul>
+<li><strong>插入 (<code>put</code>)</strong>: 计算索引，定位到桶。遍历桶内集合：若 Key 已存在，则更新 Value；若不存在，则将新键值对添加到集合末尾。</li>
+<li><strong>查找 (<code>get</code>)</strong>: 计算索引，定位到桶。遍历桶内集合，查找匹配的 Key 并返回其 Value。</li>
+<li><strong>删除 (<code>remove</code>)</strong>: 计算索引，定位到桶。遍历桶内集合，找到并移除匹配的键值对。</li>
+</ul>
+</li>
+<li><p><strong>重要优化：红黑树化 (Treeifying)</strong></p>
+<ul>
+<li><strong>问题</strong>: 当大量 Key 哈希到同一个桶时，链表会变得很长，查询效率从 O(1) 退化到 O(N)。</li>
+<li><strong>解决方案</strong>: 在 Java 8 及以后的 <code>HashMap</code> 中，当一个桶内的链表长度超过阈值（默认为 8）且哈希表总容量大于 64 时，该链表会转换为一棵<strong>红黑树</strong>。</li>
+<li><strong>效果</strong>: 将该桶的最坏查询时间复杂度从 O(N) 优化到 **O(logN)**。</li>
+</ul>
+</li>
+<li><p><strong>链式地址法总结</strong>:</p>
+<ul>
+<li><strong>优点</strong>: 实现逻辑清晰，删除操作简单直接，负载因子理论上可以大于1。</li>
+<li><strong>缺点</strong>: 存在额外的数据结构开销（如链表节点的指针），对 CPU 缓存不友好。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-2-方案-B-开放寻址法-Open-Addressing"><a href="#3-2-方案-B-开放寻址法-Open-Addressing" class="headerlink" title="3.2. 方案 B: 开放寻址法 (Open Addressing)"></a>3.2. 方案 B: 开放寻址法 (Open Addressing)</h3><ul>
+<li><p><strong>机制</strong>: 所有元素都直接存储在桶数组中。当发生冲突时，通过一个<strong>探测序列</strong>在数组中寻找下一个可用的空槽位。</p>
+</li>
+<li><p><strong>核心：懒删除 (Lazy Deletion) 与 <code>TOMBSTONE</code></strong></p>
+<ul>
+<li><strong>问题</strong>: 直接删除元素（置为 <code>null</code>）会中断探测链，导致后续本应能找到的元素查找失败。</li>
+<li><strong>解决方案</strong>: 删除时，不将槽位置为 <code>null</code>，而是放置一个特殊的**墓碑对象 (<code>TOMBSTONE</code>)**。</li>
+<li><strong><code>TOMBSTONE</code> 的作用</strong>:<ul>
+<li>对于<strong>查找</strong>操作：遇到墓碑，表示探测应继续进行。</li>
+<li>对于<strong>插入</strong>操作：墓碑所在的位置被视为可用槽位，可以直接插入新元素。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>探测方法</strong>:</p>
+<ol>
+<li><strong>线性探测 (Linear Probing)</strong>: 依次探测 <code>index+1</code>, <code>index+2</code>, …。实现简单，但易产生<strong>聚集 (Clustering)</strong> 现象，即连续的槽位被占据，降低性能。</li>
+<li><strong>二次探测 (Quadratic Probing)</strong>: 依次探测 <code>index+1²</code>, <code>index+2²</code>, …。可缓解主聚集。</li>
+<li><strong>双重哈希 (Double Hashing)</strong>: 使用第二个哈希函数计算探测的步长。<code>index = (hash1(key) + i * hash2(key)) % capacity</code>。能有效避免各类聚集，是性能较好的探测方法。</li>
+</ol>
+</li>
+<li><p><strong>开放寻址法总结</strong>:</p>
+<ul>
+<li><strong>优点</strong>: 无额外数据结构开销，空间利用率高，数据连续存储对 CPU 缓存友好。</li>
+<li><strong>缺点</strong>: 实现相对复杂，删除操作需要懒删除机制，负载因子必须严格小于1，对哈希函数的均匀性要求更高。</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-关键组件三：负载因子与扩容机制"><a href="#4-关键组件三：负载因子与扩容机制" class="headerlink" title="4. 关键组件三：负载因子与扩容机制"></a>4. 关键组件三：负载因子与扩容机制</h2><ul>
+<li><p><strong>负载因子 (Load Factor)</strong>:</p>
+<ul>
+<li><strong>定义</strong>: <code>负载因子 = 已存元素数量 / 桶数组总容量</code>。</li>
+<li><strong>作用</strong>: 衡量哈希表的填充程度，是决定是否需要扩容的关键指标。Java <code>HashMap</code> 默认为 <code>0.75</code>。</li>
+</ul>
+</li>
+<li><p><strong>扩容 (Rehashing)</strong>:</p>
+<ul>
+<li><strong>触发条件</strong>: 当负载因子超过设定的阈值时。</li>
+<li><strong>目的</strong>: 降低负载因子，减少哈希冲突，维持 O(1) 的平均性能。</li>
+<li><strong>过程 (时间复杂度 O(N))</strong>:<ol>
+<li>创建一个容量通常为原来2倍的新桶数组。</li>
+<li>遍历<strong>旧桶数组</strong>中的<strong>每一个元素</strong>。</li>
+<li><strong>重新计算</strong>每个元素在新容量下的哈希索引 (<code>key % new_capacity</code>)。</li>
+<li>将元素放入新桶数组的对应位置。</li>
+<li>用新桶数组替换旧桶数组。</li>
+</ol>
+</li>
+<li><strong>注意</strong>: 扩容是一个高成本操作，因为它需要重新处理所有现有元素。</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-两种方案对比总结"><a href="#5-两种方案对比总结" class="headerlink" title="5. 两种方案对比总结"></a>5. 两种方案对比总结</h2><table>
+<thead>
+<tr>
+<th align="left">特性</th>
+<th align="left">链式地址法 (Separate Chaining)</th>
+<th align="left">开放寻址法 (Open Addressing)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>空间使用</strong></td>
+<td align="left">存在额外指针&#x2F;节点开销</td>
+<td align="left">空间利用率高，无额外开销</td>
+</tr>
+<tr>
+<td align="left"><strong>负载因子</strong></td>
+<td align="left">可大于 1</td>
+<td align="left">必须小于 1</td>
+</tr>
+<tr>
+<td align="left"><strong>删除操作</strong></td>
+<td align="left">简单，直接移除节点</td>
+<td align="left">复杂，需要 <code>TOMBSTONE</code> 标记</td>
+</tr>
+<tr>
+<td align="left"><strong>缓存效率</strong></td>
+<td align="left">较低（内存不连续）</td>
+<td align="left">较高（内存连续）</td>
+</tr>
+<tr>
+<td align="left"><strong>主要问题</strong></td>
+<td align="left">链表过长导致性能退化</td>
+<td align="left">元素聚集导致性能退化</td>
+</tr>
+<tr>
+<td align="left"><strong>常见场景</strong></td>
+<td align="left">通用哈希表实现 (如 Java <code>HashMap</code>)</td>
+<td align="left">对内存占用敏感的特定场景</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="6-完整代码实现"><a href="#6-完整代码实现" class="headerlink" title="6. 完整代码实现"></a>6. 完整代码实现</h2><h3 id="实现-1：HashMapChaining-java-链式地址法"><a href="#实现-1：HashMapChaining-java-链式地址法" class="headerlink" title="实现 1：HashMapChaining.java (链式地址法)"></a>实现 1：HashMapChaining.java (链式地址法)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 辅助类：键值对</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Pair</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> key;</span><br><span class="line">    <span class="keyword">public</span> String val;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Pair</span><span class="params">(<span class="type">int</span> key, String val)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.key = key;</span><br><span class="line">        <span class="built_in">this</span>.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HashMapChaining</span> &#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    实现哈希表，链式地址</span></span><br><span class="line"><span class="comment">    实现构造，hashFunc,loadFactor,get,put,remove,extend,print方法。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="type">int</span> size;</span><br><span class="line">    <span class="type">int</span> capacity;</span><br><span class="line">    <span class="type">double</span> lodaThres;</span><br><span class="line">    <span class="type">int</span> extendRatio;</span><br><span class="line">    List&lt;List&lt;Pair&gt;&gt; buckets;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">HashMapChaining</span><span class="params">()</span> &#123;</span><br><span class="line">        size = <span class="number">0</span>;</span><br><span class="line">        capacity = <span class="number">4</span>;</span><br><span class="line">        lodaThres = <span class="number">2.0</span> / <span class="number">3.0</span>;</span><br><span class="line">        extendRatio = <span class="number">2</span>;</span><br><span class="line">        buckets = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(capacity);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; capacity; i++) &#123;</span><br><span class="line">            buckets.add(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="title function_">hashFunc</span><span class="params">(<span class="type">int</span> key)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> key % capacity;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">double</span> <span class="title function_">loadFactor</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="type">double</span>) size / capacity;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    String <span class="title function_">get</span><span class="params">(<span class="type">int</span> key)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> hashFunc(key);</span><br><span class="line">        List&lt;Pair&gt; bucket = buckets.get(index);</span><br><span class="line">        <span class="keyword">for</span> (Pair pair : bucket) &#123;</span><br><span class="line">            <span class="keyword">if</span> (pair.key == key) &#123;</span><br><span class="line">                <span class="keyword">return</span> pair.val;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">put</span><span class="params">(<span class="type">int</span> key, String val)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (loadFactor() &gt; lodaThres) &#123;</span><br><span class="line">            extend();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> hashFunc(key);</span><br><span class="line">        List&lt;Pair&gt; bucket = buckets.get(index);</span><br><span class="line">        <span class="keyword">for</span> (Pair pair : bucket) &#123;</span><br><span class="line">            <span class="keyword">if</span> (pair.key == key) &#123;</span><br><span class="line">                pair.val = val;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">Pair</span> <span class="variable">pair</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Pair</span>(key, val);</span><br><span class="line">        bucket.add(pair);</span><br><span class="line">        size++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">remove</span><span class="params">(<span class="type">int</span> key)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> hashFunc((key));</span><br><span class="line">        List&lt;Pair&gt; bucket = buckets.get(index);</span><br><span class="line">        <span class="keyword">for</span> (Pair pair : bucket) &#123;</span><br><span class="line">            <span class="keyword">if</span> (pair.key == key) &#123;</span><br><span class="line">                bucket.remove(pair);</span><br><span class="line">                size--;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">extend</span><span class="params">()</span> &#123;</span><br><span class="line">        List&lt;List&lt;Pair&gt;&gt; bucketsTemp = buckets;</span><br><span class="line">        capacity *= extendRatio;</span><br><span class="line">        buckets = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(capacity);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; capacity; i++) &#123;</span><br><span class="line">            buckets.add(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;());</span><br><span class="line">        &#125;</span><br><span class="line">        size = <span class="number">0</span>; <span class="comment">// 重置size，因为put操作会重新增加它</span></span><br><span class="line">        <span class="keyword">for</span> (List&lt;Pair&gt; bucket : bucketsTemp) &#123;</span><br><span class="line">            <span class="keyword">for</span> (Pair pair : bucket) &#123;</span><br><span class="line">                put(pair.key, pair.val);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">print</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (List&lt;Pair&gt; bucket : buckets) &#123;</span><br><span class="line">            List&lt;String&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (Pair pair : bucket) &#123;</span><br><span class="line">                res.add(pair.key + <span class="string">&quot;-&gt;&quot;</span> + pair.val);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(res);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实现-2：HashMapOpenAddressing-java-开放寻址法"><a href="#实现-2：HashMapOpenAddressing-java-开放寻址法" class="headerlink" title="实现 2：HashMapOpenAddressing.java (开放寻址法)"></a>实现 2：HashMapOpenAddressing.java (开放寻址法)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Pair 类复用上面的定义</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HashMapOpenAddressing</span> &#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    包含懒删除的开放寻址（线性探测）的哈希表。</span></span><br><span class="line"><span class="comment">    实现构造，hashFunc ,loadFactor,findBucket,get,put,remove,extend,print</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> size;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="variable">capacity</span> <span class="operator">=</span> <span class="number">4</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">double</span> <span class="variable">loadThres</span> <span class="operator">=</span> <span class="number">2.0</span> / <span class="number">3.0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">extendRatio</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">private</span> Pair[] buckets;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">Pair</span> <span class="variable">TOMBSTONE</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Pair</span>(-<span class="number">1</span>, <span class="string">&quot;-1&quot;</span>); <span class="comment">// 墓碑标记</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">HashMapOpenAddressing</span><span class="params">()</span> &#123;</span><br><span class="line">        size = <span class="number">0</span>;</span><br><span class="line">        buckets = <span class="keyword">new</span> <span class="title class_">Pair</span>[capacity];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">hashFunc</span><span class="params">(<span class="type">int</span> key)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> key % capacity;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">double</span> <span class="title function_">loadFactor</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="type">double</span>) size / capacity;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">findBucket</span><span class="params">(<span class="type">int</span> key)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> hashFunc(key);</span><br><span class="line">        <span class="type">int</span> <span class="variable">firstTombstone</span> <span class="operator">=</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 循环探测</span></span><br><span class="line">        <span class="keyword">while</span> (buckets[index] != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="comment">// 如果找到匹配的key，直接返回</span></span><br><span class="line">            <span class="keyword">if</span> (buckets[index].key == key) &#123;</span><br><span class="line">                <span class="comment">// 如果之前遇到了墓碑，做交换优化，让元素更靠近初始位置</span></span><br><span class="line">                <span class="keyword">if</span> (firstTombstone != -<span class="number">1</span>) &#123;</span><br><span class="line">                    buckets[firstTombstone] = buckets[index];</span><br><span class="line">                    buckets[index] = TOMBSTONE;</span><br><span class="line">                    <span class="keyword">return</span> firstTombstone;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> index; <span class="comment">// 直接返回当前位置</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 记录遇到的第一个墓碑</span></span><br><span class="line">            <span class="keyword">if</span> (firstTombstone == -<span class="number">1</span> &amp;&amp; buckets[index] == TOMBSTONE) &#123;</span><br><span class="line">                firstTombstone = index;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 线性探测，移动到下一个位置</span></span><br><span class="line">            index = (index + <span class="number">1</span>) % capacity;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 循环结束，表示未找到key。</span></span><br><span class="line">        <span class="comment">// 如果曾遇到墓碑，返回第一个墓碑的位置（用于插入）；否则返回null的位置。</span></span><br><span class="line">        <span class="keyword">return</span> firstTombstone == -<span class="number">1</span> ? index : firstTombstone;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">get</span><span class="params">(<span class="type">int</span> key)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> findBucket(key);</span><br><span class="line">        <span class="comment">// 如果找到的位置不为null且不是墓碑，说明找到了</span></span><br><span class="line">        <span class="keyword">if</span> (buckets[index] != <span class="literal">null</span> &amp;&amp; buckets[index] != TOMBSTONE) &#123;</span><br><span class="line">            <span class="keyword">return</span> buckets[index].val;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">put</span><span class="params">(<span class="type">int</span> key, String val)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (loadFactor() &gt; loadThres) &#123;</span><br><span class="line">            extend();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> findBucket(key);</span><br><span class="line">        <span class="comment">// 如果该位置已有元素（不是null或墓碑），说明是更新操作</span></span><br><span class="line">        <span class="keyword">if</span> (buckets[index] != <span class="literal">null</span> &amp;&amp; buckets[index] != TOMBSTONE) &#123;</span><br><span class="line">            buckets[index].val = val;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 否则是插入新元素</span></span><br><span class="line">        buckets[index] = <span class="keyword">new</span> <span class="title class_">Pair</span>(key, val);</span><br><span class="line">        size++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">remove</span><span class="params">(<span class="type">int</span> key)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> findBucket(key);</span><br><span class="line">        <span class="comment">// 确保该位置有元素再删除</span></span><br><span class="line">        <span class="keyword">if</span> (buckets[index] != <span class="literal">null</span> &amp;&amp; buckets[index] != TOMBSTONE) &#123;</span><br><span class="line">            buckets[index] = TOMBSTONE;</span><br><span class="line">            size--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">extend</span><span class="params">()</span> &#123;</span><br><span class="line">        Pair[] bucketsTemp = buckets;</span><br><span class="line">        capacity *= extendRatio;</span><br><span class="line">        buckets = <span class="keyword">new</span> <span class="title class_">Pair</span>[capacity];</span><br><span class="line">        size = <span class="number">0</span>; <span class="comment">// 重置size，因为put会重新计算</span></span><br><span class="line">        <span class="comment">// 遍历旧数组，将非null且非墓碑的元素重新插入</span></span><br><span class="line">        <span class="keyword">for</span> (Pair pair : bucketsTemp) &#123;</span><br><span class="line">            <span class="keyword">if</span> (pair != <span class="literal">null</span> &amp;&amp; pair != TOMBSTONE) &#123;</span><br><span class="line">                put(pair.key, pair.val);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (Pair pair : buckets) &#123;</span><br><span class="line">            <span class="keyword">if</span> (pair == <span class="literal">null</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;null&quot;</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (pair == TOMBSTONE) &#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;TOMBSTONE&quot;</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(pair.key + <span class="string">&quot;-&gt;&quot;</span> + pair.val);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                HashMap
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2025/09/15/算法笔记/数据结构/HashMap/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">stellogic</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2025-09-15 09:19</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+                                    </li>
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/09/15/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/%E9%80%92%E5%BD%92%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/"
+                                   title="递归复杂度分析"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">递归复杂度分析</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/09/15/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Heap/"
+                                   title="Heap"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Heap</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script 
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          if (!window.KeepCommentPlugin?.getGiscusTheme) {
+            window.KeepCommentPlugin.getGiscusTheme = () => {
+              return document.documentElement.classList.contains('dark-mode') ? 'dark_dimmed' : 'light_tritanopia'
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.changeGiscusTheme) {
+            window.KeepCommentPlugin.changeGiscusTheme = () => {
+              const iframe = document.querySelector('iframe.giscus-frame')
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: window.KeepCommentPlugin.getGiscusTheme()
+                  }
+                }
+              }, 'https://giscus.app')
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.initGiscus) {
+            window.KeepCommentPlugin.initGiscus = () => {
+              const script = document.createElement('script')
+              script.async = true
+              script.src = 'https://giscus.app/client.js'
+              script.setAttribute('data-repo', 'stellogic/Stellogic.github.io')
+              script.setAttribute('data-repo-id', 'R_kgDOOkF4SA')
+              script.setAttribute('data-category', 'Announcements')
+              script.setAttribute('data-category-id', 'DIC_kwDOOkF4SM4Cp-Ln')
+              script.setAttribute('data-reactions-enabled', '1')
+              script.setAttribute('data-lang', 'zh-CN')
+              script.setAttribute('data-mapping', 'pathname')
+              script.setAttribute('data-strict', '0')
+              script.setAttribute('data-emit-metadata', '0')
+              script.setAttribute('data-input-position', 'top')
+              script.setAttribute('crossorigin', 'anonymous')
+              script.setAttribute('loading', 'lazy')
+              script.setAttribute('data-theme', window.KeepCommentPlugin.getGiscusTheme())
+              document.querySelector('.giscus-comments-container').appendChild(script)
+              script.onerror = () => {
+                window.KeepCommentPlugin.loadFailHandle()
+              }
+              script.onload = () => {
+                window.KeepCommentPlugin.hideLoading()
+              }
+              const toggleThemeBtn = document.querySelector('.tool-toggle-theme-mode')
+              toggleThemeBtn && toggleThemeBtn.addEventListener('click', () => {
+                window.KeepCommentPlugin.changeGiscusTheme()
+              })
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGiscus()
+            }, 1000)
+          } else {
+            window.addEventListener("DOMContentLoaded", window.KeepCommentPlugin.initGiscus)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9%E4%B8%8E-Java-%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.</span> <span class="nav-text">哈希表核心知识点与 Java 实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%9A%E4%B9%89%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.</span> <span class="nav-text">1. 定义与核心原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%85%B3%E9%94%AE%E7%BB%84%E4%BB%B6%E4%B8%80%EF%BC%9A%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">2. 关键组件一：哈希函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%BF%85%E5%A4%87%E7%89%B9%E6%80%A7"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1. 必备特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Java-%E4%B8%AD%E7%9A%84-hashCode-%E4%B8%8E-equals"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2. Java 中的 hashCode() 与 equals()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%85%B3%E9%94%AE%E7%BB%84%E4%BB%B6%E4%BA%8C%EF%BC%9A%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.3.</span> <span class="nav-text">3. 关键组件二：哈希冲突解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%96%B9%E6%A1%88-A-%E9%93%BE%E5%BC%8F%E5%9C%B0%E5%9D%80%E6%B3%95-Separate-Chaining"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1. 方案 A: 链式地址法 (Separate Chaining)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%96%B9%E6%A1%88-B-%E5%BC%80%E6%94%BE%E5%AF%BB%E5%9D%80%E6%B3%95-Open-Addressing"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2. 方案 B: 开放寻址法 (Open Addressing)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%85%B3%E9%94%AE%E7%BB%84%E4%BB%B6%E4%B8%89%EF%BC%9A%E8%B4%9F%E8%BD%BD%E5%9B%A0%E5%AD%90%E4%B8%8E%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6"><span class="nav-number">1.4.</span> <span class="nav-text">4. 关键组件三：负载因子与扩容机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%A1%88%E5%AF%B9%E6%AF%94%E6%80%BB%E7%BB%93"><span class="nav-number">1.5.</span> <span class="nav-text">5. 两种方案对比总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.6.</span> <span class="nav-text">6. 完整代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0-1%EF%BC%9AHashMapChaining-java-%E9%93%BE%E5%BC%8F%E5%9C%B0%E5%9D%80%E6%B3%95"><span class="nav-number">1.6.1.</span> <span class="nav-text">实现 1：HashMapChaining.java (链式地址法)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0-2%EF%BC%9AHashMapOpenAddressing-java-%E5%BC%80%E6%94%BE%E5%AF%BB%E5%9D%80%E6%B3%95"><span class="nav-number">1.6.2.</span> <span class="nav-text">实现 2：HashMapOpenAddressing.java (开放寻址法)</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">stellogic</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+        
+        <div class="deploy-info info-item">
+            
+                <a target="_blank" rel="nofollow" href="https://stellogic.github.io/">
+            
+            本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+            
+                </a>
+            
+        </div>
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">45.7k</span>
+                </span>
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9%E4%B8%8E-Java-%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.</span> <span class="nav-text">哈希表核心知识点与 Java 实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%9A%E4%B9%89%E4%B8%8E%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.</span> <span class="nav-text">1. 定义与核心原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%85%B3%E9%94%AE%E7%BB%84%E4%BB%B6%E4%B8%80%EF%BC%9A%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">2. 关键组件一：哈希函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E5%BF%85%E5%A4%87%E7%89%B9%E6%80%A7"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1. 必备特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Java-%E4%B8%AD%E7%9A%84-hashCode-%E4%B8%8E-equals"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2. Java 中的 hashCode() 与 equals()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%85%B3%E9%94%AE%E7%BB%84%E4%BB%B6%E4%BA%8C%EF%BC%9A%E5%93%88%E5%B8%8C%E5%86%B2%E7%AA%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.3.</span> <span class="nav-text">3. 关键组件二：哈希冲突解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E6%96%B9%E6%A1%88-A-%E9%93%BE%E5%BC%8F%E5%9C%B0%E5%9D%80%E6%B3%95-Separate-Chaining"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1. 方案 A: 链式地址法 (Separate Chaining)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E6%96%B9%E6%A1%88-B-%E5%BC%80%E6%94%BE%E5%AF%BB%E5%9D%80%E6%B3%95-Open-Addressing"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2. 方案 B: 开放寻址法 (Open Addressing)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%85%B3%E9%94%AE%E7%BB%84%E4%BB%B6%E4%B8%89%EF%BC%9A%E8%B4%9F%E8%BD%BD%E5%9B%A0%E5%AD%90%E4%B8%8E%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6"><span class="nav-number">1.4.</span> <span class="nav-text">4. 关键组件三：负载因子与扩容机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%A1%88%E5%AF%B9%E6%AF%94%E6%80%BB%E7%BB%93"><span class="nav-number">1.5.</span> <span class="nav-text">5. 两种方案对比总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.6.</span> <span class="nav-text">6. 完整代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0-1%EF%BC%9AHashMapChaining-java-%E9%93%BE%E5%BC%8F%E5%9C%B0%E5%9D%80%E6%B3%95"><span class="nav-number">1.6.1.</span> <span class="nav-text">实现 1：HashMapChaining.java (链式地址法)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0-2%EF%BC%9AHashMapOpenAddressing-java-%E5%BC%80%E6%94%BE%E5%AF%BB%E5%9D%80%E6%B3%95"><span class="nav-number">1.6.2.</span> <span class="nav-text">实现 2：HashMapOpenAddressing.java (开放寻址法)</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/toggle-theme.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/code-block.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/local-search.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/lazyload.js"></script>
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/post-helper.js"></script>
+
+        <!-- toc -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/toc.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/copyright-info.js"></script>
+        
+
+        <!-- share -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/share.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+    
+<script src="//cdn.jsdelivr.net/npm/mermaid@10.5.0/dist/mermaid.min.js"></script>
+
+
+
+
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
