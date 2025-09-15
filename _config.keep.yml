@@ -1,0 +1,262 @@
+## ======================================================================================
+## Hexo Theme Keep
+## Documents: https://keep-docs.xpoet.cn
+## Repository: https://github.com/XPoet/hexo-theme-keep
+## ======================================================================================
+
+# ---------------------------------------------------------------------------------------
+# 基础信息 Docs: https://keep-docs.xpoet.cn/basis/configuration-guide/base_info.html
+# ---------------------------------------------------------------------------------------
+base_info:
+  # 主题主色调
+  primary_color: "#0066cc" # 你可以保持这个颜色，或选择一个你喜欢的主题色
+
+  # 博客网站标题
+  title: stellogic的个人空间 # 例如：张三的学习空间
+  # 博客网站作者名称
+  author: stellogic # 例如：张三
+  # 作者头像，可以使用本地图片路径或图片链接
+  avatar: /images/avatar.jpg # 确保 source/images/ 目录下有 avatar.png 这个文件，或者替换成你的头像文件名
+  # 网站 LOGO，可以使用本地图片路径或图片链接
+  logo:  # 确保 source/images/ 目录下有 logo.png，如果不需要可以留空或注释掉
+  # 网站 favicon，可以使用本地图片路径或图片链接
+  favicon:  # 通常和 logo 一致
+
+
+# ---------------------------------------------------------------------------------------
+# 菜单 Docs: https://keep-docs.xpoet.cn/basis/configuration-guide/menu.html
+# ---------------------------------------------------------------------------------------
+menu:
+  home: / || fa-solid fa-home
+  archives: /archives || fa-solid fa-box-archive
+  categories: /categories || fa-solid fa-layer-group # 确保执行过 hexo new page categories
+  tags: /tags || fa-solid fa-tags # 确保执行过 hexo new page tags
+  links: /links || fa-solid fa-link # 如需友链，取消注释并执行 hexo new page links
+  # photos: /photos || fa-solid fa-image # 如需相册，取消注释并执行 hexo new page photos
+  # tools: /tools || fa-solid fa-tools # 如需工具页，取消注释并执行 hexo new page tools
+  about: /about || fa-solid fa-user-graduate # 如需关于页，取消注释并执行 hexo new page about
+
+
+# ---------------------------------------------------------------------------------------
+# 首页首屏 Docs: https://keep-docs.xpoet.cn/basis/configuration-guide/first_screen.html
+# ---------------------------------------------------------------------------------------
+first_screen:
+  enable: true # 设为 true 以启用首页大图效果
+  background_img: /images/bg.svg # 替换成你的背景图路径，放于 source/images/
+  background_img_dark: /images/bg2.svg # 深色模式背景图，放于 source/images/
+  description: "欢迎来到我的个人空间 || 记录点滴，共同进步" # 修改成你的描述
+  hitokoto: false # 如果想用随机一言代替上面的 description，则设为 true
+
+
+# ---------------------------------------------------------------------------------------
+# 博主社交账号链接 Docs: https://keep-docs.xpoet.cn/basis/configuration-guide/social_contact.html
+# ---------------------------------------------------------------------------------------
+social_contact:
+  enable: true # 设为 true 以显示社交链接
+  links:
+    github: https://github.com/stellogic # 替换成你的 GitHub 链接
+    # weixin: img | /images/wechat_qr.png # 如果要显示微信二维码图片，取消注释并替换图片路径
+    # qq: 你的QQ号
+    # weibo: https://weibo.com/你的微博用户名或ID
+    zhihu: https://www.zhihu.com/people/stellogic
+    # twitter: https://twitter.com/你的Twitter用户名
+    # x: https://x.com/你的X用户名
+    # facebook: https://www.facebook.com/你的Facebook用户名
+    email: mack12399@outlook.com # 替换成你的邮箱
+
+
+# ---------------------------------------------------------------------------------------
+# 页面滚动 Docs: https://keep-docs.xpoet.cn/basis/configuration-guide/scroll.html
+# ---------------------------------------------------------------------------------------
+scroll:
+  progress_bar: true
+  percent: true
+  hide_header: false
+
+
+# ---------------------------------------------------------------------------------------
+# 首页 Docs: https://keep-docs.xpoet.cn/basis/configuration-guide/home.html
+# ---------------------------------------------------------------------------------------
+home:
+  announcement: "📚We are together" # 首页公告，不需要则留空
+  category: true # 在首页文章块中显示分类
+  tag: true # 在首页文章块中显示标签
+  post_datetime: updated # 文章日期显示更新日期
+
+
+# ---------------------------------------------------------------------------------------
+# 文章页 Docs: https://keep-docs.xpoet.cn/basis/configuration-guide/post.html
+# ---------------------------------------------------------------------------------------
+post:
+  author_badge:
+    enable: true
+    level_badge: false # 显示等级徽章 Lv1, Lv2...
+    # custom_badge: ["学无止境", "热爱分享"] # 如果 level_badge: false，则显示此处的自定义徽章
+  word_count: # 需要安装插件: npm install hexo-wordcount --save
+    wordcount: true # 文章字数
+    min2read: true # 阅读时长
+  datetime_format: "YYYY-MM-DD HH:mm:ss"
+  copyright_info: true # 显示文章版权信息
+  share: true # 显示文章分享按钮
+  reward:
+    enable: false # 打赏功能，不需要则保持 false
+    # img_link: /images/reward_qr.png # 打赏二维码图片
+    # text: "觉得不错就打赏一下吧~"
+    # icon:
+
+
+# ---------------------------------------------------------------------------------------
+# 代码块 Docs: https://keep-docs.xpoet.cn/basis/configuration-guide/code_block.html
+# ---------------------------------------------------------------------------------------
+code_block:
+  tools:
+    enable: true # 启用代码块工具栏（复制、折叠、语言）
+    style: default # 工具栏风格: default 或 mac
+  highlight_theme: default # 代码高亮主题: default 或 obsidian
+
+
+# ---------------------------------------------------------------------------------------
+# 文章目录 Docs: https://keep-docs.xpoet.cn/basis/configuration-guide/toc.html
+# ---------------------------------------------------------------------------------------
+toc:
+  enable: true # 启用文章目录
+  number: true # 目录自动编号
+  expand_all: false # 是否展开所有层级的目录
+  init_open: true # 进入文章页时是否自动打开目录
+  layout: right # 目录显示在右侧
+
+
+# ---------------------------------------------------------------------------------------
+# 网站计数 Docs: https://keep-docs.xpoet.cn/basis/configuration-guide/website_count.html
+# ---------------------------------------------------------------------------------------
+website_count:
+  busuanzi_count:
+    enable: true # 启用不蒜子统计
+    site_uv: true # 网站总访客数 (UV)
+    site_pv: true # 网站总访问量 (PV)
+    page_pv: true # 文章阅读次数 (PV)
+
+
+# ---------------------------------------------------------------------------------------
+# 本地搜索 Docs: https://keep-docs.xpoet.cn/basis/configuration-guide/local_search.html
+# 依赖 Hexo 插件：hexo-generator-searchdb (`npm install hexo-generator-searchdb --save`)
+# ---------------------------------------------------------------------------------------
+local_search:
+  enable: true # 启用本地搜索
+  preload: true # 预加载搜索数据。文章多时建议 false，文章少时可以 true。
+
+
+# ---------------------------------------------------------------------------------------
+# 评论系统 Docs: https://keep-docs.xpoet.cn/basis/configuration-guide/comment.html
+# ---------------------------------------------------------------------------------------
+comment:
+  enable: true # 启用评论系统
+  use: giscus # 推荐使用 giscus (或 waline, twikoo)。这里以 giscus 为例。
+
+  # Valine 配置 (如果选择 valine)
+  valine:
+    appid: # 你的 LeanCloud AppID
+    appkey: # 你的 LeanCloud AppKey
+    server_urls: # 你的 LeanCloud API 服务器地址 (如果不是国际版)
+    placeholder: "留下你的想法吧~"
+
+  # Gitalk 配置 (如果选择 gitalk)
+  gitalk:
+    github_id: # 你的 GitHub 用户名
+    github_admins: ["你的 GitHub 用户名"] # 管理员 GitHub 用户名 (数组)
+    repository: # 存放评论的 GitHub 仓库名
+    client_id: # GitHub Application Client ID
+    client_secret: # GitHub Application Client Secret
+    proxy: # GitHub OAuth 反代，可选
+
+  # Twikoo 配置 (如果选择 twikoo)
+  twikoo:
+    env_id: # 你的腾讯云开发环境 ID 或其他部署平台的 URL
+    region: # 环境地域 (可选)
+    version: 1.6.39 # Twikoo 版本
+
+  # Waline 配置 (如果选择 waline)
+  waline:
+    server_url: # 你的 Waline 服务端地址
+    reaction: true # 文章表情回应
+    version: 3.3.2 # Waline 版本
+
+  # Giscus 配置 (如果选择 giscus，请确保已在 https://giscus.app 生成配置)
+  giscus:
+    repo: stellogic/Stellogic.github.io # 例如：yourname/your-repo-for-giscus
+    repo_id: R_kgDOOkF4SA
+    category: Announcements # 你在 GitHub Discussions 中用于评论的分类名
+    category_id: DIC_kwDOOkF4SM4Cp-Ln
+    reactions_enabled: true # 启用 GitHub Reactions
+
+  # Artalk 配置 (如果选择 artalk)
+  artalk:
+    server: # 你的 Artalk 服务端地址
+
+  # Disqus 配置 (如果选择 disqus)
+  disqus:
+    shortname: # 你的 Disqus shortname
+
+
+# ---------------------------------------------------------------------------------------
+# RSS Docs: https://keep-docs.xpoet.cn/basis/configuration-guide/rss.html
+# 依赖 Hexo 插件：hexo-generator-feed (`npm install hexo-generator-feed --save`)
+# ---------------------------------------------------------------------------------------
+rss:
+  enable: true # 启用 RSS 订阅
+
+
+# ---------------------------------------------------------------------------------------
+# 图片懒加载 Docs: https://keep-docs.xpoet.cn/basis/configuration-guide/lazyload.html
+# ---------------------------------------------------------------------------------------
+lazyload:
+  enable: true # 启用图片懒加载
+
+
+# ---------------------------------------------------------------------------------------
+# CDN Docs: https://keep-docs.xpoet.cn/basis/configuration-guide/cdn.html
+# ---------------------------------------------------------------------------------------
+cdn:
+  enable: true # 如果需要使用 CDN 加速静态资源，设为 true
+  provider: jsdelivr # CDN 提供商: cdnjs | jsdelivr | unpkg
+
+
+# ---------------------------------------------------------------------------------------
+# Pjax Docs: https://keep-docs.xpoet.cn/basis/configuration-guide/pjax.html
+# ---------------------------------------------------------------------------------------
+pjax:
+  enable: false # Pjax 实现无刷新加载，可提升体验，但可能与某些脚本冲突，建议初期保持 false
+
+
+# ---------------------------------------------------------------------------------------
+# 页脚 Docs: https://keep-docs.xpoet.cn/basis/configuration-guide/footer.html
+# ---------------------------------------------------------------------------------------
+footer:
+  since: 2025 # 你的网站起始年份
+  word_count: true # 在页脚显示全站总字数 (需要 hexo-wordcount 插件)
+
+  site_deploy:
+    enable: true # 显示部署平台信息
+    provider: github # 你使用的部署平台
+    url: https://stellogic.github.io/ # 你的 GitHub Pages 链接
+
+  record: # 备案信息 (国内用户如果已备案则填写)
+    enable: false
+    # list:
+    #   - code: 你的备案号
+    #     link: 备案查询链接 (可选)
+
+
+# ---------------------------------------------------------------------------------------
+# 注入自定义 CSS 和 JS Docs: https://keep-docs.xpoet.cn/basis/configuration-guide/inject.html
+# ---------------------------------------------------------------------------------------
+inject:
+  enable: false # 如需注入自定义 CSS 或 JS，设为 true
+  css:
+    -
+    # e.g.
+    # - /css/custom.css
+  js:
+    -
+    # e.g.
+    # - /js/custom.js

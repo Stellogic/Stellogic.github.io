@@ -1,0 +1,41 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "import algorithm posts",
+			"type": "shell",
+			"command": "npm run import:alg",
+			"args": [],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "polish posts and rebuild",
+			"type": "shell",
+			"command": "npm run polish:posts ; npm run clean ; npm run build",
+			"args": [],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "re-polish and rebuild",
+			"type": "shell",
+			"command": "npm run polish:posts ; npm run clean ; npm run build",
+			"args": [],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "audit images and rebuild",
+			"type": "shell",
+			"command": "npm run audit:images ; npm run clean ; npm run build",
+			"args": [],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}

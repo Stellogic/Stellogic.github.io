@@ -170,45 +170,45 @@ comment:
     shortname: ''
 # Donate plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Donation/
-donates:
+#donates:
     # "Afdian.net" donate button configurations
-    -
-        type: afdian
+ #   -
+  #      type: afdian
         # URL to the "Afdian.net" personal page
-        url: ''
+   #     url: ''
     # Alipay donate button configurations
-    -
-        type: alipay
+    #-
+     #   type: alipay
         # Alipay qrcode image URL
-        qrcode: ''
+      #  qrcode: ''
     # "Buy me a coffee" donate button configurations
-    -
-        type: buymeacoffee
+    #-
+     #   type: buymeacoffee
         # URL to the "Buy me a coffee" page
-        url: ''
+      #  url: ''
     # Patreon donate button configurations
-    -
-        type: patreon
+    #-
+     #   type: patreon
         # URL to the Patreon page
-        url: ''
+      #  url: ''
     # Paypal donate button configurations
-    -
-        type: paypal
+    #-
+     #   type: paypal
         # Paypal business ID or email address
-        business: ''
+      #  business: ''
         # Currency code
-        currency_code: USD
+       # currency_code: USD
     # Wechat donate button configurations
-    -
-        type: wechat
+    #-
+     #   type: wechat
         # Wechat qrcode image URL
-        qrcode: ''
+      #  qrcode: ''
 # Share plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Share/
-share:
-    type: sharethis
+#share:
+ #   type: sharethis
     # URL to the ShareThis share plugin script
-    install_url: ''
+  #  install_url: ''
 # Sidebar configurations.
 # Please be noted that a sidebar is only visible when it has at least one widget
 sidebar:
@@ -219,7 +219,7 @@ sidebar:
     # Right sidebar configurations
     right:
         # Whether the sidebar sticks to the top when page scrolls
-        sticky: false
+        sticky: true
 # Sidebar widget configurations
 # http://ppoffice.github.io/hexo-theme-icarus/categories/Widgets/
 widgets:
@@ -262,7 +262,7 @@ widgets:
     # Table of contents widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
-        position: left
+        position: right
         type: toc
         # Whether to show the index of each heading
         index: true
@@ -286,7 +286,8 @@ widgets:
         type: categories
     # Recent posts widget configurations
     -
-        # Where should the widget be placed, left sidebar or right sidebar#       position: left
+        # Where should the widget be placed, left sidebar or right sidebar#       
+        position: left
         type: recent_posts
     # Archives widget configurations
     -
