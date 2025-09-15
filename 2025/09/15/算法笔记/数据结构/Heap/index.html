@@ -314,7 +314,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Mon Sep 15 2025 17:29:16 GMT+0800">2025-09-15 17:29:16</span>
+                    <span class="datetime" data-updated="Mon Sep 15 2025 18:09:09 GMT+0800">2025-09-15 18:09:09</span>
                 </span>
             
         
@@ -387,12 +387,7 @@
 <li>遍历堆化：先把列表元素直接加入堆，再倒叙遍历堆对每个非叶子点进行 从顶至底堆化</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line">MaxHeap(List&lt;Integer&gt; nums) &#123;</span><br><span class="line">    maxHeap = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(nums);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> parent(size() -<span class="number">1</span>);i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">    &#123;</span><br><span class="line">        siftDown(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>复杂度是个差比数列求和：<br><img  
-                       lazyload
-                       alt="image"
-                       data-src="/img.png"
-                        alt="img.png"
-                 ><br>以完美二叉树为例：每层高度记为h，h-1 … 0，单层节点数量则是2^0,2^1 ……2^h;<br><br>求和得最终是O(2^h),即为O(n).</p>
+<p>复杂度是个差比数列求和：<br><img src="/img.png" alt="/img/算法笔记/数据结构/img.png"><br>以完美二叉树为例：每层高度记为h，h-1 … 0，单层节点数量则是2^0,2^1 ……2^h;<br><br>求和得最终是O(2^h),即为O(n).</p>
 <h2 id="Top-k-问题"><a href="#Top-k-问题" class="headerlink" title="Top-k 问题"></a>Top-k 问题</h2><p>给定一个长度为n 的无序数组 nums ，请返回数组中最大的k 个元素。</p>
 <h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><p>k遍历，每轮找到一个当前最大，时间复杂度O(nk)</p>
 <h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><p>先排序再取前k个，O(nlogn)</p>
@@ -528,11 +523,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2025/09/15/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/graph/"
-                                   title="graph"
+                                   href="/2025/09/15/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/"
+                                   title="Tree"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">graph</span>
+                                        <span class="post-nav-title-item text-ellipsis">Tree</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">

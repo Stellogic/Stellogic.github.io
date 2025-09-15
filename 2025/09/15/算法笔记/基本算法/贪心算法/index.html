@@ -314,7 +314,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Mon Sep 15 2025 17:29:16 GMT+0800">2025-09-15 17:29:16</span>
+                    <span class="datetime" data-updated="Mon Sep 15 2025 18:09:09 GMT+0800">2025-09-15 18:09:09</span>
                 </span>
             
         
@@ -334,10 +334,10 @@
             <span class="post-tag meta-info-item border-box">
                 <ul class="post-tag-ul">
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/">基本算法</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li>
                         
                     
-                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li>
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/">基本算法</a></li>
                         
                     
                 </ul>
@@ -456,22 +456,12 @@
 <h2 id="最大容量问题"><a href="#最大容量问题" class="headerlink" title="最大容量问题"></a>最大容量问题</h2><p>输入一个数组 $ht$ ，其中的每个元素代表一个垂直隔板的高度。数组中的任意两个隔板，以及它们之间的空间可以组成一个容器。</p>
 <p>容器的容量等于高度和宽度的乘积（面积），其中高度由较短的隔板决定，宽度是两个隔板的数组索引之差。</p>
 <p>请在数组中选择两个隔板，使得组成的容器的容量最大，返回最大容量。示例如下图所示。</p>
-<p><img  
-                       lazyload
-                       alt="image"
-                       data-src="/img_25.png"
-                        alt="img_25.png"
-                 ></p>
+<p><img src="/img_25.png" alt="/img/算法笔记/基本算法/img_25.png"></p>
 <p><strong>分析</strong></p>
 <ol>
 <li>容器由任意两个隔板围城，因此本题状态就是两个隔板的索引，记为[i,j]</li>
 <li>容量等于短板高度×索引差。因此cap[i,j] &#x3D; min(ht[i],ht[j])*(j-i)。这个显然可以暴力遍历，时间复杂度O(n^2)</li>
-<li>贪心策略：<br> <img  
-                       lazyload
-                       alt="image"
-                       data-src="/img_26.png"
-                        alt="img_26.png"
-                 ><br> 选取一个状态[i,j],满足索引i&lt;j,并且先暂定ht[i] &lt; ht[j]<br> 如果此时将长板j向向短板i靠近，则容量一定会减小<br> 因为，移动长板j后，宽度一定减小，但是高度由短板决定，高度只能不变或者变小。<br> 所以能得到，想要容量变大必须向内收缩短板i，才有可能使容量变大。<br> 可以得到贪心策略的执行过程：<br> 1. 初始状态，i,j指针分列数组两端<br> 2. 计算当前的cap[i,j]<br> 3. 比较板i和j的高度，短板向内移动一格<br> 4. 循环执行2.和3.，直到i和j相遇</li>
+<li>贪心策略：<br> <img src="/img_26.png" alt="/img/算法笔记/基本算法/img_26.png"><br> 选取一个状态[i,j],满足索引i&lt;j,并且先暂定ht[i] &lt; ht[j]<br> 如果此时将长板j向向短板i靠近，则容量一定会减小<br> 因为，移动长板j后，宽度一定减小，但是高度由短板决定，高度只能不变或者变小。<br> 所以能得到，想要容量变大必须向内收缩短板i，才有可能使容量变大。<br> 可以得到贪心策略的执行过程：<br> 1. 初始状态，i,j指针分列数组两端<br> 2. 计算当前的cap[i,j]<br> 3. 比较板i和j的高度，短板向内移动一格<br> 4. 循环执行2.和3.，直到i和j相遇</li>
 <li>循环最多n轮，时间复杂度O(n),空间复杂度O(1)<br> i,j,res,使用O(1)的空间<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">maxCapacity</span><span class="params">(<span class="type">int</span>[] ht)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//初始化i，j</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span><span class="number">0</span>,j = ht.length-<span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; j)&#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">cap</span> <span class="operator">=</span> Math.min(ht[i],ht[j]) * (j - i);</span><br><span class="line">        res = Math.max(res,cap);</span><br><span class="line">        <span class="keyword">if</span>(ht[i] &lt; ht[j])</span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 正确性证明：<br>贪心比穷举快是因为每轮都会跳过一些状态，实际上跳过的就是长板向内移动的状态，这样前面已经说过容量肯定变小，因此被跳过的状态都不可能是最优解，跳过并不会导致错过最优解。</li>
 </ol>
@@ -565,11 +555,11 @@
                             <ul class="post-tags-box border-box">
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/">基本算法</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
                                     </li>
                                 
                                     <li class="tag-item border-box">
-                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/">基本算法</a>
                                     </li>
                                 
                             </ul>
@@ -611,14 +601,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2025/09/15/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/%E5%9B%9E%E6%BA%AF%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/"
-                                   title="回溯复杂度分析"
+                                   href="/2025/09/15/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/"
+                                   title="排序"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">回溯复杂度分析</span>
+                                        <span class="post-nav-title-item text-ellipsis">排序</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
@@ -628,11 +618,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2025/09/15/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/"
-                                   title="排序"
+                                   href="/2025/09/15/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0/%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95/%E9%80%92%E5%BD%92%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90/"
+                                   title="递归复杂度分析"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">排序</span>
+                                        <span class="post-nav-title-item text-ellipsis">递归复杂度分析</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
