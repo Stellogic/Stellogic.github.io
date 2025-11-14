@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="记录点滴，共同进步">
+    <meta name="author" content="stellogic">
+    
+    <title>
+        
+            二分查找 |
+        
+        stellogic的个人空间
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"stellogic.github.io","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"stellogic的个人空间","author":"stellogic","avatar":"/images/avatar.jpg","logo":null,"favicon":null},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives || fa-solid fa-box-archive","categories":"/categories || fa-solid fa-layer-group","tags":"/tags || fa-solid fa-tags","links":"/links || fa-solid fa-link","about":"/about || fa-solid fa-user-graduate"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg2.svg","description":"欢迎来到我的个人空间 || 记录点滴，共同进步","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/stellogic","weixin":null,"qq":null,"weibo":null,"zhihu":"https://www.zhihu.com/people/stellogic","twitter":null,"x":null,"facebook":null,"email":"mack12399@outlook.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":false},"home":{"announcement":"📚We are together","category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":false,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"Stellogic/Stellogic.github.io","repo_id":"R_kgDOOkF4SA","category":"Announcements","category_id":"DIC_kwDOOkF4SM4Cp-Ln","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":true},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"jsdelivr"},"pjax":{"enable":false},"footer":{"since":2025,"word_count":true,"site_deploy":{"enable":true,"provider":"github","url":"https://stellogic.github.io/"},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+            <a class="site-name border-box" href="/">
+               stellogic的个人空间
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-link"></i>
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-link"></i>
+                                </span>
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                </span>
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        二分查找
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">stellogic</span>
+                                
+                                    <span class="author-badge">Two</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-10-19 07:07:32</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Sun Oct 19 2025 07:07:32 GMT+0800">2025-10-19 07:07:32</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E5%8A%9B%E6%89%A3hot100/">力扣hot100</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">二分查找</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="35-搜索插入位置"><a href="#35-搜索插入位置" class="headerlink" title="35.搜索插入位置"></a>35.搜索插入位置</h1><p><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/search-insert-position/description/?envType=study-plan-v2&envId=top-100-liked" >https://leetcode.cn/problems/search-insert-position/description/?envType=study-plan-v2&amp;envId=top-100-liked<i class="fas fa-external-link-alt"></i></a><br>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
+<p>请必须使用时间复杂度为 O(log n) 的算法。</p>
+<p>示例 1:</p>
+<p>输入: nums &#x3D; [1,3,5,6], target &#x3D; 5<br>输出: 2<br>示例 2:</p>
+<p>输入: nums &#x3D; [1,3,5,6], target &#x3D; 2<br>输出: 1<br>示例 3:</p>
+<p>输入: nums &#x3D; [1,3,5,6], target &#x3D; 7<br>输出: 4</p>
+<p>提示:</p>
+<p>1 &lt;&#x3D; nums.length &lt;&#x3D; 104<br>-104 &lt;&#x3D; nums[i] &lt;&#x3D; 104<br>nums 为 无重复元素 的 升序 排列数组<br>-104 &lt;&#x3D; target &lt;&#x3D; 104</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">searchInsert</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target)&#123;</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] &lt; target)&#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间：O（logn）空间O(1)</p>
+<p>关于为何最终返回left作为插入位置：</p>
+<p>这里面存在循环不变量：证明类似数学归纳法，证明初始成立，证明循环任意一次结束成立，终止时自然成立（只要循环成立）</p>
+<ol>
+<li>任何时候left左侧的元素都小于target</li>
+<li>任何时候right右侧的元素都大于target</li>
+</ol>
+<p>因为，在开始时，left左侧right右侧都无元素，可以认为真；</p>
+<p>循环中间，情况A nums[mid] &lt; target,left更新为mid+1，left左侧依然都小于target</p>
+<p>同理right任何时候右侧都大于target</p>
+<p>所以任意一次结束都满足。</p>
+<p>结束时，left&gt;right，并且left左侧都小于target，right右侧都大于target</p>
+<p>所以target插入的话，它的索引就应当是left</p>
+<h1 id="74-搜索二维矩阵"><a href="#74-搜索二维矩阵" class="headerlink" title="74.搜索二维矩阵"></a>74.搜索二维矩阵</h1><p>给你一个满足下述两条属性的 m x n 整数矩阵：</p>
+<p>每行中的整数从左到右按非严格递增顺序排列。<br>每行的第一个整数大于前一行的最后一个整数。<br>给你一个整数 target ，如果 target 在矩阵中，返回 true ；否则，返回 false 。</p>
+<p>示例 1：</p>
+<p>输入：matrix &#x3D; [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target &#x3D; 3<br>输出：true<br>示例 2：</p>
+<p>输入：matrix &#x3D; [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target &#x3D; 13<br>输出：false</p>
+<p>提示：</p>
+<p>m &#x3D;&#x3D; matrix.length<br>n &#x3D;&#x3D; matrix[i].length<br>1 &lt;&#x3D; m, n &lt;&#x3D; 100<br>-104 &lt;&#x3D; matrix[i][j], target &lt;&#x3D; 104</p>
+<hr>
+<p>最简单的想法就是每行依次二分查找。时间复杂度O(mlogn)</p>
+<p>也可以直接把矩阵化成大数组，时间复杂度O(logm + logN)</p>
+<p>进一步，直接先对行数进行二分查找，再对选定的行进行二分查找</p>
+<p>up &#x3D; 0,down &#x3D; m,mid &#x3D;(up+down)&#x2F;2,判断是否在这一行。</p>
+<p>比较matrix[mid][0]和matrix[mid][n-1]根据需要移动up或者down。</p>
+<p>之后对选定的行进行二分查找</p>
+<p>时间复杂度也是O(logm + logn)，但是空间复杂度降低到O(1)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">searchMatrix</span><span class="params">(<span class="type">int</span>[][] matrix, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">up</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">down</span> <span class="operator">=</span> matrix.length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> matrix.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> matrix[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">while</span> (up &lt;= down)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> up + (down - up ) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (target &gt;= matrix[mid][<span class="number">0</span>] &amp;&amp; target &lt;= matrix[mid][n-<span class="number">1</span>])&#123;</span><br><span class="line">                result = mid;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (target &lt; matrix[mid][<span class="number">0</span>]) &#123;</span><br><span class="line">                down = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (target &gt; matrix[mid][n-<span class="number">1</span>])&#123;</span><br><span class="line">                up = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (result == -<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (matrix[result][mid] == target)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (matrix[result][mid] &lt; target) &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>事实上，关于把整个矩阵看成一维数组的方法，也可以把空间复杂度从O(MN)降低到O(1),使用映射，把行列坐标映射到一维</p>
+<p>使用公式 l &#x3D; row*n+col ,row属于[0,m-1],col属于[0,n-1]</p>
+<p>所以L范围是[0,mn-1]</p>
+<p>已知l怎么推出row和col呢</p>
+<p>row &#x3D; l &#x2F; n</p>
+<p>col &#x3D; l % n</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">searchMatrix</span><span class="params">(<span class="type">int</span>[][] matrix, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> matrix.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> matrix[<span class="number">0</span>].length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> m*n-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">row</span> <span class="operator">=</span> mid / n;</span><br><span class="line">            <span class="type">int</span> <span class="variable">col</span> <span class="operator">=</span> mid % n;</span><br><span class="line">            <span class="keyword">if</span> (matrix[row][col] == target)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (matrix[row][col] &lt; target) &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (matrix[row][col] &gt; target) &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>还有个Z字搜索法，时间复杂度O(M+N)</p>
+<p>这是一种非常巧妙且直观的算法，它充分利用了矩阵的两个有序属性，但思路与二分查找完全不同。</p>
+<h3 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h3><p>Z字形搜索法的核心思想是：<strong>通过每一步比较，都能排除掉一整行或一整列的元素</strong>，从而不断缩小搜索范围，直到找到目标值或搜索空间为空。</p>
+<p>为了实现“排除一行或一列”的效果，我们必须从一个特殊的“拐角”开始。这个拐角需要满足一个条件：<strong>从这个位置出发，移动到相邻位置时，一个方向的元素值会变大，而另一个方向的元素值会变小。</strong></p>
+<p>在满足题目条件的矩阵中，只有两个点符合要求：</p>
+<ol>
+<li><strong>右上角</strong> (<code>matrix[0][n-1]</code>)：<ul>
+<li>向<strong>下</strong>移动，值会<strong>变大</strong>。</li>
+<li>向<strong>左</strong>移动，值会<strong>变小</strong>。</li>
+</ul>
+</li>
+<li><strong>左下角</strong> (<code>matrix[m-1][0]</code>)：<ul>
+<li>向<strong>上</strong>移动，值会<strong>变小</strong>。</li>
+<li>向<strong>右</strong>移动，值会<strong>变大</strong>。</li>
+</ul>
+</li>
+</ol>
+<p><strong>为什么不能从左上角或右下角开始？</strong></p>
+<ul>
+<li>从左上角 (<code>matrix[0][0]</code>) 开始，向右和向下移动，值都会变大。如果 <code>target</code> 大于当前值，我们无法决定是向右还是向下，因为两个方向都有可能。</li>
+<li>同理，从右下角 (<code>matrix[m-1][n-1]</code>) 开始，向左和向上移动，值都会变小，也无法做出唯一决策。</li>
+</ul>
+<h3 id="算法步骤-以右上角为例"><a href="#算法步骤-以右上角为例" class="headerlink" title="算法步骤 (以右上角为例)"></a>算法步骤 (以右上角为例)</h3><p>我们以从<strong>右上角</strong>开始搜索为例，这是最常见的实现方式。</p>
+<p><strong>初始化：</strong></p>
+<ul>
+<li>设置一个指针，初始位置在矩阵的右上角。</li>
+<li><code>row = 0</code></li>
+<li><code>col = n - 1</code> (n是列数)</li>
+</ul>
+<p><strong>循环搜索：</strong><br>在指针没有越出矩阵边界 (<code>row &lt; m</code> 且 <code>col &gt;= 0</code>) 的情况下，循环执行以下步骤：</p>
+<ol>
+<li><p>获取当前指针位置的元素值 <code>current = matrix[row][col]</code>。</p>
+</li>
+<li><p>将 <code>current</code> 与 <code>target</code> 进行比较：</p>
+<ul>
+<li><strong>情况一：<code>current == target</code></strong><ul>
+<li>找到了！直接返回 <code>true</code>。</li>
+</ul>
+</li>
+<li><strong>情况二：<code>current &gt; target</code></strong><ul>
+<li>这意味着当前值太大了。因为当前列 (<code>col</code>) 中位于当前位置下方的所有元素都比 <code>current</code> 更大，所以它们也一定都大于 <code>target</code>。因此，我们可以<strong>排除当前这一整列</strong>。</li>
+<li><strong>操作：</strong> 将指针向左移动一位，<code>col--</code>。</li>
+</ul>
+</li>
+<li><strong>情况三：<code>current &lt; target</code></strong><ul>
+<li>这意味着当前值太小了。因为当前行 (<code>row</code>) 中位于当前位置左边的所有元素都比 <code>current</code> 更小，所以它们也一定都小于 <code>target</code>。因此，我们可以<strong>排除当前这一整行</strong>。</li>
+<li><strong>操作：</strong> 将指针向下移动一位，<code>row++</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>如果循环结束（指针越界），说明搜索空间已经为空，但仍未找到目标值。返回 <code>false</code>。</p>
+</li>
+</ol>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li><strong>时间复杂度：O(m + n)</strong><ul>
+<li>指针 <code>row</code> 从 <code>0</code> 开始，最多增加到 <code>m</code>（向下移动 <code>m</code> 次）。</li>
+<li>指针 <code>col</code> 从 <code>n-1</code> 开始，最多减少到 <code>-1</code>（向左移动 <code>n</code> 次）。</li>
+<li>每一步，<code>row</code> 或 <code>col</code> 都会移动，且方向是固定的（<code>row</code> 只增不减，<code>col</code> 只减不增）。因此，总的移动步数最多为 <code>m + n</code>。</li>
+</ul>
+</li>
+<li><strong>空间复杂度：O(1)</strong><ul>
+<li>该算法只需要常数个变量（<code>row</code>, <code>col</code>）来存储指针位置，不需要任何额外的存储空间。</li>
+</ul>
+</li>
+</ul>
+<h3 id="与二分查找的对比"><a href="#与二分查找的对比" class="headerlink" title="与二分查找的对比"></a>与二分查找的对比</h3><table>
+<thead>
+<tr>
+<th align="left">特性</th>
+<th align="left">Z字形搜索法</th>
+<th align="left">二分查找法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>时间复杂度</strong></td>
+<td align="left">O(m + n)</td>
+<td align="left">O(log m + log n)</td>
+</tr>
+<tr>
+<td align="left"><strong>代码实现</strong></td>
+<td align="left">通常更简单、更直观</td>
+<td align="left">稍微复杂，需要处理索引映射或两次搜索</td>
+</tr>
+<tr>
+<td align="left"><strong>性能</strong></td>
+<td align="left">当 m 或 n 较小时表现优异</td>
+<td align="left">当 m 和 n 都很大时，对数复杂度更具优势</td>
+</tr>
+<tr>
+<td align="left"><strong>适用性</strong></td>
+<td align="left">适用于本题这种行列均有序的矩阵</td>
+<td align="left">适用于本题，且更通用（只要能虚拟化为一维有序数组即可）</td>
+</tr>
+</tbody></table>
+<h1 id="34-在排序数组中查找元素的第一个和最后一个位置"><a href="#34-在排序数组中查找元素的第一个和最后一个位置" class="headerlink" title="34.在排序数组中查找元素的第一个和最后一个位置"></a>34.在排序数组中查找元素的第一个和最后一个位置</h1><p><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/description/?envType=study-plan-v2&envId=top-100-liked" >https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/description/?envType=study-plan-v2&amp;envId=top-100-liked<i class="fas fa-external-link-alt"></i></a><br>给你一个按照非递减顺序排列的整数数组 nums，和一个目标值 target。请你找出给定目标值在数组中的开始位置和结束位置。</p>
+<p>如果数组中不存在目标值 target，返回 [-1, -1]。</p>
+<p>你必须设计并实现时间复杂度为 O(log n) 的算法解决此问题。</p>
+<p>示例 1：</p>
+<p>输入：nums &#x3D; [5,7,7,8,8,10], target &#x3D; 8<br>输出：[3,4]<br>示例 2：</p>
+<p>输入：nums &#x3D; [5,7,7,8,8,10], target &#x3D; 6<br>输出：[-1,-1]<br>示例 3：</p>
+<p>输入：nums &#x3D; [], target &#x3D; 0<br>输出：[-1,-1]</p>
+<p>提示：</p>
+<p>0 &lt;&#x3D; nums.length &lt;&#x3D; 105<br>-109 &lt;&#x3D; nums[i] &lt;&#x3D; 109<br>nums 是一个非递减数组<br>-109 &lt;&#x3D; target &lt;&#x3D; 109</p>
+<hr>
+<p>非递减顺序就是不严格递增的意思</p>
+<p>二分查找可以在O(logn)时间找到一个目标元素</p>
+<p>循环不变量：</p>
+<p>left左侧的都小于目标，right右侧的大于目标元素。</p>
+<p>终止时，</p>
+<ol>
+<li>不存在</li>
+<li>存在，mid指向一个目标元素，left左侧都小于目标，right右侧都大于目标</li>
+</ol>
+<p>对于存在的情况，left左侧和right右侧都确定了不是mid，因此只要再比较一下left和right。</p>
+<p>对于left</p>
+<p>如果left &#x3D; 目标，可以确定至少[left,mid]是目标区间；<br>如果left &lt; 目标，left指针依次右移直到left &#x3D; 目标（如果mid左侧没有目标那么left会移到mid）<br>left 不可能大于目标</p>
+<p>对于right同理</p>
+<p>复杂度：<br>查询到第一个目标元素耗时O(logn),确定区间O(n)复杂度不可以<br>能不能在[left,mid]继续二分查找？但是不能确定目标区间的左端点？要查询直到不存在目标元素吗？还是无法确定左边界</p>
+<p>实际上可以的，但是需要对传统的二分查找改造</p>
+<hr>
+<p>查找左边界</p>
+<p>如果nums[mid] &lt; target,那么left &#x3D; mid + 1</p>
+<p>如果nums[mid] &gt;&#x3D; target,那么right &#x3D; mid - 1，并且使用ans记录此时的mid。ans表示的是，它的以及它的右边必定大于等于target。最终目标是找到最左侧的这个ans，它以及右侧都大于等于target，但是，左侧都小于target</p>
+<p>之后判断一下nums[ans]是否等于target即可</p>
+<p>查找右边界</p>
+<p>也是查找一个ans，使它的左边都小于等于target，右边都大于target</p>
+<p>如果nums[mid] &gt; target,right &#x3D; mid - 1;</p>
+<p>如果nums[mid] &lt;&#x3D; target,left &#x3D; mid + 1,并记录此时的mid为ans</p>
+<p>判断nums[ans]是否等于target</p>
+<hr>
+<p>具体实现时，只实现一个查找第一个大于等于目标元素的索引的方法即可。</p>
+<p>这个索引要么是左边界，要么是要插入的地方</p>
+<p>查找target，记录左边界；</p>
+<p>查找target + 1，得到的索引减一即可</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] searchRange(<span class="type">int</span>[] nums, <span class="type">int</span> target) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> searchInsert(nums,target);</span><br><span class="line">        <span class="keyword">if</span> (ans &gt; nums.length-<span class="number">1</span> || nums[ans] != target)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;-<span class="number">1</span>,-<span class="number">1</span>&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> searchInsert(nums,target + <span class="number">1</span>) - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;ans,right&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">searchInsert</span><span class="params">(<span class="type">int</span>[] nums,<span class="type">int</span> target)</span>&#123;<span class="comment">//找到第一个大于等于target的位置，也就是最左边的大于等于target的位置,也是如果不在要插入的位置</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> nums.length;<span class="comment">//初始化为数组长度，这样能处理如果所有元素都小的情况，插在末尾</span></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] &lt; target)&#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;<span class="comment">//nums[mid]&gt;=target</span></span><br><span class="line">                ans = mid;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意，Java的局部遍历必须显示初始化，只有成员变量可以不显示初始化。</p>
+<h1 id="33-搜索旋转排序数组"><a href="#33-搜索旋转排序数组" class="headerlink" title="33.搜索旋转排序数组"></a>33.搜索旋转排序数组</h1><p><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/search-in-rotated-sorted-array/description/?envType=study-plan-v2&envId=top-100-liked" >https://leetcode.cn/problems/search-in-rotated-sorted-array/description/?envType=study-plan-v2&amp;envId=top-100-liked<i class="fas fa-external-link-alt"></i></a><br>整数数组 nums 按升序排列，数组中的值 互不相同 。</p>
+<p>在传递给函数之前，nums 在预先未知的某个下标 k（0 &lt;&#x3D; k &lt; nums.length）上进行了 向左旋转，使数组变为 [nums[k], nums[k+1], …, nums[n-1], nums[0], nums[1], …, nums[k-1]]（下标 从 0 开始 计数）。例如， [0,1,2,4,5,6,7] 下标 3 上向左旋转后可能变为 [4,5,6,7,0,1,2] 。</p>
+<p>给你 旋转后 的数组 nums 和一个整数 target ，如果 nums 中存在这个目标值 target ，则返回它的下标，否则返回 -1 。</p>
+<p>你必须设计一个时间复杂度为 O(log n) 的算法解决此问题。</p>
+<p>示例 1：</p>
+<p>输入：nums &#x3D; [4,5,6,7,0,1,2], target &#x3D; 0<br>输出：4<br>示例 2：</p>
+<p>输入：nums &#x3D; [4,5,6,7,0,1,2], target &#x3D; 3<br>输出：-1<br>示例 3：</p>
+<p>输入：nums &#x3D; [1], target &#x3D; 0<br>输出：-1</p>
+<p>提示：</p>
+<p>1 &lt;&#x3D; nums.length &lt;&#x3D; 5000<br>-104 &lt;&#x3D; nums[i] &lt;&#x3D; 104<br>nums 中的每个值都 独一无二<br>题目数据保证 nums 在预先未知的某个下标上进行了旋转<br>-104 &lt;&#x3D; target &lt;&#x3D; 104</p>
+<hr>
+<p>必定存在一个点，这个分界点（也就是原数组的最大值）以及左侧有序，右侧有序。</p>
+<p>二分，mid的左边和右边必定至少有一边有序。因为mid只能在分界点左侧或者右侧或者就是分界点。</p>
+<p>如果nums[left] &lt; nums[mid]说明左边有序。（分界点左侧是整个数组相对大的一部分，假设左侧无序，说明分界点在左侧，因此分界点左侧的数应当都大于分界点右侧，矛盾）</p>
+<p>判断target是否在[left,mid]，在的话执行二分，不在的话让left &#x3D; mid+1</p>
+<p>如果右边有序同样</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">search</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target)&#123;</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (nums[left] &lt;= nums[mid])&#123;<span class="comment">//注意无重复，因此相等只可能在单元素时出现，单元素应当认为有序</span></span><br><span class="line">                <span class="keyword">if</span> (nums[left] &lt;= target &amp;&amp; target &lt;= nums[mid])&#123;</span><br><span class="line">                    <span class="keyword">return</span> bySearch(nums,left,mid,target);</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    left = mid + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">//nums[mid]&lt;nums[right],右侧有序</span></span><br><span class="line">                <span class="keyword">if</span> (nums[mid] &lt;= target &amp;&amp; target &lt;= nums[right])&#123;</span><br><span class="line">                    <span class="keyword">return</span> bySearch(nums,mid,right,target);</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    right = mid - <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">bySearch</span><span class="params">(<span class="type">int</span>[] nums,<span class="type">int</span> left,<span class="type">int</span> right,<span class="type">int</span> target)</span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target)&#123;</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] &lt; target)&#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面实现可以更简洁</p>
+<p>不需要bySearch函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">search</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length - <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (nums[left] &lt;= nums[mid]) &#123; </span><br><span class="line">                <span class="comment">// 如果左半部分是有序的</span></span><br><span class="line">                <span class="comment">// 判断 target 是否在左半部分的范围内</span></span><br><span class="line">                <span class="keyword">if</span> (nums[left] &lt;= target &amp;&amp; target &lt; nums[mid]) &#123;</span><br><span class="line">                    <span class="comment">// 目标在左侧有序区间，缩小范围到左侧，后续肯定左侧都是有序的，只会执行左侧有序的if分支</span></span><br><span class="line">                    right = mid - <span class="number">1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// 目标不在左侧，去右侧查找</span></span><br><span class="line">                    left = mid + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">                <span class="comment">// 如果左半部分是无序的，那么右半部分 [mid, right] 必定是有序的</span></span><br><span class="line">                <span class="comment">// 判断 target 是否在右半部分的范围内</span></span><br><span class="line">                <span class="keyword">if</span> (nums[mid] &lt; target &amp;&amp; target &lt;= nums[right]) &#123;</span><br><span class="line">                    <span class="comment">// 目标在右侧有序区间，缩小范围到右侧，以后只会执行右侧的if分支</span></span><br><span class="line">                    left = mid + <span class="number">1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">// 目标不在右侧，去左侧查找</span></span><br><span class="line">                    right = mid - <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>每次范围缩小一半，因此是O(logn)</p>
+<h1 id="153-寻找旋转排序数组中的最小值"><a href="#153-寻找旋转排序数组中的最小值" class="headerlink" title="153.寻找旋转排序数组中的最小值"></a>153.寻找旋转排序数组中的最小值</h1><p><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/description/?envType=study-plan-v2&envId=top-100-liked" >https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/description/?envType=study-plan-v2&amp;envId=top-100-liked<i class="fas fa-external-link-alt"></i></a><br>已知一个长度为 n 的数组，预先按照升序排列，经由 1 到 n 次 旋转 后，得到输入数组。例如，原数组 nums &#x3D; [0,1,2,4,5,6,7] 在变化后可能得到：<br>若旋转 4 次，则可以得到 [4,5,6,7,0,1,2]<br>若旋转 7 次，则可以得到 [0,1,2,4,5,6,7]<br>注意，数组 [a[0], a[1], a[2], …, a[n-1]] 旋转一次 的结果为数组 [a[n-1], a[0], a[1], a[2], …, a[n-2]] 。</p>
+<p>给你一个元素值 互不相同 的数组 nums ，它原来是一个升序排列的数组，并按上述情形进行了多次旋转。请你找出并返回数组中的 最小元素 。</p>
+<p>你必须设计一个时间复杂度为 O(log n) 的算法解决此问题。</p>
+<p>示例 1：</p>
+<p>输入：nums &#x3D; [3,4,5,1,2]<br>输出：1<br>解释：原数组为 [1,2,3,4,5] ，旋转 3 次得到输入数组。<br>示例 2：</p>
+<p>输入：nums &#x3D; [4,5,6,7,0,1,2]<br>输出：0<br>解释：原数组为 [0,1,2,4,5,6,7] ，旋转 4 次得到输入数组。<br>示例 3：</p>
+<p>输入：nums &#x3D; [11,13,15,17]<br>输出：11<br>解释：原数组为 [11,13,15,17] ，旋转 4 次得到输入数组。</p>
+<p>提示：</p>
+<p>n &#x3D;&#x3D; nums.length<br>1 &lt;&#x3D; n &lt;&#x3D; 5000<br>-5000 &lt;&#x3D; nums[i] &lt;&#x3D; 5000<br>nums 中的所有整数 互不相同<br>nums 原来是一个升序排序的数组，并进行了 1 至 n 次旋转</p>
+<hr>
+<p>感觉和上一题搜索旋转排序数组很像</p>
+<p>存在一个断点，它以及左侧是是单调递增的，它的右侧是也是单调递增的</p>
+<p>二分后这个断点必然存在在mid左侧或者右侧或者就是mid</p>
+<p>最小的数就是mid + 1指向的</p>
+<p>关键在于查找mid</p>
+<p>每次把无序的部分继续查找，直到left 和right相邻，这两个较大的就是mid</p>
+<p>但要注意如果数组本来就是有序的（也就是说left指向的小于等于mid小于等于right），那么直接返回nums[0]</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findMin</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> Math.min(nums[<span class="number">0</span>],nums[<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt; right - <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[left] &lt;= nums[mid] &amp;&amp; nums[mid] &lt;= nums[right])&#123;</span><br><span class="line">                <span class="keyword">return</span> nums[<span class="number">0</span>];<span class="comment">//数组整体有序</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (nums[left] &lt;= nums[mid] )&#123;</span><br><span class="line">                <span class="comment">//左侧有序,查找右侧</span></span><br><span class="line">                left = mid;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] &lt;= nums[right])&#123;</span><br><span class="line">                right = mid;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums[left] &gt; nums[right])&#123;</span><br><span class="line">            max = left;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            max = right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums[max+<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度:O(logn),空间O(1).</p>
+<p>上面可以优化，代码逻辑分支复杂</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findMin</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> nums.length - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 循环条件：当 left 和 right 相遇时，就找到了最小值（循环不变量：最小值必定在[left,right]之间</span></span><br><span class="line">        <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 情况1: mid 在右侧的、值较小的递增序列上</span></span><br><span class="line">            <span class="comment">// 此时，最小值可能是 mid 本身，或者在 mid 的左侧</span></span><br><span class="line">            <span class="comment">// 所以，我们将搜索范围缩小到 [left, mid]</span></span><br><span class="line">            <span class="keyword">if</span> (nums[mid] &lt; nums[right]) &#123;</span><br><span class="line">                right = mid;</span><br><span class="line">            &#125; </span><br><span class="line">            <span class="comment">// 情况2: mid 在左侧的、值较大的递增序列上</span></span><br><span class="line">            <span class="comment">// 此时，最小值一定在 mid 的右侧</span></span><br><span class="line">            <span class="comment">// 所以，我们将搜索范围缩小到 [mid + 1, right]</span></span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 循环结束时，left 和 right 指向同一个位置，即为最小值</span></span><br><span class="line">        <span class="keyword">return</span> nums[left];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-寻找两个正序数组的中位数"><a href="#4-寻找两个正序数组的中位数" class="headerlink" title="4.寻找两个正序数组的中位数"></a>4.寻找两个正序数组的中位数</h1><p><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/median-of-two-sorted-arrays/description/?envType=study-plan-v2&envId=top-100-liked" >https://leetcode.cn/problems/median-of-two-sorted-arrays/description/?envType=study-plan-v2&amp;envId=top-100-liked<i class="fas fa-external-link-alt"></i></a><br>给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的 中位数 。</p>
+<p>算法的时间复杂度应该为 O(log (m+n)) 。</p>
+<p>示例 1：</p>
+<p>输入：nums1 &#x3D; [1,3], nums2 &#x3D; [2]<br>输出：2.00000<br>解释：合并数组 &#x3D; [1,2,3] ，中位数 2<br>示例 2：</p>
+<p>输入：nums1 &#x3D; [1,2], nums2 &#x3D; [3,4]<br>输出：2.50000<br>解释：合并数组 &#x3D; [1,2,3,4] ，中位数 (2 + 3) &#x2F; 2 &#x3D; 2.5</p>
+<p>提示：</p>
+<p>nums1.length &#x3D;&#x3D; m<br>nums2.length &#x3D;&#x3D; n<br>0 &lt;&#x3D; m &lt;&#x3D; 1000<br>0 &lt;&#x3D; n &lt;&#x3D; 1000<br>1 &lt;&#x3D; m + n &lt;&#x3D; 2000<br>-106 &lt;&#x3D; nums1[i], nums2[i] &lt;&#x3D; 106</p>
+<hr>
+<p>根据中位数的定义，当 m+n 是奇数时，中位数是两个有序数组中的第 (m+n)&#x2F;2 个元素，</p>
+<p>当 m+n 是偶数时，中位数是两个有序数组中的第 (m+n)&#x2F;2 个元素和第 (m+n)&#x2F;2+1 个元素的平均值。</p>
+<p>因此，这道题可以转化成寻找两个有序数组中的第 k 小的数，其中 k 为 (m+n)&#x2F;2 或 (m+n)&#x2F;2+1。</p>
+<p>可以通过比较A[k&#x2F;2 - 1],和B[k&#x2F;2 - 1]</p>
+<ul>
+<li>A[k&#x2F;2 -1]&lt;B[k&#x2F;2 - 1]:则最多有k&#x2F;2 - 1 + k&#x2F;2-1 &#x3D; k-2个元素小于A[k&#x2F;2 - 1],也就是A[k&#x2F;2-1]最多是第k-1个元素，因此可以排除A[k&#x2F;2-1]以及左侧的所有元素</li>
+<li>A[k&#x2F;2 - 1]&gt;B[k&#x2F;2-1]:同上，排除B</li>
+<li>A[k&#x2F;2 - 1]&#x3D;&#x3D;B[k&#x2F;2 - 1]:排除任意一个就行。也只能排除一个。我们排除A。因为还是最多k&#x2F;2 -1 + k&#x2F;2 - 1 &#x3D; k-2元素小于A[k&#x2F;2 - 1],因此A[k&#x2F;2 - 1]最多是第k-1个，可以排除A[k&#x2F;2 - 1]以及左侧。但是不能同上排除B[k&#x2F;2 - 1],因为B可能就是第k个了</li>
+</ul>
+<p>更新k直到1</p>
+<p>边界：</p>
+<ul>
+<li>k&#x2F;2-1越界，则选取对应数组的最后一个元素。但这种情况，更新k必须依照实际减少的元素</li>
+<li>如果任意一个数组为空，说明此数组以及排除完，直接返回另一个数组的第k个</li>
+<li>如果k&#x3D;1，返回两个数组中中较小的一个</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">findMedianSortedArrays</span><span class="params">(<span class="type">int</span>[] nums1, <span class="type">int</span>[] nums2)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> nums1.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> nums2.length;</span><br><span class="line">        <span class="keyword">if</span> ((m + n) % <span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">k1</span> <span class="operator">=</span> (m+n)/<span class="number">2</span> ;</span><br><span class="line">            <span class="type">int</span> <span class="variable">k2</span> <span class="operator">=</span> (m+n)/<span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> (getKthEtem(nums1,nums2,k1) + getKthEtem(nums1,nums2,k2))/<span class="number">2.0</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> (m + n) / <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> (<span class="type">double</span>) getKthEtem(nums1,nums2,k);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">getKthEtem</span><span class="params">(<span class="type">int</span>[] nums1,<span class="type">int</span>[] nums2,<span class="type">int</span> k)</span>&#123;<span class="comment">//得到的是第1，2……个</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">length1</span> <span class="operator">=</span> nums1.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">length2</span> <span class="operator">=</span> nums2.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">index1</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">index2</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span> (index1 == nums1.length)&#123;</span><br><span class="line">                <span class="keyword">return</span> nums2[index2 + k-<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (index2 == nums2.length)&#123;</span><br><span class="line">                <span class="keyword">return</span> nums1[index1 + k-<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (k == <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> Math.min(nums1[index1],nums2[index2]);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="type">int</span> <span class="variable">half</span> <span class="operator">=</span> k / <span class="number">2</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">newIndex1</span> <span class="operator">=</span> Math.min(index1 + half,length1) - <span class="number">1</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">newIndex2</span> <span class="operator">=</span> Math.min(index2 + half,length2) - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums1[newIndex1] &lt;= nums2[newIndex2])&#123;</span><br><span class="line">                k -= newIndex1 - index1 + <span class="number">1</span>;</span><br><span class="line">                index1 = newIndex1 + <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                k -= newIndex2 - index2 + <span class="number">1</span>;</span><br><span class="line">                index2 = newIndex2 + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度O(logk),因为k是m+n的线性倍数，所以最终就是O(log(m+n)),并且空间复杂度O(1)</p>
+<ol start="2">
+<li>方法二</li>
+</ol>
+<p>中位数实际上就是：</p>
+<p>将一个集合划分为两个长度相等的子集，其中一个子集中的元素总是大于另一个子集中的元素。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">      left_part          |         right_part</span><br><span class="line">A[0], A[1], ..., A[i-1]  |  A[i], A[i+1], ..., A[m-1]</span><br><span class="line">B[0], B[1], ..., B[j-1]  |  B[j], B[j+1], ..., B[n-1]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>可以这样进行划分，在A找一个len(leftA) &#x3D; i,B找一个len(leftB) &#x3D; j,则len(left_part) &#x3D; i + j</p>
+<p>len(right_part) &#x3D; m+n-i-j.</p>
+<p>当m+n是偶数：要满足len(left_part)&#x3D;len(right_part),可以解得i+j &#x3D; (m+n)&#x2F;2，Max(left_part)&lt;&#x3D;Min(right_part)中位数是（Max(left_part)+Max（right_part))&#x2F;2</p>
+<p>奇数：len(left_part) &#x3D; len(right_part) + 1,可解得i+j&#x3D;(m+n+1)&#x2F;2,Max(left_part)&lt;&#x3D;Min(right_part),中位数是Max(left_part)</p>
+<p>i和j得约束条件可以统一为可以统一为i+j &#x3D; (m+n+1) &#x2F; 2</p>
+<p>最大值条件实际上就是A[i-1] &lt;&#x3D; B[j],B[j-1]&lt;&#x3D;A[i]</p>
+<p>为了简便分析，我们可以认为A[i-1],B[i-1]始终存在，即认为A[-1]B[-1]是无穷小，A[length]B[length]为无穷大</p>
+<p>因此，我们要做的实际上就是</p>
+<p>在 [0,m] 中找到 i，使得： B[j−1]≤A[i] 且 A[i−1]≤B[j]，其中 j&#x3D;(m+n+1)&#x2F;2.(不妨假设m&lt;n)</p>
+<p>实际上这个等价于：</p>
+<p>在 [0,m] 中找到最大的 i，使得： A[i−1]≤B[j]，其中 j&#x3D;(m+n+1)&#x2F;2<br>（因为，既然i是最大的，那么i+1肯定不满足这个条件，于是A[i]&gt;B[j-1])</p>
+<p>所以我们得目标就是查找这个i</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">findMedianSortedArrays</span><span class="params">(<span class="type">int</span>[] nums1, <span class="type">int</span>[] nums2)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums1.length &gt; nums2.length) &#123;</span><br><span class="line">            <span class="keyword">return</span> findMedianSortedArrays(nums2, nums1);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> nums1.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> nums2.length;<span class="comment">//m&lt;n</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> m;<span class="comment">//这里应该是m，i的含义是左边取几个数，可以取[0,m]个数</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right)&#123;<span class="comment">//循环不变量：如果还有更右侧的mid存在的话，那么它一定在[left,right]中</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> (m + n + <span class="number">1</span>) / <span class="number">2</span> - mid;</span><br><span class="line">            <span class="type">int</span> <span class="variable">nums_im1</span> <span class="operator">=</span> mid - <span class="number">1</span> &gt;= <span class="number">0</span> ? nums1[mid - <span class="number">1</span>] : Integer.MIN_VALUE;</span><br><span class="line">            <span class="type">int</span> <span class="variable">nums_j</span> <span class="operator">=</span> j &lt; n ? nums2[j] : Integer.MAX_VALUE;</span><br><span class="line">            <span class="keyword">if</span> (nums_im1 &lt;= nums_j)&#123;</span><br><span class="line">                i = mid;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> (m+n+<span class="number">1</span>)/<span class="number">2</span> - i;</span><br><span class="line">        <span class="type">int</span> <span class="variable">nums_im1</span> <span class="operator">=</span> i-<span class="number">1</span> &gt;= <span class="number">0</span> ? nums1[i-<span class="number">1</span>] : Integer.MIN_VALUE;</span><br><span class="line">        <span class="type">int</span> <span class="variable">nums_jm1</span> <span class="operator">=</span> j-<span class="number">1</span> &gt;= <span class="number">0</span> ? nums2[j-<span class="number">1</span>] : Integer.MIN_VALUE;</span><br><span class="line">        <span class="type">int</span> <span class="variable">nums_i</span> <span class="operator">=</span> i&lt;m ? nums1[i] : Integer.MAX_VALUE;</span><br><span class="line">        <span class="type">int</span> <span class="variable">nums_j</span> <span class="operator">=</span> j&lt;n ? nums2[j] : Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">if</span> ((m + n) % <span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="comment">//偶数</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">maxLeft</span> <span class="operator">=</span> Math.max(nums_im1,nums_jm1);</span><br><span class="line">            <span class="type">int</span> <span class="variable">minRight</span> <span class="operator">=</span> Math.min(nums_i,nums_j);</span><br><span class="line">            <span class="keyword">return</span> (maxLeft + minRight) / <span class="number">2.0</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> Math.max(nums_im1,nums_jm1);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度O(log(min(m,n)))</p>
+<p>空间复杂度O(1)</p>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                二分查找
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2025/10/19/二分查找/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">stellogic</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2025-10-19 07:07</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">二分查找</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/10/22/%E5%9B%BE%E8%AE%BA/"
+                                   title="图论"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">图论</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/10/16/%E5%9B%9E%E6%BA%AF/"
+                                   title="回溯"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">回溯</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script 
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          if (!window.KeepCommentPlugin?.getGiscusTheme) {
+            window.KeepCommentPlugin.getGiscusTheme = () => {
+              return document.documentElement.classList.contains('dark-mode') ? 'dark_dimmed' : 'light_tritanopia'
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.changeGiscusTheme) {
+            window.KeepCommentPlugin.changeGiscusTheme = () => {
+              const iframe = document.querySelector('iframe.giscus-frame')
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: window.KeepCommentPlugin.getGiscusTheme()
+                  }
+                }
+              }, 'https://giscus.app')
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.initGiscus) {
+            window.KeepCommentPlugin.initGiscus = () => {
+              const script = document.createElement('script')
+              script.async = true
+              script.src = 'https://giscus.app/client.js'
+              script.setAttribute('data-repo', 'Stellogic/Stellogic.github.io')
+              script.setAttribute('data-repo-id', 'R_kgDOOkF4SA')
+              script.setAttribute('data-category', 'Announcements')
+              script.setAttribute('data-category-id', 'DIC_kwDOOkF4SM4Cp-Ln')
+              script.setAttribute('data-reactions-enabled', '1')
+              script.setAttribute('data-lang', 'zh-CN')
+              script.setAttribute('data-mapping', 'pathname')
+              script.setAttribute('data-strict', '0')
+              script.setAttribute('data-emit-metadata', '0')
+              script.setAttribute('data-input-position', 'top')
+              script.setAttribute('crossorigin', 'anonymous')
+              script.setAttribute('loading', 'lazy')
+              script.setAttribute('data-theme', window.KeepCommentPlugin.getGiscusTheme())
+              document.querySelector('.giscus-comments-container').appendChild(script)
+              script.onerror = () => {
+                window.KeepCommentPlugin.loadFailHandle()
+              }
+              script.onload = () => {
+                window.KeepCommentPlugin.hideLoading()
+              }
+              const toggleThemeBtn = document.querySelector('.tool-toggle-theme-mode')
+              toggleThemeBtn && toggleThemeBtn.addEventListener('click', () => {
+                window.KeepCommentPlugin.changeGiscusTheme()
+              })
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGiscus()
+            }, 1000)
+          } else {
+            window.addEventListener("DOMContentLoaded", window.KeepCommentPlugin.initGiscus)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#35-%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">35.搜索插入位置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#74-%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5"><span class="nav-number">2.</span> <span class="nav-text">74.搜索二维矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="nav-number">2.1.</span> <span class="nav-text">核心思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%AD%A5%E9%AA%A4-%E4%BB%A5%E5%8F%B3%E4%B8%8A%E8%A7%92%E4%B8%BA%E4%BE%8B"><span class="nav-number">2.2.</span> <span class="nav-text">算法步骤 (以右上角为例)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">2.3.</span> <span class="nav-text">复杂度分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="nav-number">2.4.</span> <span class="nav-text">与二分查找的对比</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#34-%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">34.在排序数组中查找元素的第一个和最后一个位置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#33-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84"><span class="nav-number">4.</span> <span class="nav-text">33.搜索旋转排序数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#153-%E5%AF%BB%E6%89%BE%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC"><span class="nav-number">5.</span> <span class="nav-text">153.寻找旋转排序数组中的最小值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%AD%A3%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">4.寻找两个正序数组的中位数</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">stellogic</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+        
+        <div class="deploy-info info-item">
+            
+                <a target="_blank" rel="nofollow" href="https://stellogic.github.io/">
+            
+            本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+            
+                </a>
+            
+        </div>
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#35-%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">35.搜索插入位置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#74-%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5"><span class="nav-number">2.</span> <span class="nav-text">74.搜索二维矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="nav-number">2.1.</span> <span class="nav-text">核心思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%AD%A5%E9%AA%A4-%E4%BB%A5%E5%8F%B3%E4%B8%8A%E8%A7%92%E4%B8%BA%E4%BE%8B"><span class="nav-number">2.2.</span> <span class="nav-text">算法步骤 (以右上角为例)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">2.3.</span> <span class="nav-text">复杂度分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8E%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="nav-number">2.4.</span> <span class="nav-text">与二分查找的对比</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#34-%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">34.在排序数组中查找元素的第一个和最后一个位置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#33-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84"><span class="nav-number">4.</span> <span class="nav-text">33.搜索旋转排序数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#153-%E5%AF%BB%E6%89%BE%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%B0%8F%E5%80%BC"><span class="nav-number">5.</span> <span class="nav-text">153.寻找旋转排序数组中的最小值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%AD%A3%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">4.寻找两个正序数组的中位数</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/toggle-theme.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/code-block.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/local-search.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/lazyload.js"></script>
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/post-helper.js"></script>
+
+        <!-- toc -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/toc.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/copyright-info.js"></script>
+        
+
+        <!-- share -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/share.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="记录点滴，共同进步">
+    <meta name="author" content="stellogic">
+    
+    <title>
+        
+            栈 |
+        
+        stellogic的个人空间
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/regular.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/solid.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/font/css/brands.min.css">
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"stellogic.github.io","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"stellogic的个人空间","author":"stellogic","avatar":"/images/avatar.jpg","logo":null,"favicon":null},"menu":{"home":"/ || fa-solid fa-home","archives":"/archives || fa-solid fa-box-archive","categories":"/categories || fa-solid fa-layer-group","tags":"/tags || fa-solid fa-tags","links":"/links || fa-solid fa-link","about":"/about || fa-solid fa-user-graduate"},"first_screen":{"enable":true,"background_img":"/images/bg.svg","background_img_dark":"/images/bg2.svg","description":"欢迎来到我的个人空间 || 记录点滴，共同进步","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/stellogic","weixin":null,"qq":null,"weibo":null,"zhihu":"https://www.zhihu.com/people/stellogic","twitter":null,"x":null,"facebook":null,"email":"mack12399@outlook.com"}},"scroll":{"progress_bar":true,"percent":true,"hide_header":false},"home":{"announcement":"📚We are together","category":true,"tag":true,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":false,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":true,"share":true,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":true,"use":"giscus","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":"Stellogic/Stellogic.github.io","repo_id":"R_kgDOOkF4SA","category":"Announcements","category_id":"DIC_kwDOOkF4SM4Cp-Ln","reactions_enabled":true},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":true},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"jsdelivr"},"pjax":{"enable":false},"footer":{"since":2025,"word_count":true,"site_deploy":{"enable":true,"provider":"github","url":"https://stellogic.github.io/"},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+            <a class="site-name border-box" href="/">
+               stellogic的个人空间
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-home"></i>
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-tags"></i>
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/links">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-link"></i>
+                                
+                                友链
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                    <i class="menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-home"></i>
+                                </span>
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-box-archive"></i>
+                                </span>
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-layer-group"></i>
+                                </span>
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-tags"></i>
+                                </span>
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/links">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-link"></i>
+                                </span>
+                            
+                            友链
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                                <span class="menu-icon-wrap border-box flex-center">
+                                    <i class="drawer-menu-text-color menu-icon fa-solid fa-user-graduate"></i>
+                                </span>
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        栈
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.jpg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">stellogic</span>
+                                
+                                    <span class="author-badge">Two</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2025-10-24 07:03:01</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Fri Oct 24 2025 07:03:01 GMT+0800">2025-10-24 07:03:01</span>
+                </span>
+            
+        
+
+        
+            <span class="meta-info-item post-category border-box"><i class="icon fas fa-folder"></i>&nbsp;
+                <ul class="post-category-ul">
+                    
+                            <li class="category-item"><a href="/categories/%E5%8A%9B%E6%89%A3hot100/">力扣hot100</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+            <span class="post-tag meta-info-item border-box">
+                <ul class="post-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/%E6%A0%88/">栈</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
+
+        
+        
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="20-有效的括号"><a href="#20-有效的括号" class="headerlink" title="20. 有效的括号"></a>20. 有效的括号</h1><p><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/valid-parentheses/description/?envType=study-plan-v2&envId=top-100-liked" >https://leetcode.cn/problems/valid-parentheses/description/?envType=study-plan-v2&amp;envId=top-100-liked<i class="fas fa-external-link-alt"></i></a><br>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串 s ，判断字符串是否有效。</p>
+<p>有效字符串需满足：</p>
+<p>左括号必须用相同类型的右括号闭合。<br>左括号必须以正确的顺序闭合。<br>每个右括号都有一个对应的相同类型的左括号。</p>
+<p>示例 1：</p>
+<p>输入：s &#x3D; “()”</p>
+<p>输出：true</p>
+<p>示例 2：</p>
+<p>输入：s &#x3D; “()[]{}”</p>
+<p>输出：true</p>
+<p>示例 3：</p>
+<p>输入：s &#x3D; “(]”</p>
+<p>输出：false</p>
+<p>示例 4：</p>
+<p>输入：s &#x3D; “([])”</p>
+<p>输出：true</p>
+<p>示例 5：</p>
+<p>输入：s &#x3D; “([)]”</p>
+<p>输出：false</p>
+<p>提示：</p>
+<p>1 &lt;&#x3D; s.length &lt;&#x3D; 104<br>s 仅由括号 ‘()[]{}’ 组成</p>
+<hr>
+<ol>
+<li>必须数目是偶数</li>
+<li>后来的左括号必须先和右括号匹配才行</li>
+<li>用栈，遍历字符，遇到左括号就入栈，右括号就出栈，检查出栈的字符和右括号是否匹配直到末尾，如果栈空了就是匹配</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayDeque;</span><br><span class="line"><span class="keyword">import</span> java.util.Deque;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (s.length() % <span class="number">2</span> != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Deque&lt;Character&gt; stack = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : s.toCharArray()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">&#x27;(&#x27;</span> || c == <span class="string">&#x27;[&#x27;</span> || c == <span class="string">&#x27;&#123;&#x27;</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                stack.push(c);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (stack.isEmpty())&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="type">char</span> <span class="variable">b</span> <span class="operator">=</span> stack.poll();</span><br><span class="line">                <span class="keyword">if</span> (c == <span class="string">&#x27;)&#x27;</span> &amp;&amp; b != <span class="string">&#x27;(&#x27;</span>)&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;]&#x27;</span> &amp;&amp; b != <span class="string">&#x27;[&#x27;</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;&#125;&#x27;</span> &amp;&amp; b != <span class="string">&#x27;&#123;&#x27;</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> stack.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度: O(n)</p>
+<p>空间复杂度O(n)</p>
+<p>下面是官方题解用哈希表简化代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> s.length();</span><br><span class="line">        <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Map&lt;Character, Character&gt; pairs = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;Character, Character&gt;() &#123;&#123;</span><br><span class="line">            put(<span class="string">&#x27;)&#x27;</span>, <span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">            put(<span class="string">&#x27;]&#x27;</span>, <span class="string">&#x27;[&#x27;</span>);</span><br><span class="line">            put(<span class="string">&#x27;&#125;&#x27;</span>, <span class="string">&#x27;&#123;&#x27;</span>);</span><br><span class="line">        &#125;&#125;;</span><br><span class="line">        Deque&lt;Character&gt; stack = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;Character&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="type">char</span> <span class="variable">ch</span> <span class="operator">=</span> s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span> (pairs.containsKey(ch)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (stack.isEmpty() || stack.peek() != pairs.get(ch)) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                stack.pop();</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                stack.push(ch);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> stack.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="155-最小栈"><a href="#155-最小栈" class="headerlink" title="155.最小栈"></a>155.最小栈</h1><p><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/min-stack/?envType=study-plan-v2&envId=top-100-liked" >https://leetcode.cn/problems/min-stack/?envType=study-plan-v2&amp;envId=top-100-liked<i class="fas fa-external-link-alt"></i></a><br>设计一个支持 push ，pop ，top 操作，并能在常数时间内检索到最小元素的栈。</p>
+<p>实现 MinStack 类:</p>
+<p>MinStack() 初始化堆栈对象。<br>void push(int val) 将元素val推入堆栈。<br>void pop() 删除堆栈顶部的元素。<br>int top() 获取堆栈顶部的元素。<br>int getMin() 获取堆栈中的最小元素。</p>
+<p>示例 1:</p>
+<p>输入：<br>[“MinStack”,”push”,”push”,”push”,”getMin”,”pop”,”top”,”getMin”]<br>[[],[-2],[0],[-3],[],[],[],[]]</p>
+<p>输出：<br>[null,null,null,null,-3,null,0,-2]</p>
+<p>解释：<br>MinStack minStack &#x3D; new MinStack();<br>minStack.push(-2);<br>minStack.push(0);<br>minStack.push(-3);<br>minStack.getMin();   –&gt; 返回 -3.<br>minStack.pop();<br>minStack.top();      –&gt; 返回 0.<br>minStack.getMin();   –&gt; 返回 -2.</p>
+<p>提示：</p>
+<p>-231 &lt;&#x3D; val &lt;&#x3D; 231 - 1<br>pop、top 和 getMin 操作总是在 非空栈 上调用<br>push, pop, top, and getMin最多被调用 3 * 104 次</p>
+<hr>
+<p>使用辅助栈</p>
+<p>一个栈作为直接实现的栈dataStack</p>
+<p>另一个作为辅助栈minStack，栈顶始终保持dataStack的最小值</p>
+<p>具体实现：</p>
+<p>push的元素要和minStack的栈顶比较，如果小就同时入minStack</p>
+<p>pop出的元素要和minStack的栈顶比较，如果等于就同时minStack出栈</p>
+<p>top就top</p>
+<p>getMin就是minStack的top</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayDeque;</span><br><span class="line"><span class="keyword">import</span> java.util.Deque;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MinStack</span> &#123;</span><br><span class="line"></span><br><span class="line">    Deque&lt;Integer&gt; dataStack;</span><br><span class="line">    Deque&lt;Integer&gt; minStack;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MinStack</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.dataStack = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">        <span class="built_in">this</span>.minStack = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">push</span><span class="params">(<span class="type">int</span> val)</span> &#123;</span><br><span class="line">        dataStack.push(val);</span><br><span class="line">        <span class="keyword">if</span> (minStack.isEmpty())&#123;</span><br><span class="line">            minStack.push(val);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (val &lt;= minStack.peek())&#123;</span><br><span class="line">                minStack.push(val);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">pop</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">curVal</span> <span class="operator">=</span> dataStack.pop();</span><br><span class="line">        <span class="keyword">if</span> (curVal == minStack.peek())&#123;<span class="comment">//minStack.peek()返回的实际上是个Integer，这里比较的时候自动拆箱</span></span><br><span class="line">            minStack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">top</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> dataStack.peek();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getMin</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> minStack.peek();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MinStack object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MinStack obj = new MinStack();</span></span><br><span class="line"><span class="comment"> * obj.push(val);</span></span><br><span class="line"><span class="comment"> * obj.pop();</span></span><br><span class="line"><span class="comment"> * int param_3 = obj.top();</span></span><br><span class="line"><span class="comment"> * int param_4 = obj.getMin();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<p>时间复杂度:都是O(1)</p>
+<p>空间复杂度:O(n)</p>
+<h1 id="394-字符串解码"><a href="#394-字符串解码" class="headerlink" title="394. 字符串解码"></a>394. 字符串解码</h1><p><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/decode-string/description/?envType=study-plan-v2&envId=top-100-liked" >https://leetcode.cn/problems/decode-string/description/?envType=study-plan-v2&amp;envId=top-100-liked<i class="fas fa-external-link-alt"></i></a><br>给定一个经过编码的字符串，返回它解码后的字符串。</p>
+<p>编码规则为: k[encoded_string]，表示其中方括号内部的 encoded_string 正好重复 k 次。注意 k 保证为正整数。</p>
+<p>你可以认为输入字符串总是有效的；输入字符串中没有额外的空格，且输入的方括号总是符合格式要求的。</p>
+<p>此外，你可以认为原始数据不包含数字，所有的数字只表示重复的次数 k ，例如不会出现像 3a 或 2[4] 的输入。</p>
+<p>测试用例保证输出的长度不会超过 105。</p>
+<p>示例 1：</p>
+<p>输入：s &#x3D; “3[a]2[bc]”<br>输出：”aaabcbc”<br>示例 2：</p>
+<p>输入：s &#x3D; “3[a2[c]]”<br>输出：”accaccacc”<br>示例 3：</p>
+<p>输入：s &#x3D; “2[abc]3[cd]ef”<br>输出：”abcabccdcdcdef”<br>示例 4：</p>
+<p>输入：s &#x3D; “abc3[cd]xyz”<br>输出：”abccdcdcdxyz”</p>
+<p>提示：</p>
+<p>1 &lt;&#x3D; s.length &lt;&#x3D; 30<br>s 由小写英文字母、数字和方括号 ‘[]’ 组成<br>s 保证是一个 有效 的输入。<br>s 中所有整数的取值范围为 [1, 300] </p>
+<hr>
+<h4 id="第-1-步：识别问题的核心难点"><a href="#第-1-步：识别问题的核心难点" class="headerlink" title="第 1 步：识别问题的核心难点"></a>第 1 步：识别问题的核心难点</h4><p>先看简单的例子：</p>
+<ul>
+<li><code>&quot;3[a]&quot;</code> -&gt; <code>&quot;aaa&quot;</code> (很简单，数字乘以字符)</li>
+<li><code>&quot;2[abc]3[cd]ef&quot;</code> -&gt; <code>&quot;abcabc&quot; + &quot;cdcdcd&quot; + &quot;ef&quot;</code> (也很直接，就是顺序处理，做几次拼接)</li>
+</ul>
+<p>再看复杂的例子：</p>
+<ul>
+<li><code>&quot;3[a2[c]]&quot;</code></li>
+</ul>
+<p>这里的<strong>核心难点</strong>是什么？是<strong>嵌套</strong>。我们不能简单地从左到右处理。在处理外层的 <code>3[...]</code> 时，我们必须先停下来，钻进去把内层的 <code>2[c]</code> 彻底解决掉，得到 <code>&quot;cc&quot;</code>，然后才能回头继续处理外层，把 <code>&quot;a&quot;</code> 和 <code>&quot;cc&quot;</code> 拼接成 <code>&quot;acc&quot;</code>，最后再重复 3 次。</p>
+<p><strong>关键洞察</strong>：处理一个问题（外层括号）依赖于另一个子问题（内层括号）的解决。并且，内层问题必须<strong>先于</strong>外层问题完成计算。</p>
+<h4 id="第-2-步：联想能够处理这种“后进先出”结构的工具"><a href="#第-2-步：联想能够处理这种“后进先出”结构的工具" class="headerlink" title="第 2 步：联想能够处理这种“后进先出”结构的工具"></a>第 2 步：联想能够处理这种“后进先出”结构的工具</h4><p>现在我们脑子里有一个关键词：“<strong>嵌套</strong>”或“<strong>后进先出</strong>”（Last-In, First-Out）。因为最后遇到的 <code>[</code> (内层的)，需要最先处理完并和 <code>]</code> 配对。</p>
+<p>在计算机科学中，哪些数据结构或算法模式天生就是为了解决这种问题的？</p>
+<ol>
+<li><p><strong>递归 (Recursion)</strong>：一个函数调用自己来解决一个规模更小的、结构相同的问题。这和“处理一个括号，发现里面还有个括号，就先去处理那个小括号”的逻辑完全吻合。所以，递归是一个非常自然的想法。</p>
+</li>
+<li><p><strong>栈 (Stack)</strong>：栈的本质就是 LIFO。它最经典的应用场景就是括号匹配和函数调用栈。</p>
+<ul>
+<li><strong>括号匹配</strong>：遇到左括号就入栈，遇到右括号就出栈检查。这和我们的问题很像！</li>
+<li><strong>函数调用</strong>：当你调用一个函数 <code>A</code>，<code>A</code> 又调用函数 <code>B</code>，计算机会把 <code>A</code> 的“执行现场”（比如局部变量、返回地址）压入一个调用栈，然后去执行 <code>B</code>。当 <code>B</code> 执行完毕返回时，再从栈里弹出 <code>A</code> 的“现场”来恢复执行。</li>
+</ul>
+</li>
+</ol>
+<p><strong>思维跳跃</strong>：既然我们的问题和函数调用的嵌套结构如此相似，我们能不能<strong>手动模拟</strong>这个过程？用一个我们自己的栈，来“保存现场”和“恢复现场”。</p>
+<h4 id="第-3-步：设计“现场”需要保存什么信息"><a href="#第-3-步：设计“现场”需要保存什么信息" class="headerlink" title="第 3 步：设计“现场”需要保存什么信息"></a>第 3 步：设计“现场”需要保存什么信息</h4><p>当我们准备钻进一个 <code>[</code> 去处理子问题时，我们需要“暂停”当前的工作。那么，为了能在将来正确地“恢复”，我们需要保存哪些信息？</p>
+<p>假设我们正在处理 <code>...prefix_string&lt;K&gt;[...]...</code>，光标在 <code>[</code> 处。</p>
+<ol>
+<li>我们需要记住外层的重复次数 <code>K</code>。否则，当 <code>[...]</code> 内部解码完成后，我们不知道该把它重复多少遍。 -&gt; <strong>需要一个存数字的栈 <code>countStack</code></strong>。</li>
+<li>我们需要记住在遇到 <code>K</code> 之前，我们已经拼接好的字符串 <code>prefix_string</code>。否则，当 <code>K[...]</code> 解码完成后，我们不知道该把它拼接到谁的后面。 -&gt; <strong>需要一个存字符串的栈 <code>stringStack</code></strong>。</li>
+</ol>
+<p>到这里，用两个栈的方案就自然而然地浮现出来了。</p>
+<h4 id="第-4-步：确定操作规则"><a href="#第-4-步：确定操作规则" class="headerlink" title="第 4 步：确定操作规则"></a>第 4 步：确定操作规则</h4><p>现在我们有了工具（两个栈）和目标（保存&#x2F;恢复现场），就可以定义规则了：</p>
+<ul>
+<li><strong>遇到数字</strong>：这只是一个临时信息，先累加起来存到一个变量 <code>multi</code> 里。</li>
+<li><strong>遇到 <code>[</code></strong>：这是“暂停”的信号。执行<strong>入栈</strong>操作，把 <code>multi</code> 和当前的 <code>res</code> 保存起来，然后清空它们，准备处理新一层。</li>
+<li><strong>遇到字母</strong>：这是当前层级的工作，直接拼接到当前的 <code>res</code> 后面。</li>
+<li><strong>遇到 <code>]</code></strong>：这是“恢复”的信号。子问题解决了。执行<strong>出栈</strong>操作，取出之前保存的重复次数和前缀字符串，然后按照 <code>前缀 + 次数 * 当前结果</code> 的公式组合起来，完成一次“返回”。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayDeque;</span><br><span class="line"><span class="keyword">import</span> java.util.Deque;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">decodeString</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">multi</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">res</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        Deque&lt;Integer&gt; countStack = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">        Deque&lt;StringBuilder&gt; stringStack = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : s.toCharArray()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (c &gt;= <span class="string">&#x27;0&#x27;</span> &amp;&amp; c &lt;= <span class="string">&#x27;9&#x27;</span>)&#123;</span><br><span class="line">                multi = multi * <span class="number">10</span> + c - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (c != <span class="string">&#x27;[&#x27;</span> &amp;&amp; c != <span class="string">&#x27;]&#x27;</span>)&#123;</span><br><span class="line">                res.append(c);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;[&#x27;</span>)&#123;</span><br><span class="line">                countStack.push(multi);</span><br><span class="line">                multi = <span class="number">0</span>;</span><br><span class="line">                stringStack.push(res);</span><br><span class="line">                res = <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;]&#x27;</span>) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">repeatCount</span> <span class="operator">=</span> countStack.poll();</span><br><span class="line">                <span class="type">StringBuilder</span> <span class="variable">pre_res</span> <span class="operator">=</span> stringStack.poll();</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; repeatCount; i++) &#123;</span><br><span class="line">                    pre_res.append(res);</span><br><span class="line">                &#125;</span><br><span class="line">                res = pre_res;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(n)，n是解码后的总字符。每个s的字符遍历一次，除了’]’每个字符上的操作都是O(1),’]’的操作是O(K_i),设有m个’]’,最终是O(s-m) + O(mK_i)，k_i小于300，所以实际上是O(s+299m) &#x3D; O(n),最终toString耗费O(n)，实际上最终就是O(n)</p>
+<p>空间复杂度:O(s),最坏可能有接近s&#x2F;2的元素入栈<br>2. 递归</p>
+<p>依次向前遍历</p>
+<p>遇到数字就更新multi</p>
+<p>遇到字母就附加到res后面</p>
+<p>遇到’[‘就递归调用</p>
+<p>遇到’]’就返回</p>
+<p>到结尾也返回。</p>
+<p>契约：dfs能从给定的ptr开始，直到遇到对应的’]’，返回结果并且把ptr移到’]’的下一位</p>
+<p>基本情况：到结尾或者遇到’]’</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">decodeString</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">temp</span> <span class="operator">=</span> dfs(s);</span><br><span class="line">        <span class="keyword">return</span> temp.toString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> <span class="variable">ptr</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> StringBuilder <span class="title function_">dfs</span><span class="params">(String s)</span>&#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">multi</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">res</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="keyword">while</span> (ptr &lt; s.length())&#123;</span><br><span class="line">            <span class="type">char</span> <span class="variable">c</span> <span class="operator">=</span> s.charAt(ptr);</span><br><span class="line">            <span class="keyword">if</span> (c &gt;= <span class="string">&#x27;0&#x27;</span> &amp;&amp; c &lt;= <span class="string">&#x27;9&#x27;</span>)&#123;</span><br><span class="line">                multi = multi * <span class="number">10</span> + c - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">                ptr++;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;[&#x27;</span>)&#123;</span><br><span class="line">                ptr++;</span><br><span class="line">                <span class="type">StringBuilder</span> <span class="variable">result</span> <span class="operator">=</span> dfs(s);</span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; multi; i++) &#123;</span><br><span class="line">                    res.append(result);</span><br><span class="line">                &#125;</span><br><span class="line">                multi = <span class="number">0</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;]&#x27;</span>)&#123;</span><br><span class="line">                ptr++;</span><br><span class="line">                <span class="keyword">return</span> res;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                ptr++;</span><br><span class="line">                res.append(c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间：和迭代一样</p>
+<p>空间：O(s),最差开头一个’[‘,结尾一个’]’</p>
+<h1 id="739-每日温度"><a href="#739-每日温度" class="headerlink" title="739. 每日温度"></a>739. 每日温度</h1><p><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/daily-temperatures/description/?envType=study-plan-v2&envId=top-100-liked" >https://leetcode.cn/problems/daily-temperatures/description/?envType=study-plan-v2&amp;envId=top-100-liked<i class="fas fa-external-link-alt"></i></a></p>
+<p>给定一个整数数组 temperatures ，表示每天的温度，返回一个数组 answer ，其中 answer[i] 是指对于第 i 天，下一个更高温度出现在几天后。如果气温在这之后都不会升高，请在该位置用 0 来代替。</p>
+<p>示例 1:</p>
+<p>输入: temperatures &#x3D; [73,74,75,71,69,72,76,73]<br>输出: [1,1,4,2,1,1,0,0]<br>示例 2:</p>
+<p>输入: temperatures &#x3D; [30,40,50,60]<br>输出: [1,1,1,0]<br>示例 3:</p>
+<p>输入: temperatures &#x3D; [30,60,90]<br>输出: [1,1,0]</p>
+<p>提示：</p>
+<p>1 &lt;&#x3D; temperatures.length &lt;&#x3D; 105<br>30 &lt;&#x3D; temperatures[i] &lt;&#x3D; 100</p>
+<hr>
+<p>简单的想法就是每个元素向后遍历寻找高的，这个是O(N^2)</p>
+<p>这样会有重复，对于每一天我们都“向后看”来寻找答案。</p>
+<p>遍历到第i填时，能不能使用temp[i]这个信息去更新前面还在“等待升温”的日子的答案</p>
+<p>举个例子，<code>temperatures = [73, 74, 75, 71, 69, 72, 76, 73]</code></p>
+<ul>
+<li>遍历到 <code>73</code> (第0天)，后面是啥不知道，先放着。</li>
+<li>遍历到 <code>74</code> (第1天)，它比 <code>73</code> 高！所以第0天的答案就是 <code>1 - 0 = 1</code>。现在 <code>74</code> 自己在等待一个更高的温度。</li>
+<li>遍历到 <code>75</code> (第2天)，它比 <code>74</code> 高！所以第1天的答案是 <code>2 - 1 = 1</code>。现在 <code>75</code> 在等待。</li>
+<li>遍历到 <code>71</code> (第3天)，它比 <code>75</code> 低。那 <code>75</code> 只能继续等了。<code>71</code> 自己也在等待。</li>
+<li>遍历到 <code>69</code> (第4天)，它比 <code>71</code> 还低。现在 <code>75</code>, <code>71</code>, <code>69</code> 都在等待。</li>
+<li>遍历到 <code>72</code> (第5天)，它比 <code>69</code> 高！第4天的答案是 <code>5 - 4 = 1</code>。<code>72</code> 还比 <code>71</code> 高！第3天的答案是 <code>5 - 3 = 2</code>。但是 <code>72</code> 没有比 <code>75</code> 高，所以 <code>75</code> 还要继续等。现在 <code>75</code> 和 <code>72</code> 在等待。</li>
+<li>…</li>
+</ul>
+<p>显然，我们需要一个地方存放“还在等待更高温度”的地方，并且这些温度，从先等到后越来越低，在出去的时候符合后进先出。</p>
+<p>可以使用单调栈。单调栈经常用来解决第一个小或者第一个大的问题</p>
+<p>这里我们维护一个单调递减的栈，栈里面存放索引（为了计算日期）</p>
+<p>具体思路：</p>
+<ol>
+<li>初始化stack</li>
+<li>初始化answer，默认0</li>
+<li>遍历temperatures，每个索引i和对应的温度temp<ol>
+<li>栈非空，并且temp大于栈顶，说明栈顶的日子等到了更高的温度。因此弹出索引记为prev_index,计算i-prev_index并且更新到结果，重复直到temp不大于栈顶或者栈为空</li>
+<li>处理完所有后，把当前索引压入栈内</li>
+</ol>
+</li>
+<li>answer就是结果，栈中依然有的元素没有等到因此对应的answer默认为0</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayDeque;</span><br><span class="line"><span class="keyword">import</span> java.util.Deque;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] dailyTemperatures(<span class="type">int</span>[] temperatures) &#123;</span><br><span class="line">        Deque&lt;Integer&gt; stack = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span>[] answer = <span class="keyword">new</span> <span class="title class_">int</span>[temperatures.length];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; temperatures.length; i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> temperatures[i];</span><br><span class="line">            <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; temp &gt; temperatures[stack.peek()])&#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">prev_index</span> <span class="operator">=</span>  stack.poll();</span><br><span class="line">                answer[prev_index] = i - prev_index;</span><br><span class="line">            &#125;</span><br><span class="line">            stack.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度:O(n),整体来说对于每个日期都要入栈一次，出栈一次，还有就是比较，比较成功总体合起来就是n次（因为最多n次出栈），比较失败也是n次，因此一共还是O(n)<br>空间:O(n),整体递减最差O(n)</p>
+<h1 id="84-柱状图中最大的矩形"><a href="#84-柱状图中最大的矩形" class="headerlink" title="84. 柱状图中最大的矩形"></a>84. 柱状图中最大的矩形</h1><p><a class="link"   target="_blank" rel="noopener" href="https://leetcode.cn/problems/largest-rectangle-in-histogram/description/?envType=study-plan-v2&envId=top-100-liked" >https://leetcode.cn/problems/largest-rectangle-in-histogram/description/?envType=study-plan-v2&amp;envId=top-100-liked<i class="fas fa-external-link-alt"></i></a></p>
+<p>给定 n 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。</p>
+<p>求在该柱状图中，能够勾勒出来的矩形的最大面积。</p>
+<p>示例 1:</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2025/10/24/%E6%A0%88/img_10.png"
+                        class="" title="img_10.png"
+                 >
+
+
+<p>输入：heights &#x3D; [2,1,5,6,2,3]<br>输出：10<br>解释：最大的矩形为图中红色区域，面积为 10<br>示例 2：</p>
+<img  
+                       lazyload
+                       alt="image"
+                       data-src="/2025/10/24/%E6%A0%88/img_11.png"
+                        class="" title="img_11.png"
+                 >
+
+<p>输入： heights &#x3D; [2,4]<br>输出： 4</p>
+<p>提示：</p>
+<p>1 &lt;&#x3D; heights.length &lt;&#x3D;105<br>0 &lt;&#x3D; heights[i] &lt;&#x3D; 104</p>
+<hr>
+<p>首先是两个暴力解法，都超时：</p>
+<ol>
+<li>按宽度枚举。两次遍历枚举所有边，中间维护minHeigh变量。时间复杂度O(n^2)</li>
+<li>按高度枚举。遍历枚举所有高度，对于每个高度尽可能向左向右找到第一个比目标高度低的柱子作为左右边界。时间复杂度O(N^2)</li>
+</ol>
+<p>关于2，可以优化。</p>
+<p>因为我们还是要“第一个小的”，可以使用单调栈</p>
+<p>我们维护一个单调递增栈</p>
+<p>具体步骤</p>
+<ol>
+<li>创建stack储存索引</li>
+<li>遍历柱子。每个柱子，如果它比stack.peek()矮，就出栈，并且出栈的元素记为curHead，则当前遍历到的柱子是右侧第一个比curHead低的柱子也就是右边界，出栈后的栈顶左边界（关于这个，我们可以假设在新栈顶left_index和原栈顶mid_index之间存在k比curHead低，那么当遍历到k的时候，就会把left_index出栈，left_index就不该存在，矛盾））（就是以当前curHead为高度的最大宽度），维护更新maxArea。循环这个过程，直到栈空或者当前索引高度大于栈顶。之后把当前索引入栈</li>
+<li>为了方便，我们在最左侧和最右侧都增加一个高度为0的柱子，确保所有柱子都会最终被出栈</li>
+<li>其实相当于，在每个柱子出栈的时候，以该柱子为高，自动获得最大边界算出面积。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayDeque;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Deque;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">largestRectangleArea</span><span class="params">(<span class="type">int</span>[] heights)</span> &#123;</span><br><span class="line">        Deque&lt;Integer&gt; stack = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> <span class="variable">max_area</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        List&lt;Integer&gt; new_heights = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        new_heights.add(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i : heights) &#123;</span><br><span class="line">            new_heights.add(i);</span><br><span class="line">        &#125;</span><br><span class="line">        new_heights.add(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; new_heights.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; new_heights.get(i) &lt; new_heights.get(stack.peek()))&#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">cur</span> <span class="operator">=</span> stack.pop();</span><br><span class="line">                <span class="type">int</span> <span class="variable">curHeigh</span> <span class="operator">=</span> new_heights.get(cur);</span><br><span class="line">                <span class="type">int</span> <span class="variable">length</span> <span class="operator">=</span> i - stack.peek() - <span class="number">1</span>;</span><br><span class="line">                max_area = Math.max(max_area,curHeigh * length);</span><br><span class="line">            &#125;</span><br><span class="line">            stack.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max_area;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：整体来说，每个柱子都要入栈出栈一次，还要比较、计算，一共最多比较成功、计算n次，比较失败n次，最终是O(n)</p>
+<p>空间复杂度：新列表O(n)，栈O(n)</p>
+
+                    
+                </div>
+
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                栈
+            </div>
+
+            <div class="copyright-post-link border-box text-ellipsis">
+                2025/10/24/栈/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">stellogic</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2025-10-24 07:03</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
+    </div>
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
+
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                            <ul class="post-tags-box border-box">
+                                
+                                    <li class="tag-item border-box">
+                                        <i class="icon fas fa-hashtag"></i>&nbsp;<a href="/tags/%E6%A0%88/">栈</a>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+                    <div>
+                        
+                            <div class="post-share-container border-box">
+    <ul class="share-list-wrap border-box">
+        <li class="qq share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到 QQ"
+        >
+            <i class="fa-brands fa-qq"></i>
+        </li>
+        <li class="wechat share-item border-box flex-center tooltip tooltip-img"
+            data-tooltip-content="分享到微信"
+            data-tooltip-img-tip="微信扫一扫"
+            data-tooltip-img-style="background-color: #fff; top: -10px; padding: 0.6rem 0.6rem 0.1rem 0.6rem;"
+        >
+            <i class="fa-brands fa-weixin"></i>
+        </li>
+        <li class="weibo share-item border-box flex-center tooltip"
+            data-tooltip-content="分享到微博"
+        >
+            <i class="fa-brands fa-weibo"></i>
+        </li>
+    </ul>
+</div>
+
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2025/11/03/%E4%BA%8C%E5%8F%89%E6%A0%91/"
+                                   title="二叉树"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">二叉树</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/10/22/%E5%9B%BE%E8%AE%BA/"
+                                   title="图论"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">图论</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;评论
+        </div>
+        <div class="comment-plugin-fail border-box">
+    <span class="fail-tip">评论插件加载失败</span>
+    <button class="reload keep-button">点击重新加载</button>
+</div>
+<div class="comment-plugin-loading flex-center border-box">
+    <i class="loading-icon fa-solid fa-spinner fa-spin"></i>
+    <span class="load-tip">正在加载评论插件</span>
+</div>
+<script data-pjax>
+  window.KeepCommentPlugin = {}
+  window.KeepCommentPlugin.hideLoading = () => {
+    const cplDom = document.querySelector('.comments-container .comment-plugin-loading')
+    cplDom.style.display = 'none'
+  }
+  window.KeepCommentPlugin.loadFailHandle = () => {
+    window.KeepCommentPlugin.hideLoading()
+    const cpfDom = document.querySelector('.comments-container .comment-plugin-fail')
+    cpfDom.style.display = 'flex'
+    cpfDom.querySelector('.reload').addEventListener('click', () => {
+      window.location.reload()
+    })
+  }
+</script>
+
+        
+            
+
+    <div class="giscus-comments-container">
+        <div class="giscus" id="giscus"></div>
+        <script 
+                onerror="window.KeepCommentPlugin.loadFailHandle()"
+        >
+          if (!window.KeepCommentPlugin?.getGiscusTheme) {
+            window.KeepCommentPlugin.getGiscusTheme = () => {
+              return document.documentElement.classList.contains('dark-mode') ? 'dark_dimmed' : 'light_tritanopia'
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.changeGiscusTheme) {
+            window.KeepCommentPlugin.changeGiscusTheme = () => {
+              const iframe = document.querySelector('iframe.giscus-frame')
+              iframe && iframe.contentWindow.postMessage({
+                giscus: {
+                  setConfig: {
+                    theme: window.KeepCommentPlugin.getGiscusTheme()
+                  }
+                }
+              }, 'https://giscus.app')
+            }
+          }
+
+          if (!window.KeepCommentPlugin?.initGiscus) {
+            window.KeepCommentPlugin.initGiscus = () => {
+              const script = document.createElement('script')
+              script.async = true
+              script.src = 'https://giscus.app/client.js'
+              script.setAttribute('data-repo', 'Stellogic/Stellogic.github.io')
+              script.setAttribute('data-repo-id', 'R_kgDOOkF4SA')
+              script.setAttribute('data-category', 'Announcements')
+              script.setAttribute('data-category-id', 'DIC_kwDOOkF4SM4Cp-Ln')
+              script.setAttribute('data-reactions-enabled', '1')
+              script.setAttribute('data-lang', 'zh-CN')
+              script.setAttribute('data-mapping', 'pathname')
+              script.setAttribute('data-strict', '0')
+              script.setAttribute('data-emit-metadata', '0')
+              script.setAttribute('data-input-position', 'top')
+              script.setAttribute('crossorigin', 'anonymous')
+              script.setAttribute('loading', 'lazy')
+              script.setAttribute('data-theme', window.KeepCommentPlugin.getGiscusTheme())
+              document.querySelector('.giscus-comments-container').appendChild(script)
+              script.onerror = () => {
+                window.KeepCommentPlugin.loadFailHandle()
+              }
+              script.onload = () => {
+                window.KeepCommentPlugin.hideLoading()
+              }
+              const toggleThemeBtn = document.querySelector('.tool-toggle-theme-mode')
+              toggleThemeBtn && toggleThemeBtn.addEventListener('click', () => {
+                window.KeepCommentPlugin.changeGiscusTheme()
+              })
+            }
+          }
+
+          if ('false' === "true") {
+            setTimeout(() => {
+              window.KeepCommentPlugin.initGiscus()
+            }, 1000)
+          } else {
+            window.addEventListener("DOMContentLoaded", window.KeepCommentPlugin.initGiscus)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#20-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7"><span class="nav-number">1.</span> <span class="nav-text">20. 有效的括号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#155-%E6%9C%80%E5%B0%8F%E6%A0%88"><span class="nav-number">2.</span> <span class="nav-text">155.最小栈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#394-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">394. 字符串解码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC-1-%E6%AD%A5%EF%BC%9A%E8%AF%86%E5%88%AB%E9%97%AE%E9%A2%98%E7%9A%84%E6%A0%B8%E5%BF%83%E9%9A%BE%E7%82%B9"><span class="nav-number">3.1.</span> <span class="nav-text">第 1 步：识别问题的核心难点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC-2-%E6%AD%A5%EF%BC%9A%E8%81%94%E6%83%B3%E8%83%BD%E5%A4%9F%E5%A4%84%E7%90%86%E8%BF%99%E7%A7%8D%E2%80%9C%E5%90%8E%E8%BF%9B%E5%85%88%E5%87%BA%E2%80%9D%E7%BB%93%E6%9E%84%E7%9A%84%E5%B7%A5%E5%85%B7"><span class="nav-number">3.2.</span> <span class="nav-text">第 2 步：联想能够处理这种“后进先出”结构的工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC-3-%E6%AD%A5%EF%BC%9A%E8%AE%BE%E8%AE%A1%E2%80%9C%E7%8E%B0%E5%9C%BA%E2%80%9D%E9%9C%80%E8%A6%81%E4%BF%9D%E5%AD%98%E4%BB%80%E4%B9%88%E4%BF%A1%E6%81%AF"><span class="nav-number">3.3.</span> <span class="nav-text">第 3 步：设计“现场”需要保存什么信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC-4-%E6%AD%A5%EF%BC%9A%E7%A1%AE%E5%AE%9A%E6%93%8D%E4%BD%9C%E8%A7%84%E5%88%99"><span class="nav-number">3.4.</span> <span class="nav-text">第 4 步：确定操作规则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#739-%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6"><span class="nav-number">4.</span> <span class="nav-text">739. 每日温度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#84-%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2"><span class="nav-number">5.</span> <span class="nav-text">84. 柱状图中最大的矩形</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;2025
+    
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">stellogic</a>
+        
+    </div>
+
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+        
+        <div class="deploy-info info-item">
+            
+                <a target="_blank" rel="nofollow" href="https://stellogic.github.io/">
+            
+            本站由 <span class="tooltip" data-tooltip-content="GitHub Pages"><img src="/images/brands/github.png"></span> 提供部署服务
+            
+                </a>
+            
+        </div>
+    
+
+    
+        <div class="count-info info-item">
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+            <li class="tools-item go-to-comments-tablet flex-center">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#20-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7"><span class="nav-number">1.</span> <span class="nav-text">20. 有效的括号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#155-%E6%9C%80%E5%B0%8F%E6%A0%88"><span class="nav-number">2.</span> <span class="nav-text">155.最小栈</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#394-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A7%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">394. 字符串解码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC-1-%E6%AD%A5%EF%BC%9A%E8%AF%86%E5%88%AB%E9%97%AE%E9%A2%98%E7%9A%84%E6%A0%B8%E5%BF%83%E9%9A%BE%E7%82%B9"><span class="nav-number">3.1.</span> <span class="nav-text">第 1 步：识别问题的核心难点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC-2-%E6%AD%A5%EF%BC%9A%E8%81%94%E6%83%B3%E8%83%BD%E5%A4%9F%E5%A4%84%E7%90%86%E8%BF%99%E7%A7%8D%E2%80%9C%E5%90%8E%E8%BF%9B%E5%85%88%E5%87%BA%E2%80%9D%E7%BB%93%E6%9E%84%E7%9A%84%E5%B7%A5%E5%85%B7"><span class="nav-number">3.2.</span> <span class="nav-text">第 2 步：联想能够处理这种“后进先出”结构的工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC-3-%E6%AD%A5%EF%BC%9A%E8%AE%BE%E8%AE%A1%E2%80%9C%E7%8E%B0%E5%9C%BA%E2%80%9D%E9%9C%80%E8%A6%81%E4%BF%9D%E5%AD%98%E4%BB%80%E4%B9%88%E4%BF%A1%E6%81%AF"><span class="nav-number">3.3.</span> <span class="nav-text">第 3 步：设计“现场”需要保存什么信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC-4-%E6%AD%A5%EF%BC%9A%E7%A1%AE%E5%AE%9A%E6%93%8D%E4%BD%9C%E8%A7%84%E5%88%99"><span class="nav-number">3.4.</span> <span class="nav-text">第 4 步：确定操作规则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#739-%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6"><span class="nav-number">4.</span> <span class="nav-text">739. 每日温度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#84-%E6%9F%B1%E7%8A%B6%E5%9B%BE%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E7%9F%A9%E5%BD%A2"><span class="nav-number">5.</span> <span class="nav-text">84. 柱状图中最大的矩形</span></a></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/toggle-theme.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/code-block.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/local-search.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/lazyload.js"></script>
+
+
+<div class="">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/post-helper.js"></script>
+
+        <!-- toc -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/toc.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/copyright-info.js"></script>
+        
+
+        <!-- share -->
+        
+            <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@4.2.5/source/js/post/share.js"></script>
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
