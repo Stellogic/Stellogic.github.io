@@ -1,0 +1,49 @@
+title: Stellogic的个人空间
+subtitle: ''
+description: 记录点滴，共同进步
+author: stellogic
+language: zh-CN
+timezone: ''
+
+url: https://stellogic.github.io
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults: {}
+
+source_dir: source
+public_dir: public
+theme: keep
+
+post_asset_folder: true
+new_post_name: :title.md
+
+# Skip rendering for PowerShell scripts
+skip_render:
+  - 'scripts/**'
+
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace: ''
+  wrap: true
+
+markdown:
+  preset: default
+  render:
+    html: true
+    xhtmlOut: false
+    breaks: false
+    linkify: true
+    typographer: false
+
+category_map: {}
+tag_map: {}
+
+meta_generator: true
+
+# Deployment. Update repo if you use a fork.
+deploy:
+  type: git
+  repo: git@github.com:Stellogic/Stellogic.github.io.git
+  branch: main

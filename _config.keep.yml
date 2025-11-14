@@ -1,0 +1,100 @@
+base_info:
+  primary_color: '#0066cc'
+  title: stellogic的个人空间
+  author: stellogic
+  avatar: /images/avatar.jpg
+  favicon:
+  logo:
+menu:
+  home: / || fa-solid fa-home
+  archives: /archives || fa-solid fa-box-archive
+  categories: /categories || fa-solid fa-layer-group
+  tags: /tags || fa-solid fa-tags
+  links: /links || fa-solid fa-link
+  about: /about || fa-solid fa-user-graduate
+first_screen:
+  enable: true
+  background_img: /images/bg.svg
+  background_img_dark: /images/bg2.svg
+  description: "欢迎来到我的个人空间 || 记录点滴，共同进步"
+  hitokoto: false
+social_contact:
+  enable: true
+  links:
+    github: https://github.com/stellogic
+    zhihu: https://www.zhihu.com/people/stellogic
+    email: mack12399@outlook.com
+scroll:
+  progress_bar: true
+  percent: true
+  hide_header: false
+home:
+  announcement: "📚We are together"
+  category: true
+  tag: true
+  post_datetime: updated
+post:
+  author_badge:
+    enable: true
+    level_badge: false
+    custom_badge:
+      - One
+      - Two
+      - Three
+  word_count:
+    wordcount: true
+    min2read: true
+  datetime_format: YYYY-MM-DD HH:mm:ss
+  copyright_info: true
+  share: true
+  reward:
+    enable: false
+code_block:
+  tools:
+    enable: true
+    style: default
+  highlight_theme: default
+toc:
+  enable: true
+  number: true
+  expand_all: false
+  init_open: true
+  layout: right
+website_count:
+  busuanzi_count:
+    enable: true
+    site_uv: true
+    site_pv: true
+    page_pv: true
+local_search:
+  enable: true
+  preload: true
+comment:
+  enable: true
+  use: giscus
+  giscus:
+    repo: Stellogic/Stellogic.github.io
+    repo_id: R_kgDOOkF4SA
+    category: Announcements
+    category_id: DIC_kwDOOkF4SM4Cp-Ln
+    reactions_enabled: true
+rss:
+  enable: true
+lazyload:
+  enable: true
+cdn:
+  enable: true
+  provider: jsdelivr
+pjax:
+  enable: false
+footer:
+  since: 2025
+  word_count: true
+  site_deploy:
+    enable: true
+    provider: github
+    url: https://stellogic.github.io/
+  record:
+    enable: false
+inject:
+  enable: false
